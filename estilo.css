@@ -149,20 +149,19 @@ body {
 }
 
 .cards {
+.cards {
     display: flex;
+    flex-wrap: nowrap; /* NÃO deixa quebrar linha */
+    overflow-x: auto;
     gap: 20px;
     margin-top: 20px;
-    overflow-x: auto; /* scroll horizontal */
     padding-bottom: 10px;
+    scroll-behavior: smooth;
 }
 
 .card {
-    min-width: 300px; /* impede quebrar linha */
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    flex-shrink: 0; /* mantém tamanho */
+    min-width: 300px;
+    flex-shrink: 0;
 }
 
 .card img {
