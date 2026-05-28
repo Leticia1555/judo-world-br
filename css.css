@@ -1,0 +1,131 @@
+/* CELULAR */
+@media (max-width: 768px){
+
+    nav{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        padding: 10px;
+    }
+
+    nav a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+
+        width: 85%;
+        padding: 8px;
+
+        font-size: 14px;
+
+        border-radius: 10px;
+    }
+
+    nav a img{
+        width: 18px !important;
+    }
+
+    .barra{
+        width: 85%;
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    #light,
+    #dark{
+        width: 25px !important;
+    }
+
+    .judo{
+        width: 55px;
+    }
+}
+/* MENU MOBILE */
+
+.menu-mobile{
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+@media (max-width: 768px){
+
+    .menu-mobile{
+        display: block;
+    }
+
+    .links-nav{
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .links-nav.ativo{
+        display: flex;
+    }
+
+    nav a{
+        width: 90%;
+        margin: auto;
+    }
+}
+
+    .barra{
+        width: 90%;
+    }
+
+    .carousel-animated img{
+        width: 100%;
+        height: auto;
+    }
+
+    .cards{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .card{
+        width: 90%;
+    }
+
+    .card img{
+        width: 100%;
+        height: auto;
+    }
+
+    .cadastro{
+        width: 90%;
+        padding: 20px;
+        margin: auto;
+    }
+
+    .input-box input,
+    .input-box select{
+        width: 100%;
+    }
+
+    button{
+        width: 100%;
+    }
+
+    .judo{
+        width: 80px;
+    }
+
+    #light,
+    #dark{
+        width: 35px;
+    }
+@media (max-width: 768px){
+
+    .carousel-animated img{
+        height: 220px;
+    }
+
+}
