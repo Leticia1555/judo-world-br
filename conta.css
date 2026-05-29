@@ -1,4 +1,4 @@
-
+   
 select{
     width:100%;
     padding:12px;
@@ -31,6 +31,7 @@ body{
 .cadastro{
     width:100%;
     max-width:150px;
+     min-height:100vh;
 }
 /* título */
 .cadastro h1{
