@@ -1,33 +1,12 @@
-/* ===== AJUSTE FINAL ===== */
-
 .pagina-conta{
+    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
 
-    min-height:100vh;
-
-    padding-top:90px;
+    padding:120px 20px 40px;
 
     box-sizing:border-box;
-}
-
-nav{
-    position:fixed;
-    top:0;
-    width:100%;
-    z-index:999;
-}
-
-body{
-    overflow-x:hidden;
-}
-.pagina-conta{
-    min-height:100vh;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
 
     background:
     linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
@@ -37,17 +16,17 @@ body{
     background-position:center;
 }
 
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+}
+
 .pagina-conta .cadastro{
-    width:350px;
-    padding:35px;
-
-    background:#050505;
-
-    border-radius:25px;
-
-    border:2px solid #6a5cff;
-
-    box-shadow:0 0 25px rgba(0,0,0,.7);
+    position:relative;
+    margin:auto;
 }
 
 .pagina-conta .cadastro h1{
