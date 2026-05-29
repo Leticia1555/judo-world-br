@@ -153,17 +153,17 @@ body {
 }
 
 #Campeonato .cards{
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: auto;
     gap: 15px;
-    padding: 10px;
-    white-space: nowrap;
 }
 
 #Campeonato .card{
-    flex: 0 0 220px;
-    max-width: 220px;
+    width: 220px;
+    min-width: 220px;
+    flex-shrink: 0;
 }
 
 #Campeonato .card img{
@@ -172,7 +172,6 @@ body {
     object-fit: cover;
     display: block;
 }
-
 
 .card .conteudo {
     padding: 15px;
