@@ -1,11 +1,26 @@
-nav{
-    position:relative;
-    z-index:1000;
-}
+/* ===== AJUSTE FINAL ===== */
 
 .pagina-conta{
-    position:relative;
-    z-index:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    min-height:100vh;
+
+    padding-top:90px;
+
+    box-sizing:border-box;
+}
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:999;
+}
+
+body{
+    overflow-x:hidden;
 }
 .pagina-conta{
     min-height:100vh;
