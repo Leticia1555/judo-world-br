@@ -11,54 +11,69 @@ select{
 }
 body{
     margin:0;
-    background:#000;
-    color:white;
     font-family:Arial, Helvetica, sans-serif;
+    background:url("img/judo.jpg") center center/cover no-repeat;
+    min-height:100vh;
 }
+
 .container{
+    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    min-height:100vh;
-    padding:20px;
 }
 
-.conteudo{
-    display:none;
-}
-
-/* lado direito */
 .cadastro{
-    width:100%;
-    max-width:150px;
-     min-height:100vh;
-}
-/* título */
-.cadastro h1{
-    font-size:55px;
-    font-weight:bold;
-    color:#d9d9d9;
-    margin-bottom:50px;
+    width:380px;
+    background:rgba(0,0,0,0.95);
+    padding:40px;
+    border-radius:20px;
+    border:2px solid transparent;
+    background-image:
+    linear-gradient(#000,#000),
+    linear-gradient(90deg,#4f46ff,#d946ef,#ff9f43);
+    background-origin:border-box;
+    background-clip:padding-box,border-box;
 }
 
-/* inputs */
-input,
-select{
-    width:100%;
-    padding:14px;
-    border-radius:16px;
+.cadastro h1{
+    font-size:60px;
+    margin-bottom:30px;
+    text-align:center;
+    background:linear-gradient(90deg,#4f46ff,#d946ef,#ff9f43);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
-/* botão */
+
+.cadastro label{
+    display:block;
+    margin-bottom:8px;
+    color:white;
+}
+
+.cadastro input,
+.cadastro select{
+    width:100%;
+    padding:16px;
+    margin-bottom:20px;
+    border-radius:15px;
+    border:1px solid transparent;
+    background:
+    linear-gradient(#000,#000) padding-box,
+    linear-gradient(90deg,#4f46ff,#d946ef,#ff9f43) border-box;
+    border:2px solid transparent;
+    color:white;
+    box-sizing:border-box;
+}
+
 .cadastro button{
     width:100%;
-    padding:18px;
+    padding:16px;
     border:none;
-    border-radius:18px;
-
-    font-size:20px;
+    border-radius:15px;
+    font-size:24px;
     font-weight:bold;
     color:white;
-
-    background:linear-gradient(90deg,#5b5fff,#ff8a5c);
+    cursor:pointer;
+    background:linear-gradient(90deg,#4f46ff,#d946ef,#ffb347);
 }
-
