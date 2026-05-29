@@ -31,12 +31,6 @@ form{
     border-radius:20px;
 }
 
-/* lado esquerdo */
-.conteudo{
-    flex:1;
-    background:#000;
-
-}
 
 /* lado direito */
 .cadastro{
