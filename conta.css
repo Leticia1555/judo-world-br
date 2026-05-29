@@ -1,5 +1,91 @@
 .pagina-conta{
     min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
+    url("https://images.unsplash.com/photo-1544717684-75b436d0bc23?q=80&w=1200&auto=format&fit=crop");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.pagina-conta .cadastro{
+    width:350px;
+    padding:35px;
+
+    background:#050505;
+
+    border-radius:25px;
+
+    border:2px solid #6a5cff;
+
+    box-shadow:0 0 25px rgba(0,0,0,.7);
+}
+
+.pagina-conta .cadastro h1{
+    text-align:center;
+    font-size:50px;
+
+    background:linear-gradient(
+    90deg,
+    #5f5fff,
+    #d35cff,
+    #ffb347
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.pagina-conta .input-box{
+    margin-bottom:15px;
+}
+
+.pagina-conta .input-box label{
+    color:white;
+    display:block;
+    margin-bottom:5px;
+}
+
+.pagina-conta .input-box input,
+.pagina-conta .input-box select{
+    width:100%;
+    padding:14px;
+
+    border-radius:14px;
+
+    border:1px solid #666;
+
+    background:#111;
+    color:white;
+
+    box-sizing:border-box;
+}
+
+.pagina-conta button{
+    width:100%;
+    padding:15px;
+
+    border:none;
+    border-radius:14px;
+
+    font-size:20px;
+    font-weight:bold;
+
+    color:white;
+
+    background:linear-gradient(
+    90deg,
+    #5f5fff,
+    #d35cff,
+    #ffb347
+    );
+}.pagina-conta{
+    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
