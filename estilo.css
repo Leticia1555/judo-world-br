@@ -73,8 +73,9 @@ body:not(.dark-mode) .barra {
 
 .carousel-animated img {
     width: calc(100% / 3);
-    height: 400px;
+    height: 250px;
     object-fit: cover;
+    border-radius: 15px;
 }
 /* keyframe de animação */
 @keyframes slide {
