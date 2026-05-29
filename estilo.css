@@ -150,21 +150,22 @@ body {
 
 .cards{
     display: flex;
+    gap: 15px;
     overflow-x: auto;
-    gap: 20px;
+    padding-bottom: 10px;
 }
-
 .card{
-    min-width: 300px;
+    width: 220px;
+    min-width: 220px;
     flex-shrink: 0;
 }
 
 .card img{
     width: 100%;
-    height: 200px;
+    height: 140px;
     object-fit: cover;
-    display: block;
 }
+
 
 .card .conteudo {
     padding: 15px;
