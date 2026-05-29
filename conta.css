@@ -1,90 +1,83 @@
+/* ===== PAGINA CONTA ===== */
+
 body{
-    margin:0;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    font-family:Arial, Helvetica, sans-serif;
-
     background:
     linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
-    url("imagens/judo-fundo.jpg");
+    url("https://images.unsplash.com/photo-1544717684-75b436d0bc23?q=80&w=1200&auto=format&fit=crop") !important;
 
-    background-size:cover;
-    background-position:center;
+    background-size:cover !important;
+    background-position:center !important;
+    min-height:100vh;
 }
 
 .cadastro{
-    width:350px;
-    padding:35px;
+    width:350px !important;
+    margin:60px auto !important;
+    padding:35px !important;
 
-    background:#070707;
+    background:#050505 !important;
 
-    border-radius:25px;
+    border-radius:25px !important;
 
-    border:2px solid #6a5cff;
+    border:2px solid transparent !important;
 
-    box-shadow:
-    0 0 20px rgba(106,92,255,.5),
-    0 0 40px rgba(211,92,255,.2);
+    background-image:
+    linear-gradient(#050505,#050505),
+    linear-gradient(90deg,#5f5fff,#d35cff,#ffb347) !important;
+
+    background-origin:border-box !important;
+    background-clip:padding-box,border-box !important;
+
+    box-shadow:0 0 25px rgba(0,0,0,.7) !important;
 }
 
 .cadastro h1{
     text-align:center;
-    font-size:50px;
+    font-size:50px !important;
 
     background:linear-gradient(
     90deg,
-    #6a5cff,
+    #5f5fff,
     #d35cff,
     #ffb347
-    );
+    ) !important;
 
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 }
 
-.input-box{
-    margin-bottom:15px;
-}
-
-.input-box label{
-    color:white;
-    display:block;
-    margin-bottom:5px;
-}
-
 .input-box input,
 .input-box select{
-    width:100%;
-    padding:14px;
+    width:100% !important;
+    padding:14px !important;
 
-    border-radius:15px;
+    border-radius:14px !important;
 
-    border:1px solid #6a5cff;
+    background:#111 !important;
 
-    background:#111;
-    color:white;
+    color:white !important;
+
+    border:1px solid #666 !important;
 
     box-sizing:border-box;
 }
 
 button{
-    width:100%;
-    padding:15px;
+    width:100% !important;
+    padding:15px !important;
 
-    border:none;
-    border-radius:15px;
+    border:none !important;
 
-    color:white;
-    font-size:20px;
-    font-weight:bold;
+    border-radius:14px !important;
+
+    font-size:20px !important;
+
+    color:white !important;
 
     background:linear-gradient(
     90deg,
-    #6a5cff,
+    #5f5fff,
     #d35cff,
     #ffb347
-    );
+    ) !important;
 }
