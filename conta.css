@@ -30,34 +30,44 @@ body{
 
 /* lado direito */
 .cadastro{
-    width:350px;
-    padding:40px;
+    width:300px; /* antes 350px */
+    padding:25px;
     background:#050505;
     display:flex;
     flex-direction:column;
-    justify-content:flex-end;
+    justify-content:center;
+    border-radius:15px;
+    align-items:center;
 }
 
+/* título */
 .cadastro h1{
-    font-size:60px;
-    margin-bottom:40px;
+    font-size:38px; /* antes 60px */
+    margin-bottom:25px;
 }
 
+/* inputs */
 .cadastro input,
 .cadastro select{
     width:100%;
-    padding:15px;
-    margin-bottom:20px;
-    border-radius:15px;
+    padding:12px;
+    margin-bottom:15px;
+    border-radius:12px;
     border:1px solid #3b5bff;
     background:#000;
-    color:rgb(255, 255, 255);
+    color:white;
+    font-size:14px;
 }
+
+/* botão */
 .cadastro button{
-border-radius:15px;
-padding:15px;
-background-color: #3b5bff;
- border:1px solid #1d285e;
+    width:100%;
+    border-radius:12px;
+    padding:12px;
+    background-color:#3b5bff;
+    border:1px solid #1d285e;
+    color:white;
+    font-size:15px;
 }
 .cadastro{
 border-radius:15px;
