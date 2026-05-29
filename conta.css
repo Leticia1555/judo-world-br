@@ -9,35 +9,19 @@ select{
     font-size:16px;
     outline:none;
 }
-/* Corrigir lateral grande */
-html, body {
-    overflow-x: hidden;
-    width: 100%;
+body{
+    margin:0;
+    background:#000;
+    color:white;
+    font-family:Arial, Helvetica, sans-serif;
 }
-
-/* Evita elementos ultrapassarem */
-* {
-    box-sizing: border-box;
-}
-
-/* Corrige formulário */
-.container,
-.login-container,
-.cadastro-container {
-    max-width: 100%;
-}
-
-/* Inputs */
-input {
-    width: 100%;
-}
-
 .container{
     display:flex;
-    min-height:100vh;
+    min-height:50%;
     justify-content:center;
     align-items:center;
     background:#000;
+  
 }
 
 /* lado esquerdo */
