@@ -18,7 +18,10 @@ body{
 
 .container{
     display:flex;
-    height:100vh;
+    min-height:100vh;
+    justify-content:center;
+    align-items:center;
+    background:#000;
 }
 
 /* lado esquerdo */
@@ -30,47 +33,50 @@ body{
 
 /* lado direito */
 .cadastro{
-    width:300px; /* antes 350px */
-    padding:25px;
+    width:350px;
     background:#050505;
+    padding:40px 30px;
+    border-radius:20px;
+
     display:flex;
     flex-direction:column;
     justify-content:center;
-    border-radius:15px;
-    align-items:center;
+
+    margin:auto; /* centraliza */
 }
 
 /* título */
 .cadastro h1{
-    font-size:38px; /* antes 60px */
-    margin-bottom:25px;
+    font-size:55px;
+    font-weight:bold;
+    color:#d9d9d9;
+    margin-bottom:50px;
 }
 
 /* inputs */
-.cadastro input,
-.cadastro select{
+.cadastro input{
     width:100%;
-    padding:12px;
-    margin-bottom:15px;
-    border-radius:12px;
-    border:1px solid #3b5bff;
-    background:#000;
-    color:white;
-    font-size:14px;
-}
+    padding:18px;
+    margin-bottom:25px;
 
+    background:#0b0b0b;
+    border:1px solid #6b5cff;
+    border-radius:18px;
+
+    color:white;
+    font-size:16px;
+}
 /* botão */
 .cadastro button{
     width:100%;
-    border-radius:12px;
-    padding:12px;
-    background-color:#3b5bff;
-    border:1px solid #1d285e;
+    padding:18px;
+    border:none;
+    border-radius:18px;
+
+    font-size:20px;
+    font-weight:bold;
     color:white;
-    font-size:15px;
+
+    background:linear-gradient(90deg,#5b5fff,#ff8a5c);
 }
-.cadastro{
-border-radius:15px;
-padding:15px;
-align-items: center;
-}
+
