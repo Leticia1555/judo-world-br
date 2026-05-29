@@ -1,37 +1,90 @@
 body{
     margin:0;
     min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
     font-family:Arial, Helvetica, sans-serif;
 
     background:
-    linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
     url("imagens/judo-fundo.jpg");
 
     background-size:cover;
     background-position:center;
-    color:white;
 }
 
 .cadastro{
-    width: 350px;
-    max-width: 350px;
-    margin: 60px auto;
-    padding: 30px;
-    background: #050505;
-    border-radius: 20px;
+    width:350px;
+    padding:35px;
+
+    background:#070707;
+
+    border-radius:25px;
+
+    border:2px solid #6a5cff;
+
+    box-shadow:
+    0 0 20px rgba(106,92,255,.5),
+    0 0 40px rgba(211,92,255,.2);
 }
 
 .cadastro h1{
-    font-size: 45px;
-    text-align: center;
+    text-align:center;
+    font-size:50px;
+
+    background:linear-gradient(
+    90deg,
+    #6a5cff,
+    #d35cff,
+    #ffb347
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.input-box{
+    margin-bottom:15px;
+}
+
+.input-box label{
+    color:white;
+    display:block;
+    margin-bottom:5px;
 }
 
 .input-box input,
 .input-box select{
-    padding: 12px;
+    width:100%;
+    padding:14px;
+
+    border-radius:15px;
+
+    border:1px solid #6a5cff;
+
+    background:#111;
+    color:white;
+
+    box-sizing:border-box;
 }
 
-.cadastro button{
-    padding: 12px;
-    font-size: 18px;
+button{
+    width:100%;
+    padding:15px;
+
+    border:none;
+    border-radius:15px;
+
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+
+    background:linear-gradient(
+    90deg,
+    #6a5cff,
+    #d35cff,
+    #ffb347
+    );
 }
