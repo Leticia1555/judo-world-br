@@ -18,17 +18,14 @@ body{
 .container{
     display:flex;
     justify-content:center;
-    padding:30px 15px;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
 }
 
-form{
-    width:90%;
-    max-width:100px;
-    background:#000;
-    padding:25px;
-    border-radius:20px;
+.conteudo{
+    display:none;
 }
-
 
 /* lado direito */
 .cadastro{
