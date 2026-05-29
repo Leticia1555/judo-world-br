@@ -18,16 +18,14 @@ body{
 .container{
     display:flex;
     justify-content:center;
-    align-items:center;
     padding:30px 15px;
-    background:#000;
 }
 
 form{
-    width:100%;
-    max-width:700px;
+    width:90%;
+    max-width:500px;
     background:#000;
-    padding:30px;
+    padding:25px;
     border-radius:20px;
 }
 
