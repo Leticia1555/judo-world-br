@@ -73,7 +73,7 @@ body:not(.dark-mode) .barra {
 
 .carousel-animated img {
     width: calc(100% / 3);
-    height: 250px;
+    aspect-ratio: 16/9;
     object-fit: cover;
     border-radius: 15px;
 }
