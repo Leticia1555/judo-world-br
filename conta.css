@@ -1,191 +1,83 @@
-/* CELULAR */
-@media (max-width: 768px){
+/* ==================== ESTILOS DA PÁGINA DE CADASTRO ==================== */
+.pagina-conta {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Esse padding garante que o formulário não morda o menu fixo do topo */
+    padding: 120px 20px 40px; 
+    box-sizing: border-box;
 
-    nav{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-        padding: 10px;
-    }
-
-    nav a{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-
-        width: 85%;
-        padding: 8px;
-
-        font-size: 14px;
-
-        border-radius: 10px;
-    }
-
-    nav a img{
-        width: 18px !important;
-    }
-
-    .barra{
-        width: 85%;
-        padding: 8px;
-        font-size: 13px;
-    }
-
-    #light,
-    #dark{
-        width: 25px !important;
-    }
-
-    .judo{
-        width: 55px;
-    }
-}
-/* MENU MOBILE */
-
-.menu-mobile{
-    display: none;
-    font-size: 30px;
-    cursor: pointer;
-    padding: 10px;
-}
-
-@media (max-width: 768px){
-
-    .menu-mobile{
-        display: block;
-    }
-
-    .links-nav{
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        gap: 10px;
-    }
-
-    .links-nav.ativo{
-        display: flex;
-    }
-
-    nav a{
-        width: 90%;
-        margin: auto;
-    }
-}
-    border:1px solid #666;
-
-    background:#111;
-    color:white;
-
-    box-sizing:border-box;
-}
-
-.pagina-conta button{
-    width:100%;
-    padding:15px;
-
-    border:none;
-    border-radius:14px;
-
-    font-size:20px;
-    font-weight:bold;
-
-    color:white;
-
-    background:linear-gradient(
-    90deg,
-    #5f5fff,
-    #d35cff,
-    #ffb347
-    );
-}.pagina-conta{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    padding:120px 20px 40px;
-
-    box-sizing:border-box;
-
-    background:
-    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
+    background: linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)),
     url("https://images.unsplash.com/photo-1544717684-75b436d0bc23?q=80&w=1200&auto=format&fit=crop");
-
-    background-size:cover;
-    background-position:center;
+    background-size: cover;
+    background-position: center;
 }
 
-nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:1000;
+.pagina-conta .cadastro {
+    position: relative;
+    margin: auto;
+    width: 100%;
+    max-width: 420px; /* Controla a largura máxima no desktop */
+    background-color: rgba(17, 17, 17, 0.2); /* Deixa sutil o fundo */
 }
 
-.pagina-conta .cadastro{
-    position:relative;
-    margin:auto;
+.pagina-conta .cadastro h1 {
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #5f5fff, #d35cff, #ffb347);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.pagina-conta .cadastro h1{
-    text-align:center;
-    font-size:50px;
-
-    background:linear-gradient(
-    90deg,
-    #5f5fff,
-    #d35cff,
-    #ffb347
-    );
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+.pagina-conta .input-box {
+    margin-bottom: 15px;
 }
 
-.pagina-conta .input-box{
-    margin-bottom:15px;
-}
-
-.pagina-conta .input-box label{
-    color:white;
-    display:block;
-    margin-bottom:5px;
+.pagina-conta .input-box label {
+    color: white;
+    display: block;
+    margin-bottom: 5px;
 }
 
 .pagina-conta .input-box input,
-.pagina-conta .input-box select{
-    width:100%;
-    padding:14px;
-
-    border-radius:14px;
-
-    border:1px solid #666;
-
-    background:#111;
-    color:white;
-
-    box-sizing:border-box;
+.pagina-conta .input-box select {
+    width: 100%;
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid #666;
+    background: #111;
+    color: white;
+    box-sizing: border-box;
 }
 
-.pagina-conta button{
-    width:100%;
-    padding:15px;
+.pagina-conta button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 14px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    background: linear-gradient(90deg, #5f5fff, #d35cff, #ffb347);
+}
 
-    border:none;
-    border-radius:14px;
+/* ==================== RESPONSIVIDADE CELULAR (conta.css) ==================== */
+@media (max-width: 768px) {
+    .cadastro {
+        width: 95%;
+        padding: 10px;
+        margin: auto;
+    }
 
-    font-size:20px;
-    font-weight:bold;
+    .pagina-conta .cadastro h1 {
+        font-size: 38px; /* Reduz tamanho da fonte para não quebrar feio */
+    }
 
-    color:white;
-
-    background:linear-gradient(
-    90deg,
-    #5f5fff,
-    #d35cff,
-    #ffb347
-    );
+    .pagina-conta {
+        padding-top: 100px; /* Mantém respiro do topo no celular */
+    }
 }
