@@ -1,45 +1,4 @@
-/* MENU MOBILE COMENTADO E CORRIGIDO */
-
-.menu-mobile {
-    display: none; /* Escondido no computador */
-    font-size: 30px;
-    cursor: pointer;
-    padding: 10px 20px;
-    color: white;             /* Cor do ícone ☰ */
-    background-color: #0d0d0d; /* Fundo preto idêntico ao da foto 2 */
-    width: 100%;              /* Ocupa a largura toda */
-    box-sizing: border-box;
-}
-
-@media (max-width: 768px) {
-
-    .menu-mobile {
-        display: block; /* Aparece apenas no celular */
-    }
-
-    /* Ajuste para o menu não sobrepor ou bugar o formulário */
-    .links-nav {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: #1a1a1a; /* Cor de fundo do menu aberto */
-        padding-bottom: 15px;
-    }
-
-    .links-nav.ativo {
-        display: flex;
-    }
-
-    nav a {
-        width: 90%;
-        margin: auto;
-    }
-    
-    /* Espaçamento no topo do cadastro para não grudar no menu */
-    .pagina-conta {
-        padding-top: 20px;
-    }
-}/* CELULAR */
+/* CELULAR */
 @media (max-width: 768px){
 
     nav{
