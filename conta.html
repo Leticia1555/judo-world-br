@@ -4,138 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="judo.png">
-      <link rel="stylesheet" href="conta.css">
+    <link rel="stylesheet" href="estilo.css">
     <link rel="stylesheet" href="css.css">
-    
-    
-    <link rel="stylesheet" href="css.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="conta.css">
     <title>Conta/Perfil</title>
 </head>
 <body id="body">
-    <div class="">
-       
-        <div class="menu-mobile" onclick="abrirMenu()">
-             ☰
-         </div>
+    
+    <div class="menu-mobile" onclick="abrirMenu()">
+         ☰
+    </div>
     <div class="links-nav" id="linksNav">
-           <nav>
+        <nav>
             <a href="index.html"><img class="judo" src="judo.png" alt=""></a>
            <a href="index.html"><img src="imagens/botao-de-inicio.png" alt="" width="13%"> Home</a>
-           <a href=""><img  src="imagens/loja.png" alt="" width="12%"> Loja</a>
-           <a href=""><img  src="imagens/computador-desktop.png" alt="" width="12%"> Aulas</a>
+           <a href="loja.html"><img  src="imagens/loja.png" alt="" width="12%"> Loja</a>
+           <a href="aulas.html"><img  src="imagens/computador-desktop.png" alt="" width="12%"> Aulas</a>
            <img src="imagens/lupa.png" alt="" width="6%"><input class="barra" type="text" placeholder="Search.." >
            <a href="conta.html"><img  src="imagens/do-utilizador.png" alt="" width="12%"> Contas</a>
            <img src="imagens/energia-solar.png" id="light" width="7%">
            <img src="imagens/lua-crescente.png" id="dark" width="7%">
-           <script src="js.js"></script>
         </nav>
     </div>
-        <div class="pagina-conta">
-
-<div class="cadastro">
-    <!-- formulário -->
-        <H1>cadastro</H1>
-        <div class="input-box">
-            <label>Email</label>
-            <input type="email" name="Email" id=""><br>
-        </div>
-      <div class="input-box">
-         <label>Senha</label>
-         <input type="password" name="Senha" id=""><br>
-      </div>
-      <div class="input-box">
-         <label>comfirmar senha</label>
-         <input type="password" name="Comfirmar Senha" id=""><br>
-      </div>
-      <div class="input-box">
+    
+    <div class="pagina-conta">
+       <br><br>
+        <h1>Conta / Perfil</h1>
+        <div class="formularios-container">
+            <div class="cadastro">
+                <H1>cadastro</H1>
+                <div class="input-box">
+                <label>Email</label>
+                <input type="email" name="Email" id="Cadastroemail" placeholder="email"><br>
+            </div>
+          <div class="input-box">
+             <label>Senha</label>
+             <input type="password" name="Senha" id="CadastroSenha" placeholder="senha"><br>
+          </div>
+          <div class="input-box">
+             <label>comfirmar senha</label>
+             <input type="password" name="Comfirmar Senha" id="ConfirmarSenha" placeholder="confirmar senha"><br>
+          </div>
+     <div class="input-box">
         <label>Faixa do Judô</label>
 
-<select>
-    <option value="branca">⬜ Branca</option>
-    <option value="cinza">⬜ Cinza</option>
-    <option value="azul">🟦 Azul</option>
-    <option value="amarela">🟨 Amarela</option>
-    <option value="laranja">🟧 Laranja</option>
-    <option value="verde">🟩 Verde</option>
-    <option value="roxa">🟪 Roxa</option>
-    <option value="marrom">🟫 Marrom</option>
-    <option value="preta">⬛ Preta</option>
-</select>
-        
-      </div>
-      <button type="submit">cadastra</button>
-    
+        <select id="cadastroFaixa">
+            <option value="branca">⬜ Branca</option>
+            <option value="cinza">⬜ Cinza</option>
+            <option value="azul">🟦 Azul</option>
+            <option value="amarela">🟨 Amarela</option>
+            <option value="laranja">🟧 Laranja</option>
+            <option value="verde">🟩 Verde</option>
+            <option value="roxa">🟪 Roxa</option>
+            <option value="marrom">🟫 Marrom</option>
+            <option value="preta">⬛ Preta</option>
+        </select>
     </div>
-</body>
-</html>         revise por favor<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="judo.png">
-      <link rel="stylesheet" href="conta.css">
-    
+          <button onclick="cadastrar()">cadastra</button>
+        
+        </div>
+ <p id="mensagem"></p>
+        <div class="cadastro">
+            <H1>login</H1>
+            <div class="input-box">
+                <label>Email</label>
+                <input type="email" name="Email" id="loginemail" placeholder="email"><br>
+            </div>
+          <div class="input-box">
+             <label>Senha</label>
+             <input type="password" name="Senha" id="loginSenha" placeholder="senha"><br>
+          </div>
+
+          <button onclick="login()">logar</button>
+        </div>
+    </div>
+    <p id="mensagem"></p>
     <script src="js.js"></script>
-    
-    <link rel="stylesheet" href="css.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conta/Perfil</title>
-</head>
-<body id="body">
-    <div class="">
-       
-        <div class="menu-mobile" onclick="abrirMenu()">
-             ☰
-         </div>
-    <div class="links-nav" id="linksNav">
-           <nav>
-            <a href="index.html"><img class="judo" src="judo.png" alt=""></a>
-           <a href="index.html"><img src="imagens/botao-de-inicio.png" alt="" width="13%"> Home</a>
-           <a href=""><img  src="imagens/loja.png" alt="" width="12%"> Loja</a>
-           <a href=""><img  src="imagens/computador-desktop.png" alt="" width="12%"> Aulas</a>
-           <img src="imagens/lupa.png" alt="" width="6%"><input class="barra" type="text" placeholder="Search.." >
-           <a href="conta.html"><img  src="imagens/do-utilizador.png" alt="" width="12%"> Contas</a>
-           <img src="imagens/energia-solar.png" id="light" width="7%">
-           <img src="imagens/lua-crescente.png" id="dark" width="7%">
-           
-        </nav>
-    </div>
-        <div class="pagina-conta">
-
-<div class="cadastro">
-    <!-- formulário -->
-        <H1>cadastro</H1>
-        <div class="input-box">
-            <label>Email</label>
-            <input type="email" name="Email" id=""><br>
-        </div>
-      <div class="input-box">
-         <label>Senha</label>
-         <input type="password" name="Senha" id=""><br>
-      </div>
-      <div class="input-box">
-         <label>comfirmar senha</label>
-         <input type="password" name="Comfirmar Senha" id=""><br>
-      </div>
-      <div class="input-box">
-        <label>Faixa do Judô</label>
-
-<select>
-    <option value="branca">⬜ Branca</option>
-    <option value="cinza">⬜ Cinza</option>
-    <option value="azul">🟦 Azul</option>
-    <option value="amarela">🟨 Amarela</option>
-    <option value="laranja">🟧 Laranja</option>
-    <option value="verde">🟩 Verde</option>
-    <option value="roxa">🟪 Roxa</option>
-    <option value="marrom">🟫 Marrom</option>
-    <option value="preta">⬛ Preta</option>
-</select>
-        
-      </div>
-      <button type="submit">cadastra</button>
-    
-    </div>
 </body>
 </html>
