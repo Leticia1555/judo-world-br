@@ -1,6 +1,14 @@
 const body = document.getElementById("body");
 const darkIcon = document.getElementById("dark");
 const lightIcon = document.getElementById("light");
+const DEV_API_URL = 'http://localhost:3000';
+const originHost = window.location.hostname;
+const isLocalDevHost = window.location.protocol === 'file:'
+    || originHost === '127.0.0.1'
+    || originHost === 'localhost'
+    || originHost.endsWith('.github.io')
+    || originHost === 'judo-world-br.vercel.app';
+const API_BASE_URL = isLocalDevHost ? DEV_API_URL : window.location.origin;
 
 // Ativar modo escuro
 darkIcon.addEventListener("click", () => {
@@ -61,7 +69,7 @@ function cadastrar(){
     }
 
     // Envia para API
-    fetch('/api/register', {
+    fetch(`${API_BASE_URL}/api/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nome, email, senha, faixa })
@@ -77,9 +85,9 @@ function cadastrar(){
             if (mensagemEl) mensagemEl.innerHTML = data.message || 'Erro no cadastro';
         }
     })
-    .catch(() => {
+    .catch((error) => {
         const mensagemEl = document.getElementById('mensagem');
-        if (mensagemEl) mensagemEl.innerHTML = 'Erro ao conectar com o servidor';
+        if (mensagemEl) mensagemEl.innerHTML = `Erro ao conectar com o servidor: ${error.message}. Verifique se o backend está rodando em ${DEV_API_URL}`;
     });
 }
 
@@ -88,7 +96,7 @@ function login(){
     let email = document.getElementById("loginemail").value;
     let senha = document.getElementById("loginSenha").value;
 
-    fetch('/api/login', {
+    fetch(`${API_BASE_URL}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, senha })
@@ -105,16 +113,16 @@ function login(){
             if (mensagemEl) mensagemEl.innerHTML = data.message || 'Email ou senha incorretos';
         }
     })
-    .catch(() => {
+    .catch((error) => {
         const mensagemEl = document.getElementById('mensagem');
-        if (mensagemEl) mensagemEl.innerHTML = 'Erro ao conectar com o servidor';
+        if (mensagemEl) mensagemEl.innerHTML = `Erro ao conectar com o servidor: ${error.message}. Verifique se o backend está rodando em ${DEV_API_URL}`;
     });
 }
 
 function showAulasByFaixa(){
     const faixa = localStorage.getItem('faixa');
     const aulasCinza = document.getElementById('aulas-cinza');
-    const aulasAzul = document.getElementById('aulas-azul');
+    const aulasAzul = document.getElementById('aulas-azul');         
     const aulasAmarela = document.getElementById('aulas-amarela');
     const aulasLaranja = document.getElementById('aulas-laranja');
     const aulasVerde = document.getElementById('aulas-verde');
@@ -133,5 +141,3 @@ function showAulasByFaixa(){
     if (faixa === 'marrom' && aulasMarrom) aulasMarrom.style.display = 'block';
 }
 
-// Executa ao carregar a página para aplicar a faixa salva
-document.addEventListener('DOMContentLoaded', showAulasByFaixa);
