@@ -7,17 +7,18 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname)));
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   if (req.method === 'OPTIONS') {
     return res.sendStatus(204);
   }
   next();
 });
+
+app.use(express.static(path.join(__dirname)));
 
 const db = new sqlite3.Database(path.join(__dirname, 'judo.db'), (err) => {
   if (err) {
@@ -36,16 +37,31 @@ function initDb() {
         email TEXT NOT NULL UNIQUE,
         senha TEXT NOT NULL,
         faixa TEXT,
+        role TEXT NOT NULL DEFAULT 'usuario',
         criado_em DATETIME DEFAULT CURRENT_TIMESTAMP
       )
     `);
+
+    db.all(`PRAGMA table_info(users)`, (err, rows) => {
+      if (err) {
+        console.error('Erro ao verificar colunas users:', err.message);
+        return;
+      }
+      const hasRole = rows.some(column => column.name === 'role');
+      if (!hasRole) {
+        db.run(`ALTER TABLE users ADD COLUMN role TEXT NOT NULL DEFAULT 'usuario'`, (alterErr) => {
+          if (alterErr) console.error('Erro ao adicionar coluna role:', alterErr.message);
+        });
+      }
+    });
   });
 }
 
 initDb();
 
 app.post('/api/register', async (req, res) => {
-  const { nome, email, senha, faixa } = req.body;
+  const { nome, email, senha, faixa, role } = req.body;
+  const userRole = role === 'vendedor' ? 'vendedor' : 'usuario';
 
   if (!nome || !email || !senha) {
     return res.status(400).json({ success: false, message: 'Preencha nome, email e senha.' });
@@ -55,8 +71,8 @@ app.post('/api/register', async (req, res) => {
     const senhaHash = await bcrypt.hash(senha, 10);
 
     db.run(
-      'INSERT INTO users (nome, email, senha, faixa) VALUES (?, ?, ?, ?)',
-      [nome, email, senhaHash, faixa || null],
+      'INSERT INTO users (nome, email, senha, faixa, role) VALUES (?, ?, ?, ?, ?)',
+      [nome, email, senhaHash, faixa || null, userRole],
       function (err) {
         if (err) {
           if (err.message.includes('UNIQUE constraint failed')) {
@@ -66,7 +82,11 @@ app.post('/api/register', async (req, res) => {
           return res.status(500).json({ success: false, message: 'Erro ao cadastrar usuário.' });
         }
 
-        res.json({ success: true, message: 'Cadastro realizado com sucesso!', user: { id: this.lastID, nome, email, faixa } });
+        res.json({
+          success: true,
+          message: 'Cadastro realizado com sucesso!',
+          user: { id: this.lastID, nome, email, faixa, role: userRole }
+        });
       }
     );
   } catch (error) {
@@ -105,7 +125,8 @@ app.post('/api/login', (req, res) => {
         id: user.id,
         nome: user.nome,
         email: user.email,
-        faixa: user.faixa
+        faixa: user.faixa,
+        role: user.role || 'usuario'
       }
     });
   });

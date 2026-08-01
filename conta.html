@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="icon" href="judo.png">
     <link rel="stylesheet" href="estilo.css">
     <link rel="stylesheet" href="css.css">
@@ -10,11 +13,25 @@
     <title>Conta/Perfil</title>
 </head>
 <body id="body">
-    
-    <div class="menu-mobile" onclick="abrirMenu()">
+     <div class="mobile-topbar">
+        <a class="brand-mobile" href="index.html">
+            <img src="judo.png" alt="Ícone do Judô">
+            <span>Judô World BR</span>
+        </a>
 
-         ☰
+        <div class="mobile-search">
+            <span aria-hidden="true">🔍</span>
+            <input type="text" placeholder="Pesquisar">
+        </div>
+
+        <div class="mobile-actions">
+            <a class="mobile-icon" href="conta.html" aria-label="Conta">👤</a>
+            <div class="menu-mobile" onclick="abrirMenu()" role="button" tabindex="0" aria-label="Abrir menu" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); abrirMenu();}">
+                ☰
+            </div>
+        </div>
     </div>
+
     <div class="links-nav" id="linksNav">
         <nav>
             <a href="index.html"><img class="judo" src="judo.png" alt=""></a>
@@ -28,66 +45,40 @@
         </nav>
 
     </div>
-
     
     <div class="pagina-conta">
        <br><br>
         <h1>Conta / Perfil</h1>
         <div class="formularios-container">
-            <div class="cadastro">
-                <H1>cadastro</H1>
+            <div id="login-form" class="cadastro">
+                <h1>login</h1>
                 <div class="input-box">
-
-                <label>Nome</label>
-                <input type="text" name="Nome" id="CadastroNome" placeholder="nome"><br>
-            </div>
+                    <label>Email</label>
+                    <input type="email" name="Email" id="loginemail" placeholder="email"><br>
+                </div>
                 <div class="input-box">
+                    <label>Senha</label>
+                    <div class="password-field-with-icon">
+                        <input type="password" name="Senha" id="loginSenha" placeholder="senha">
+                        <img src="imagens/olho.png" class="password-toggle-icon" onclick="togglePasswordVisibility('loginSenha', this)" alt="Mostrar senha" title="Mostrar senha">
+                    </div><br>
+                </div>
 
-                <label>Email</label>
-                <input type="email" name="Email" id="Cadastroemail" placeholder="email"><br>
+                <button onclick="login()">logar</button>
+                <a href="logar.html">Já tem uma conta? Faça login aqui.</a>
             </div>
-          <div class="input-box">
-             <label>Senha</label>
-             <input type="password" name="Senha" id="CadastroSenha" placeholder="senha"><br>
-          </div>
-          <div class="input-box">
-             <label>comfirmar senha</label>
-             <input type="password" name="Comfirmar Senha" id="ConfirmarSenha" placeholder="confirmar senha"><br>
-          </div>
-     <div class="input-box">
-        <label>Faixa do Judô</label>
-
-        <select id="cadastroFaixa">
-            <option value="branca">⬜ Branca</option>
-            <option value="cinza">⬜ Cinza</option>
-            <option value="azul">🟦 Azul</option>
-            <option value="amarela">🟨 Amarela</option>
-            <option value="laranja">🟧 Laranja</option>
-            <option value="verde">🟩 Verde</option>
-            <option value="roxa">🟪 Roxa</option>
-            <option value="marrom">🟫 Marrom</option>
-            <option value="preta">⬛ Preta</option>
-        </select>
-    </div>
-          <button onclick="cadastrar()">cadastra</button>
-        
         </div>
- <p id="mensagem"></p>
-        <div class="cadastro">
-            <H1>login</H1>
-            <div class="input-box">
-                <label>Email</label>
-                <input type="email" name="Email" id="loginemail" placeholder="email"><br>
-            </div>
-          <div class="input-box">
-             <label>Senha</label>
-             <input type="password" name="Senha" id="loginSenha" placeholder="senha"><br>
-          </div>
+        <p id="mensagem"></p>
 
-          <button onclick="login()">logar</button>
+        <div id="perfil" style="display:none">
+            <h2>Perfil</h2>
+            <p><strong>Nome:</strong> <span id="perfil-nome"></span></p>
+            <p><strong>Email:</strong> <span id="perfil-email"></span></p>
+            <p><strong>Faixa:</strong> <span id="perfil-faixa"></span></p>
+            <p><strong>Tipo:</strong> <span id="perfil-role"></span></p>
+            <button onclick="logout()">Sair</button>
         </div>
     </div>
-    <p id="mensagem"></p>
     <script src="js.js"></script>
 </body>
 </html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="judo.png">
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="conta.css">
+    <title>Login / Cadastro</title>
+</head>
+<body id="body">
+    <div class="mobile-topbar">
+        <a class="brand-mobile" href="index.html">
+            <img src="judo.png" alt="Ícone do Judô">
+            <span>Judô World BR</span>
+        </a>
+
+        <div class="mobile-search">
+            <span aria-hidden="true">🔍</span>
+            <input type="text" placeholder="Pesquisar">
+        </div>
+
+        <div class="mobile-actions">
+            <a class="mobile-icon" href="conta.html" aria-label="Conta">👤</a>
+            <div class="menu-mobile" onclick="abrirMenu()" role="button" tabindex="0" aria-label="Abrir menu" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); abrirMenu();}">
+                ☰
+            </div>
+        </div>
+    </div>
+
+    <div class="links-nav" id="linksNav">
+        <nav>
+            <a href="index.html"><img class="judo" src="judo.png" alt=""></a>
+           <a href="index.html"><img src="imagens/botao-de-inicio.png" alt="" width="13%"> Home</a>
+           <a href="loja.html"><img  src="imagens/loja.png" alt="" width="12%"> Loja</a>
+           <a href="aulas.html"><img  src="imagens/computador-desktop.png" alt="" width="12%"> Aulas</a>
+           <img src="imagens/lupa.png" alt="" width="6%"><input class="barra" type="text" placeholder="Search.." >
+           <a href="conta.html"><img  src="imagens/do-utilizador.png" alt="" width="12%"> Contas</a>
+           <img src="imagens/energia-solar.png" id="light" width="7%">
+           <img src="imagens/lua-crescente.png" id="dark" width="7%">
+        </nav>
+
+    </div>
+
+    <div class="pagina-conta">
+        <br><br>
+        <h1>Cadastro</h1>
+        <div class="formularios-container">
+            <div class="cadastro">
+                <h1>cadastro</h1>
+                <div class="input-box">
+                    <label>Nome</label>
+                    <input type="text" name="Nome" id="CadastroNome" placeholder="nome"><br>
+                </div>
+
+                <div class="input-box">
+                    <label>Email</label>
+                    <input type="email" name="Email" id="Cadastroemail" placeholder="email"><br>
+                </div>
+
+                <div class="input-box">
+                    <label>Senha</label>
+                    <div class="password-field-with-icon">
+                        <input type="password" name="Senha" id="CadastroSenha" placeholder="senha">
+                        <img src="imagens/olho.png" class="password-toggle-icon" onclick="togglePasswordVisibility('CadastroSenha', this)" alt="Mostrar senha" title="Mostrar senha">
+                    </div><br>
+                </div>
+
+                <div class="input-box">
+                    <label>Confirmar senha</label>
+                    <div class="password-field-with-icon">
+                        <input type="password" name="Confirmar Senha" id="ConfirmarSenha" placeholder="confirmar senha">
+                        <img src="imagens/olho.png" class="password-toggle-icon" onclick="togglePasswordVisibility('ConfirmarSenha', this)" alt="Mostrar senha" title="Mostrar senha">
+                    </div><br>
+                </div>
+
+                <div class="input-box">
+                    <label>Tipo</label>
+                    <select id="cadastroRole">
+                        <option value="usuario">Usuário</option>
+                        <option value="vendedor">Vendedor</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <label>Faixa do Judô</label>
+                    <select id="cadastroFaixa">
+                        <option value="branca">⬜ Branca</option>
+                        <option value="cinza">⬜ Cinza</option>
+                        <option value="azul">🟦 Azul</option>
+                        <option value="amarela">🟨 Amarela</option>
+                        <option value="laranja">🟧 Laranja</option>
+                        <option value="verde">🟩 Verde</option>
+                        <option value="roxa">🟪 Roxa</option>
+                        <option value="marrom">🟫 Marrom</option>
+                        <option value="preta">⬛ Preta</option>
+                    </select>
+                </div>
+
+                <button onclick="cadastrar()">cadastra</button>
+                <br><br>
+                <a href="conta.html">Voltar para a página de conta</a>
+            </div>
+        </div>
+
+        <p id="mensagem"></p>
+    </div>
+
+    <script src="js.js"></script>
+</body>
+</html>

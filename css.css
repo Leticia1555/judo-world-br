@@ -1,196 +1,225 @@
-/* CELULAR */
-@media (max-width: 768px){
-
-    nav{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-        padding: 10px;
-    }
-
-    nav a{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-
-        width: 85%;
-        padding: 8px;
-
-        font-size: 14px;
-
-        border-radius: 10px;
-    }
-
-    nav a img{
-        width: 18px !important;
-    }
-
-    .barra{
-        width: 85%;
-        padding: 8px;
-        font-size: 13px;
-    }
-
-    #light,
-    #dark{
-        width: 25px !important;
-    }
-
-    .judo{
-        width: 55px;
-    }
-}
-/* MENU MOBILE */
+/* ===========================
+   MENU MOBILE
+=========================== */
 
 .menu-mobile{
-    display: none;
-    font-size: 30px;
-    cursor: pointer;
-    padding: 10px 18px;
-    color: white;
-    background: rgba(0, 0, 0, 0.45);
-    border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.12);
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    z-index: 1002;
-    line-height: 1;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    display:none;
+    font-size:30px;
+    cursor:pointer;
+    padding:10px;
+    color:#fff;
 }
 
-@media (max-width: 768px){
+.mobile-topbar{
+    display:none;
+}
 
+/* ===========================
+   RESPONSIVO
+=========================== */
+
+@media (max-width:768px){
+
+    body{
+        padding-top:74px;
+    }
+
+    .mobile-topbar{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:10px;
+        position:fixed;
+        top:0;
+        left:0;
+        right:0;
+        height:64px;
+        padding:0 12px;
+        background:#111;
+        color:#fff;
+        z-index:1003;
+        box-shadow:0 2px 10px rgba(0,0,0,.25);
+    }
+
+    .brand-mobile{
+        display:flex;
+        align-items:center;
+        gap:8px;
+        text-decoration:none;
+        color:#fff;
+        font-weight:700;
+        font-size:15px;
+        white-space:nowrap;
+    }
+
+    .brand-mobile img{
+        width:32px;
+        height:32px;
+        border-radius:50%;
+    }
+
+    .mobile-search{
+        display:flex;
+        align-items:center;
+        flex:1;
+        gap:8px;
+        padding:8px 10px;
+        border-radius:999px;
+        background:#222;
+        color:#fff;
+        margin:0 6px;
+    }
+
+    .mobile-search input{
+        width:100%;
+        border:none;
+        outline:none;
+        background:transparent;
+        color:#fff;
+        font-size:14px;
+    }
+
+    .mobile-actions{
+        display:flex;
+        align-items:center;
+        gap:6px;
+    }
+
+    .mobile-icon{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        width:38px;
+        height:38px;
+        border-radius:50%;
+        text-decoration:none;
+        color:#fff;
+        background:rgba(255,255,255,.08);
+        font-size:18px;
+    }
+
+    /* Botão do menu */
     .menu-mobile{
-        display: block;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        width:38px;
+        height:38px;
+        border-radius:50%;
+        background:rgba(255,255,255,.08);
+        position:static;
+        top:auto;
+        left:auto;
+        z-index:auto;
     }
 
+    /* Menu escondido */
     .links-nav{
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        gap: 12px;
-        position: fixed;
-        top: 60px;
-        left: 0;
-        background: rgba(0, 0, 0, 0.96);
-        padding: 18px 0 24px;
-        z-index: 1001;
-        max-height: calc(100vh - 60px);
-        overflow-y: auto;
-        align-items: center;
+        display:none;
+        position:fixed;
+        top:64px;
+        left:0;
+        width:100%;
+        background:#111;
+        z-index:1001;
     }
 
+    /* Menu aberto */
     .links-nav.ativo{
-        display: flex;
+        display:block;
     }
 
-    nav{
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        padding: 0;
-        background: transparent;
-        box-shadow: none;
+    /* Navegação */
+    .links-nav nav{
+        display:flex;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+        padding:15px;
+        background:transparent;
+        box-shadow:none;
     }
 
-    nav a{
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 10px;
-        width: 90%;
-        padding: 12px 14px;
-        font-size: 15px;
-        border-radius: 12px;
-        color: white;
-        margin: 0;
+    /* Links */
+    .links-nav nav a{
+        display:flex;
+        align-items:center;
+        gap:10px;
+        width:100%;
+        padding:10px;
+        text-decoration:none;
+        color:#fff;
+        border-radius:8px;
     }
 
-    nav a:hover{
-        background: rgba(255,255,255,0.08);
+    .links-nav nav a:hover{
+        background:rgba(255,255,255,.08);
     }
 
-    nav a img{
-        width: 20px !important;
+    .links-nav nav a img{
+        width:22px !important;
+        height:22px;
     }
 
+    /* Logo */
+    .judo{
+        width:70px !important;
+        margin:0 auto 10px;
+    }
+
+    /* Pesquisa */
     .barra{
-        width: 90%;
-        padding: 10px;
-        font-size: 14px;
-        margin: 0;
-        border-radius: 12px;
-        border: 1px solid #555;
-        background: rgba(255,255,255,0.08);
-        color: white;
+        width:100%;
+        padding:10px;
+        box-sizing:border-box;
+        border-radius:8px;
+        border:1px solid #555;
+        background:#222;
+        color:#fff;
     }
 
+    /* Ícones */
     #light,
     #dark{
-        width: 30px !important;
+        width:26px !important;
+        cursor:pointer;
     }
 
-    .judo{
-        width: 60px;
-    }
-}
-
-.barra{
-    width: 90%;
-}
-
+    /* Carrossel */
     .carousel-animated img{
-        width: 100%;
-        height: auto;
+        width:100%;
+        height:220px;
+        object-fit:cover;
     }
 
+    /* Cards */
     .cards{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
+        display:flex;
+        flex-direction:column;
+        gap:20px;
+        align-items:center;
     }
 
     .card{
-        width: 90%;
+        width:90%;
     }
 
     .card img{
-        width: 100%;
-        height: auto;
+        width:100%;
+        height:auto;
     }
 
+    /* Cadastro */
     .cadastro{
-        width: 90%;
-        padding: 20px;
-        margin: auto;
+        width:90%;
+        margin:auto;
+        padding:20px;
     }
 
     .input-box input,
-    .input-box select{
-        width: 100%;
-    }
-
+    .input-box select,
     button{
-        width: 100%;
+        width:100%;
     }
 
-    .judo{
-        width: 80px;
-    }
-
-    #light,
-    #dark{
-        width: 35px;
-    }
-@media (max-width: 768px){
-
-    .carousel-animated img{
-        height: 220px;
-    }
-
-}
+}   

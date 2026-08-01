@@ -2,6 +2,8 @@ const body = document.getElementById("body");
 const darkIcon = document.getElementById("dark");
 const lightIcon = document.getElementById("light");
 const DEV_API_URL = 'http://localhost:3000';
+const BACKEND_CHECK_RETRIES = 5;
+const BACKEND_CHECK_RETRY_MS = 1200;
 const originHost = window.location.hostname;
 const isLocalDevHost = window.location.protocol === 'file:'
     || originHost === '127.0.0.1'
@@ -43,10 +45,44 @@ if (body) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    checkBackendConnection();
+    if (typeof loadProfileFromStorage === "function") {
+        loadProfileFromStorage();
+    }
     if (typeof showAulasByFaixa === "function") {
         showAulasByFaixa();
     }
 });
+
+function setServerStatus(isOnline) {
+    const mensagemEl = document.getElementById('mensagem');
+    const loginBtn = document.querySelector('button[onclick="login()"]');
+    const registerBtn = document.querySelector('button[onclick="cadastrar()"]');
+
+    if (!loginBtn || !registerBtn) return;
+
+    loginBtn.disabled = !isOnline;
+    registerBtn.disabled = !isOnline;
+
+    if (mensagemEl) {
+        mensagemEl.innerHTML = isOnline
+            ? ''
+            : 'Servidor offline. Inicie o backend com npm start e abra a página em http://localhost:3000/conta.html';
+    }
+}
+
+function checkBackendConnection(retry = 0) {
+    fetch(`${API_BASE_URL}/`, { method: 'HEAD' })
+        .then(() => setServerStatus(true))
+        .catch(() => {
+            if (retry < BACKEND_CHECK_RETRIES) {
+                setTimeout(() => checkBackendConnection(retry + 1), BACKEND_CHECK_RETRY_MS);
+            } else {
+                setServerStatus(false);
+            }
+        });
+}
+
 function abrirMenu(){
     const linksNav = document.getElementById("linksNav");
     const menuButton = document.querySelector(".menu-mobile");
@@ -63,10 +99,11 @@ function cadastrar() {
     let senha = document.getElementById("CadastroSenha").value;
     let confirmar = document.getElementById("ConfirmarSenha").value;
     let faixa = document.getElementById("cadastroFaixa").value;
+    let role = document.getElementById("cadastroRole").value;
 
     const mensagemEl = document.getElementById("mensagem");
 
-    if (nome == "" || email == "" || senha == "" || confirmar == "" || faixa == "") {
+    if (nome == "" || email == "" || senha == "" || confirmar == "" || role == "") {
         if (mensagemEl) mensagemEl.innerHTML = "Preencha tudo";
         return;
     }
@@ -81,7 +118,7 @@ function cadastrar() {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ nome, email, senha, faixa })
+        body: JSON.stringify({ nome, email, senha, faixa, role })
     })
     .then(res => res.json())
     .then(data => {
@@ -97,15 +134,15 @@ function cadastrar() {
     })
     .catch(error => {
         if (mensagemEl) {
-            mensagemEl.innerHTML = `Erro ao conectar com o servidor: ${error.message}`;
+            mensagemEl.innerHTML = 'Não foi possível conectar ao servidor. Verifique se o backend está rodando em http://localhost:3000';
         }
+        checkBackendConnection();
     });
 }
 function login(){
-
-    let email = document.getElementById("loginemail").value;
-    let senha = document.getElementById("loginSenha").value;
-
+    const email = document.getElementById("loginemail").value;
+    const senha = document.getElementById("loginSenha").value;
+    const mensagemEl = document.getElementById('mensagem');
 
     fetch(`${API_BASE_URL}/api/login`, {
         method: 'POST',
@@ -114,38 +151,86 @@ function login(){
     })
     .then(res => res.json())
     .then(data => {
-        const mensagemEl = document.getElementById('mensagem');
         if (data.success) {
             if (mensagemEl) mensagemEl.innerHTML = 'Login feito com sucesso!';
-            // salva faixa localmente para exibir aulas
             if (data.user && data.user.faixa) localStorage.setItem('faixa', data.user.faixa);
-            setTimeout(() => { window.location.href = 'index.html'; }, 800);
+            if (data.user) localStorage.setItem('user', JSON.stringify(data.user));
+            if (typeof showProfile === "function") {
+                showProfile(data.user);
+            } else {
+                setTimeout(() => { window.location.href = 'conta.html'; }, 800);
+            }
         } else {
             if (mensagemEl) mensagemEl.innerHTML = data.message || 'Email ou senha incorretos';
         }
     })
-    .catch((error) => {
-        const mensagemEl = document.getElementById('mensagem');
-        if (mensagemEl) mensagemEl.innerHTML = `Erro ao conectar com o servidor: ${error.message}. Verifique se o backend está rodando em ${DEV_API_URL}`;
+    .catch(() => {
+        if (mensagemEl) {
+            mensagemEl.innerHTML = 'Não foi possível conectar ao servidor. Inicie o backend com npm start e abra a página em http://localhost:3000/conta.html';
+        }
     });
+}
 
-    let emailSalvo = localStorage.getItem("email");
-    let senhaSalva = localStorage.getItem("senha");
+function showProfile(user) {
+    const loginForm = document.getElementById('login-form');
+    const perfilSection = document.getElementById('perfil');
+    const nomeEl = document.getElementById('perfil-nome');
+    const emailEl = document.getElementById('perfil-email');
+    const faixaEl = document.getElementById('perfil-faixa');
+    const roleEl = document.getElementById('perfil-role');
+    const mensagemEl = document.getElementById('mensagem');
 
-    if(email == emailSalvo && senha == senhaSalva){
+    if (!perfilSection || !nomeEl || !emailEl || !faixaEl || !roleEl) return;
 
-        mensagem.innerHTML = "Login feito com sucesso!";
+    const profile = user || JSON.parse(localStorage.getItem('user') || 'null');
+    if (!profile) return;
 
-        setTimeout(() => {
-            window.location.href = "index.html";
-        }, 1000);
+    if (loginForm) loginForm.style.display = 'none';
+    perfilSection.style.display = 'block';
 
-    } else {
+    nomeEl.textContent = profile.nome || '';
+    emailEl.textContent = profile.email || '';
+    faixaEl.textContent = profile.faixa || 'Sem faixa';
+    roleEl.textContent = profile.role || 'Usuário';
+    if (mensagemEl) mensagemEl.innerHTML = '';
+}
 
-        mensagem.innerHTML = "Email ou senha incorretos";
+function loadProfileFromStorage() {
+    const profile = JSON.parse(localStorage.getItem('user') || 'null');
+    if (profile) {
+        showProfile(profile);
+    }
+}
+
+function logout() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('faixa');
+    const loginForm = document.getElementById('login-form');
+    const perfilSection = document.getElementById('perfil');
+    const mensagemEl = document.getElementById('mensagem');
+
+    if (loginForm) loginForm.style.display = 'block';
+    if (perfilSection) perfilSection.style.display = 'none';
+    if (mensagemEl) mensagemEl.innerHTML = 'Você saiu.';
+}
+
+function togglePasswordVisibility(inputId, element) {
+    const input = document.getElementById(inputId);
+    if (!input) return;
+
+    if (element && element.tagName === 'INPUT' && element.type === 'checkbox') {
+        input.type = element.checked ? 'text' : 'password';
+        return;
     }
 
+    const isPassword = input.type === 'password';
+    input.type = isPassword ? 'text' : 'password';
 
+    if (element && element.tagName === 'IMG') {
+        element.src = isPassword ? 'imagens/olho(1).png' : 'imagens/olho.png';
+        element.alt = isPassword ? 'Esconder senha' : 'Mostrar senha';
+        element.title = isPassword ? 'Esconder senha' : 'Mostrar senha';
+    }
 }
 
 function showAulasByFaixa(){
@@ -169,6 +254,47 @@ function showAulasByFaixa(){
     if (faixa === 'roxa' && aulasRoxo) aulasRoxo.style.display = 'block';
     if (faixa === 'marrom' && aulasMarrom) aulasMarrom.style.display = 'block';
 }
+
+/* Carousel with arrows (manual control) */
+function initCarousel() {
+    const carousel = document.getElementById('main-carousel');
+    if (!carousel) return;
+    const track = carousel.querySelector('.carousel-animated');
+    const slides = Array.from(track.querySelectorAll('img'));
+    let index = 0;
+
+    function update() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    const prev = carousel.querySelector('.carousel-prev');
+    const next = carousel.querySelector('.carousel-next');
+
+    prev && prev.addEventListener('click', () => {
+        index = (index - 1 + slides.length) % slides.length;
+        update();
+    });
+
+    next && next.addEventListener('click', () => {
+        index = (index + 1) % slides.length;
+        update();
+    });
+
+    // allow keyboard navigation
+    carousel.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prev && prev.click();
+        if (e.key === 'ArrowRight') next && next.click();
+    });
+
+    // make focusable
+    carousel.setAttribute('tabindex', '0');
+    // initial update
+    update();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initCarousel();
+});
 
 
 function showAulasByFaixa() {
@@ -204,3 +330,4 @@ function showAulasByFaixa() {
     if (faixa === 'roxa' && aulasRoxo) aulasRoxo.style.display = 'block';
     if (faixa === 'marrom' && aulasMarrom) aulasMarrom.style.display = 'block';
 }
+

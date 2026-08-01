@@ -7,13 +7,28 @@
     <link rel="stylesheet" href="estilo.css">
     <link rel="stylesheet" href="css.css">
     <link rel="stylesheet" href="conta.css">
-    <title>Conta/Perfil</title>
+    <title>Judô world br</title>
 </head>
 <body id="body">
-    
-    <div class="menu-mobile" onclick="abrirMenu()">
-         ☰
+    <div class="mobile-topbar">
+        <a class="brand-mobile" href="index.html">
+            <img src="judo.png" alt="Ícone do Judô">
+            <span>Judô World BR</span>
+        </a>
+
+        <div class="mobile-search">
+            <span aria-hidden="true">🔍</span>
+            <input type="text" placeholder="Pesquisar">
+        </div>
+
+        <div class="mobile-actions">
+            <a class="mobile-icon" href="conta.html" aria-label="Conta">👤</a>
+            <div class="menu-mobile" onclick="abrirMenu()" role="button" tabindex="0" aria-label="Abrir menu" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); abrirMenu();}">
+                ☰
+            </div>
+        </div>
     </div>
+
     <div class="links-nav" id="linksNav">
         <nav>
             <a href="index.html"><img class="judo" src="judo.png" alt=""></a>
@@ -27,15 +42,18 @@
         </nav>
 
     </div>
+    
     <br>
     <br>
     <br><h1>Judô world br</h1>
- <div class="carousel-keyframes">
+ <div class="carousel-keyframes manual" id="main-carousel">
+        <button class="carousel-prev" aria-label="Anterior">‹</button>
         <div class="carousel-animated">
             <img src="imagens/jud1.jpg" alt="">
             <img src="imagens/jud2.jpg" alt="">
             <img src="imagens/jud3.jpg" alt="">
         </div>
+        <button class="carousel-next" aria-label="Próximo">›</button>
     </div>
     <div class="campo">
       <section id="Campeonato">
@@ -56,7 +74,7 @@
          </div>
       </a>
     <!-- 2 -->
-      <a class="card" href="https://faju.com.br">
+      <a class="card" href="">
          <div class="card">
              <img src="https://cbj.com.br/pt/img/federacao/logo/2/principal/image.jpg">
              <div class="conteudo">
@@ -333,18 +351,20 @@
          </div>
         <div class="cards">
           <div>
+            <a href="https://www.youtube.com/@BRASILJUDO/streams" class="card">
             <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/26/principal/image.jpg">
+            <img src="https://yt3.googleusercontent.com/leh5PmEPGDqs3GhaUygA4GP6NHDK6hKs0w8siZF33qadPG3d7tNQ8BgYZOLG-A5mYDhY3V2tFw=s900-c-k-c0x00ffffff-no-rj">
             <div class="conteudo">
-                <span>27/04/2026</span>
-                <h3>FSJ - Federação Sergipana de Judô</h3>
+                <h2>CBJ TV </h2>
+            </div>
           </div>
-          
+          </a>
         </div>  
    
     </div>
     </section>
 
+    <script src="js.js"></script>
     <script src="js.js"></script>
 </body>
 </html>

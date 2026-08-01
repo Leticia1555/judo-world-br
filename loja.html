@@ -1,19 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
+      <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="judo.png">
-    <link rel="stylesheet" href="estilo.css">
+     <link rel="stylesheet" href="estilo.css">
     <link rel="stylesheet" href="css.css">
     <link rel="stylesheet" href="conta.css">
-    <title>Conta/Perfil</title>
-</head>
+    <title>Aulas</title>
 <body id="body">
-    
-    <div class="menu-mobile" onclick="abrirMenu()">
-         ☰
+   <div class="mobile-topbar">
+        <a class="brand-mobile" href="index.html">
+            <img src="judo.png" alt="Ícone do Judô">
+            <span>Judô World BR</span>
+        </a>
+
+        <div class="mobile-search">
+            <span aria-hidden="true">🔍</span>
+            <input type="text" placeholder="Pesquisar">
+        </div>
+
+        <div class="mobile-actions">
+            <a class="mobile-icon" href="conta.html" aria-label="Conta">👤</a>
+            <div class="menu-mobile" onclick="abrirMenu()" role="button" tabindex="0" aria-label="Abrir menu" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); abrirMenu();}">
+                ☰
+            </div>
+        </div>
     </div>
+
     <div class="links-nav" id="linksNav">
         <nav>
             <a href="index.html"><img class="judo" src="judo.png" alt=""></a>
@@ -25,8 +39,8 @@
            <img src="imagens/energia-solar.png" id="light" width="7%">
            <img src="imagens/lua-crescente.png" id="dark" width="7%">
         </nav>
-        <script src="js.js"></script>
-    </div>
-    
+         <script src="js.js"></script>
+
+    </div>  
 </body>
 </html>

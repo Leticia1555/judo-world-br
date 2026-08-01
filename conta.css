@@ -134,6 +134,30 @@ body:not(.dark-mode) .barra {
     color: #888;
 }
 
+.password-field-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.password-field-with-icon input {
+    flex: 1;
+    width: auto;
+    margin-bottom: 0;
+}
+
+.password-toggle-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    opacity: 0.85;
+}
+
+.password-toggle-icon:hover {
+    opacity: 1;
+}
+
 .pagina-conta button {
     width: 100%;
     padding: 15px;

@@ -5,15 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="judo.png">
-    <link rel="stylesheet" href="estilo.css">
+     <link rel="stylesheet" href="estilo.css">
     <link rel="stylesheet" href="css.css">
-
     <link rel="stylesheet" href="conta.css">
     <title>Aulas</title>
 </head>
 <body id="body">
+    <div class="mobile-topbar">
+        <a class="brand-mobile" href="index.html">
+            <img src="judo.png" alt="Ícone do Judô">
+            <span>Judô World BR</span>
+        </a>
 
-    <div class="menu-mobile" onclick="abrirMenu()">☰</div>
+        <div class="mobile-search">
+            <span aria-hidden="true">🔍</span>
+            <input type="text" placeholder="Pesquisar">
+        </div>
+
+        <div class="mobile-actions">
+            <a class="mobile-icon" href="conta.html" aria-label="Conta">👤</a>
+            <div class="menu-mobile" onclick="abrirMenu()" role="button" tabindex="0" aria-label="Abrir menu" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); abrirMenu();}">
+                ☰
+            </div>
+        </div>
+    </div>
 
     <div class="links-nav" id="linksNav">
         <nav>
@@ -31,28 +46,74 @@
 
     <div id="aulas-cinza" style="display:none">
         <h2>Aulas para Faixa Cinza</h2>
+        <H3>## Aulas para a Próxima Faixa
+
+Bem-vindo à sua área de treinamento! Aqui você encontrará as aulas necessárias para evoluir no judô e se preparar para a graduação da próxima faixa. Complete cada etapa, pratique com dedicação e acompanhe seu progresso rumo ao próximo desafio. Boa sorte e bons treinos!
+</H3>
     </div>
 
     <div id="aulas-azul" style="display:none">
-        <h2>Aulas para Faixa Azul</h2>
-    </div>
+        <h1 >Aulas para Faixa Azul</h1>
+        <h2>
+    Bem-vindo à sua área de treinamento! Aqui estão as aulas recomendadas para
+    ajudá-lo a conquistar a próxima faixa. Estude cada conteúdo, pratique os
+    movimentos e acompanhe seu progresso até a próxima graduação.
+</h2>
+<h3>ASHI WAZA: Técnicas de perna</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yhu1mfy2vJ4?si=vzdubZ-zMov9uIqM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<br>
+<br>
+<h3>KOSHI WAZA: Técnicas de quadril</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jeQ541ScLB4?si=dcq542a4-Tpits_w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<br>
+<br>
+<h3>TE WAZA: Técnicas de braço</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zIq0xI0ogxk?si=bY7NC5nSSeCkEwbT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<br>
+<br>
+<h3>RENRAKU RENKA WAZA: Técnicas de ataques combinados</h3> 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lyGzPirYRxM?si=9pq4YnI9CTS6_dwA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<br>
+<br>
+<h3>KAESHI WAZA: Técnicas de contra golpe</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4x6S3Q-Ktv8?si=iA4uHsyRSFKhkHCX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ <iframe width="560" height="315" src="https://www.youtube.com/embed/jeQ541ScLB4?si=4p-GL1sTMdfNupRS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   <div id="aulas-amarela" style="display:none">
-        <h2>Aulas para Faixa Amarela</h2>
-    
+      <h1>Aulas para a Faixa Amarela</h1>
+
+<h2>
+    Bem-vindo à sua área de treinamento! Aqui estão as aulas recomendadas para
+    ajudá-lo a conquistar a próxima faixa. Estude cada conteúdo, pratique os
+    movimentos e acompanhe seu progresso até a próxima graduação.
+</h2>
     </div>
     <div id="aulas-laranja" style="display:none">
-        <h2>Aulas para Faixa Laranja</h2>
+        <h1>Aulas para Faixa Laranja</h1>
+        <h2>
+    Bem-vindo à sua área de treinamento! Aqui estão as aulas recomendadas para
+    ajudá-lo a conquistar a próxima faixa. Estude cada conteúdo, pratique os
+    movimentos e acompanhe seu progresso até a próxima graduação.
+</h2>
     </div>
     <div id="aulas-verde" style="display:none">
-        <h2>Aulas para Faixa Verde</h2>
-    </div>
-    <div id="aulas-roxo" style="display:none">
+        <h1>Aulas para Faixa Verde</h1>
+        <h2>
+    Bem-vindo à sua área de treinamento! Aqui estão as aulas recomendadas para
+    ajudá-lo a conquistar a próxima faixa. Estude cada conteúdo, pratique os
+    movimentos e acompanhe seu progresso até a próxima graduação.
+</h2>
         <h2>Aulas para Faixa Roxa</h2>
     </div>
     <div id="aulas-marrom" style="display:none">
-        <h2>Aulas para Faixa Marrom</h2>
+        <h1>Aulas para Faixa Marrom</h1>
+        <h2>
+    Bem-vindo à sua área de treinamento! Aqui estão as aulas recomendadas para
+    ajudá-lo a conquistar a próxima faixa. Estude cada conteúdo, pratique os
+    movimentos e acompanhe seu progresso até a próxima graduação.
+</h2>
     </div>
 
+    <script src="js.js"></script>
     <script src="js.js"></script>
 </body>
 </html>
