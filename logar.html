@@ -39,7 +39,7 @@
            <a href="loja.html"><img  src="imagens/loja.png" alt="" width="12%"> Loja</a>
            <a href="aulas.html"><img  src="imagens/computador-desktop.png" alt="" width="12%"> Aulas</a>
            <img src="imagens/lupa.png" alt="" width="6%"><input class="barra" type="text" placeholder="Search.." >
-           <a href="conta.html"><img  src="imagens/do-utilizador.png" alt="" width="12%"> Contas</a>
+           <a href="logar.html"><img  src="imagens/do-utilizador.png" alt="" width="12%"> Contas</a>
            <img src="imagens/energia-solar.png" id="light" width="7%">
            <img src="imagens/lua-crescente.png" id="dark" width="7%">
         </nav>
@@ -103,11 +103,20 @@
 
                 <button onclick="cadastrar()">cadastra</button>
                 <br><br>
-                <a href="conta.html">Voltar para a página de conta</a>
+                <a href="conta.html">Já tem uma conta? Faça login aqui.</a>
             </div>
         </div>
 
         <p id="mensagem"></p>
+
+        <div id="perfil" style="display:none">
+            <h2>Perfil</h2>
+            <p><strong>Nome:</strong> <span id="perfil-nome"></span></p>
+            <p><strong>Email:</strong> <span id="perfil-email"></span></p>
+            <p><strong>Faixa:</strong> <span id="perfil-faixa"></span></p>
+            <p><strong>Tipo:</strong> <span id="perfil-role"></span></p>
+            <button onclick="logout()">Sair</button>
+        </div>
     </div>
 
     <script src="js.js"></script>

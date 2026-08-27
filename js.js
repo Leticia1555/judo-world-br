@@ -180,10 +180,8 @@ function showProfile(user) {
     const roleEl = document.getElementById('perfil-role');
     const mensagemEl = document.getElementById('mensagem');
 
-    if (!perfilSection || !nomeEl || !emailEl || !faixaEl || !roleEl) return;
-
     const profile = user || JSON.parse(localStorage.getItem('user') || 'null');
-    if (!profile) return;
+    if (!profile || !perfilSection || !nomeEl || !emailEl || !faixaEl || !roleEl) return;
 
     if (loginForm) loginForm.style.display = 'none';
     perfilSection.style.display = 'block';
@@ -199,7 +197,14 @@ function loadProfileFromStorage() {
     const profile = JSON.parse(localStorage.getItem('user') || 'null');
     if (profile) {
         showProfile(profile);
+        return true;
     }
+
+    const loginForm = document.getElementById('login-form');
+    const perfilSection = document.getElementById('perfil');
+    if (loginForm) loginForm.style.display = 'block';
+    if (perfilSection) perfilSection.style.display = 'none';
+    return false;
 }
 
 function logout() {
