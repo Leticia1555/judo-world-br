@@ -1,195 +1,500 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="judo.png">
-    <link rel="stylesheet" href="estilo.css">
-    <link rel="stylesheet" href="css.css">
-    <link rel="stylesheet" href="conta.css">
-    <link rel="stylesheet" href="loja.css">
-    <title>Loja | Judô World BR</title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="theme-color"
+        content="#ffffff">
+
+    <link
+        rel="icon"
+        href="judo.png">
+
+    <link
+        rel="stylesheet"
+        href="css/loja.css">
+
+    <title>Loja - Judô World</title>
+
 </head>
-<body id="body">
-    <div class="mobile-topbar">
-        <a class="brand-mobile" href="index.html">
-            <img src="judo.png" alt="Ícone do Judô">
-            <span>Judô World BR</span>
+
+<body>
+
+<!-- =====================================================
+     CABEÇALHO
+===================================================== -->
+
+<header>
+
+        <a href="index.html" class="logo">
+                <div class="logo-mark">柔</div>
+
+                <div class="logo-text">
+                    <strong>JUDÔ WORLD</strong>
+                    <span>BRASIL</span>
+                </div>
+            </a>
+
+
+
+    <div class="header-actions">
+
+        <!-- PESQUISA -->
+
+        <button
+            class="header-search"
+            onclick="focarPesquisa()"
+            aria-label="Pesquisar">
+
+            🔍
+
+        </button>
+
+
+        <!-- CARRINHO -->
+
+        <a
+            href="carrinho.html"
+            class="cart-button">
+
+            🛒
+
+            <span
+                id="cartCount"
+                class="cart-count">
+
+                0
+
+            </span>
+
         </a>
 
-        <div class="mobile-search">
-            <span aria-hidden="true">🔍</span>
-            <input type="text" placeholder="Pesquisar">
-        </div>
 
-        <div class="mobile-actions">
-            <a class="mobile-icon" href="conta.html" aria-label="Conta">👤</a>
-            <div class="menu-mobile" onclick="abrirMenu()" role="button" tabindex="0" aria-label="Abrir menu" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); abrirMenu();}">
-                ☰
+        <!-- BOTÃO DO VENDEDOR -->
+
+        <button
+            id="sellerButton"
+            class="header-button"
+            style="display:none;">
+
+            🏪 Minha Loja
+
+        </button>
+
+
+        <!-- TEMA -->
+
+        <button
+            id="themeButton"
+            class="theme-button"
+            type="button">
+            🌙
+        </button>
+
+        <a href="index.html" class="back-button">
+            ← Voltar
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     CONTEÚDO
+===================================================== -->
+
+<main>
+
+
+    <!-- =================================================
+         TÍTULO
+    ================================================== -->
+
+    <section class="page-title">
+
+        <small>JUDÔ WORLD BR</small>
+
+        <h1>Loja</h1>
+
+        <p>
+            Produtos e equipamentos para judocas.
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PAINEL DO VENDEDOR
+    ================================================== -->
+
+    <section
+        id="sellerPanel"
+        class="seller-panel">
+
+
+        <div class="seller-title">
+
+            <div>
+
+                <span class="seller-label">
+                    ÁREA DO VENDEDOR
+                </span>
+
+                <h2>
+                    🏪 Minha Loja
+                </h2>
+
             </div>
-        </div>
-    </div>
 
-    <div class="links-nav" id="linksNav">
-        <nav>
-            <a href="index.html"><img class="judo" src="judo.png" alt=""></a>
-            <a href="index.html"><img src="imagens/botao-de-inicio.png" alt="" width="13%"> Home</a>
-            <a href="loja.html"><img src="imagens/loja.png" alt="" width="12%"> Loja</a>
-            <a href="aulas.html"><img src="imagens/computador-desktop.png" alt="" width="12%"> Aulas</a>
-            <img src="imagens/lupa.png" alt="" width="6%"><input class="barra" type="text" placeholder="Search..">
-            <a href="conta.html"><img src="imagens/do-utilizador.png" alt="" width="12%"> Contas</a>
-            <img src="imagens/energia-solar.png" id="light" width="7%">
-            <img src="imagens/lua-crescente.png" id="dark" width="7%">
-             <button id="carrinho">
-                🛒 <span id="contador">0</span>
-            </button>
-            <button id="toggle-vendedor" style="margin-left:10px; background:transparent; border:1px solid #fff; color:#fff; padding:6px 10px; border-radius:8px; cursor:pointer;">Vendedor</button>
-        </nav>
-         <script src="js.js"></script>
+            <span class="seller-badge">
+                VENDEDOR
+            </span>
 
-    </div>
-
-      <main>
-        <div id="vendedor-badge" style="display:none; max-width:1200px; margin:auto; padding:8px 16px; background:#2b8a2b; color:#fff; border-radius:8px; font-weight:700; box-shadow:0 8px 20px rgba(0,0,0,0.12);">MODO VENDEDOR ATIVO</div>
-
-        <div id="vendedor-panel" style="display:none; margin-bottom:30px; background:#fff; border:1px solid #eee; padding:20px; border-radius:12px;">
-            <h3 style="margin-bottom:15px;">Gerenciar produtos</h3>
-
-            <form id="form-produto-vendedor" style="display:grid; gap:12px;">
-                <input type="hidden" id="produto-id">
-
-                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
-                    <div>
-                        <label for="produto-nome">Nome</label>
-                        <input id="produto-nome" type="text" placeholder="Nome do produto" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:8px;">
-                    </div>
-
-                    <div>
-                        <label for="produto-preco-antigo">Preço antigo</label>
-                        <input id="produto-preco-antigo" type="number" min="0" step="0.01" placeholder="429.00" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:8px;">
-                    </div>
-
-                    <div>
-                        <label for="produto-preco">Preço atual</label>
-                        <input id="produto-preco" type="number" min="0" step="0.01" placeholder="386.00" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:8px;">
-                    </div>
-
-                    <div>
-                        <label for="produto-desconto">Desconto</label>
-                        <input id="produto-desconto" type="text" placeholder="10% OFF" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:8px;">
-                    </div>
-
-                    <div style="grid-column: 1 / -1;">
-                        <label for="produto-descricao">Descrição</label>
-                        <textarea id="produto-descricao" rows="3" placeholder="Descrição detalhada do produto" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:8px; resize:vertical;"></textarea>
-                    </div>
-
-                    <div>
-                        <label for="produto-btn-text">Texto do botão comprar</label>
-                        <input id="produto-btn-text" type="text" placeholder="COMPRAR" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:8px;">
-                    </div>
-
-                    <div style="display:flex; align-items:center; gap:8px;">
-                        <input id="produto-btn-show" type="checkbox" checked style="width:auto;">
-                        <label for="produto-btn-show" style="margin:0;">Mostrar botão Comprar</label>
-                    </div>
-
-                    <div>
-                        <label for="produto-imagem">Imagem principal</label>
-                        <input id="produto-imagem" type="text" placeholder="imagens/jud1.jpg" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:8px;">
-                        <div class="file-preview-row" style="margin-top:8px;">
-                            <input id="produto-imagem-file" type="file" accept="image/*">
-                            <div style="display:flex; gap:8px; align-items:center;">
-                                <img id="produto-imagem-preview" src="" alt="preview">
-                                <span id="produto-imagem-preview-text">Pré-visualização</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label for="produto-imagem-2">Imagem secundária</label>
-                        <input id="produto-imagem-2" type="text" placeholder="imagens/jud2.jpg" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:8px;">
-                        <div class="file-preview-row" style="margin-top:8px;">
-                            <input id="produto-imagem-2-file" type="file" accept="image/*">
-                            <div style="display:flex; gap:8px; align-items:center;">
-                                <img id="produto-imagem-2-preview" src="" alt="preview2">
-                                <span id="produto-imagem-2-preview-text">Pré-visualização</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                    <button type="submit" style="background:#c9362b; color:#fff; border:none; border-radius:10px; padding:12px 18px; cursor:pointer;">Salvar produto</button>
-                    <button type="button" id="cancelar-edicao-produto" style="background:#111; color:#fff; border:none; border-radius:10px; padding:12px 18px; cursor:pointer; display:none;">Cancelar edição</button>
-                </div>
-            </form>
-        </div>
-
-        <div class="titulo">
-            <h2>Produtos</h2>
-            <p>Equipamentos e acessórios para judô</p>
         </div>
 
 
-        <section id="produtos" class="produtos"></section>
+        <!-- LOJA -->
 
-    </main>
+        <form id="storeForm">
 
+            <div class="seller-grid">
 
-    <script src="loja.js"></script>
-    <!-- Modal de detalhe do produto -->
-    <div id="produto-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:1000; align-items:center; justify-content:center;">
-        <div id="produto-modal-content" style="background:#fff; width:94%; max-width:1100px; max-height:92vh; overflow:auto; display:flex; gap:20px; padding:20px; border-radius:8px; position:relative; margin:4vh auto;">
-            <button id="produto-modal-close" aria-label="Fechar" style="position:absolute; right:12px; top:12px; background:transparent; border:none; font-size:20px; cursor:pointer;">✕</button>
+                <div class="field">
 
-            <div style="display:flex; gap:20px; width:100%;">
-                <div id="produto-modal-thumbs" style="display:flex; flex-direction:column; gap:12px; width:72px;">
-                    <!-- thumbs serão inseridas dinamicamente -->
+                    <label>
+                        Nome da loja
+                    </label>
+
+                    <input
+                        id="storeName"
+                        type="text"
+                        placeholder="Ex: Samurai Store"
+                        required>
+
                 </div>
 
-                <div style="flex:1; display:flex; align-items:center; justify-content:center;">
-                    <img id="produto-modal-main-image" src="" alt="Imagem do produto" style="width:460px; height:460px; object-fit:contain; display:block; background:#fff; border-radius:8px;">
+
+                <div class="field">
+
+                    <label>
+                        Categoria
+                    </label>
+
+                    <select id="storeCategory">
+
+                        <option>
+                            Kimonos
+                        </option>
+
+                        <option>
+                            Faixas
+                        </option>
+
+                        <option>
+                            Equipamentos
+                        </option>
+
+                        <option>
+                            Acessórios
+                        </option>
+
+                        <option>
+                            Roupas
+                        </option>
+
+                    </select>
+
                 </div>
 
-                <div id="produto-modal-side" style="width:360px; display:flex; flex-direction:column; gap:12px;">
-                    <h2 id="produto-modal-nome" style="margin:0 0 6px 0; font-size:20px;"></h2>
-                    <div id="produto-modal-preco" style="color:#2b8a2b; font-weight:700; font-size:22px;"></div>
-                    <div id="produto-modal-desconto" style="color:#c9362b; margin-top:4px;"></div>
-                    <div id="produto-modal-descricao" style="margin-top:8px; color:#555; font-size:14px; min-height:48px;">Descrição do produto.</div>
 
-                    <div style="margin-top:6px;">
-                        <div style="font-size:13px; color:#666; margin-bottom:6px;">Tamanho:</div>
-                        <div id="produto-modal-sizes" style="display:flex; gap:8px; flex-wrap:wrap;"></div>
-                    </div>
+                <div class="field full">
 
-                    <div style="display:flex; gap:12px; align-items:center; margin-top:6px;">
-                        <div style="display:flex; align-items:center; gap:6px;">
-                            <button id="qty-decr" style="width:34px; height:34px; border-radius:8px; border:none; background:#f0f0f0; cursor:pointer;">−</button>
-                            <div id="qty" style="min-width:36px; text-align:center;">1</div>
-                            <button id="qty-incr" style="width:34px; height:34px; border-radius:8px; border:none; background:#f0f0f0; cursor:pointer;">+</button>
-                        </div>
-                        <div style="flex:1;"></div>
-                    </div>
+                    <label>
+                        Descrição da loja
+                    </label>
 
-                    <button id="produto-modal-comprar" style="background:#c9362b; color:#fff; border:none; padding:12px 12px; border-radius:28px; cursor:pointer; width:100%; font-weight:700;">COMPRAR</button>
-                    <button id="produto-modal-editar" style="background:#111; color:#fff; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; display:none;">EDITAR</button>
+                    <textarea
+                        id="storeDescription"
+                        placeholder="Fale sobre sua loja..."></textarea>
 
-                    <div style="margin-top:8px; background:#f8f8f8; padding:10px; border-radius:8px; border:1px solid #eee;">
-                        <div style="font-weight:700; font-size:13px;">Meios de envio</div>
-                        <div style="margin-top:8px;">
-                            <input placeholder="Seu CEP" style="width:65%; padding:8px 10px; border-radius:20px; border:1px solid #e6e6e6;">
-                            <button style="margin-left:8px; padding:8px 12px; border-radius:20px; background:#111; color:#fff; border:none;">CALCULAR</button>
-                        </div>
-                    </div>
-
-                    <div style="font-size:13px; color:#666; margin-top:6px;">
-                        <div>Troca grátis em até 7 dias</div>
-                        <div style="margin-top:6px;">Garantia de fábrica: 3 meses</div>
-                    </div>
                 </div>
+
+
+                <button
+                    class="red-button"
+                    type="submit">
+
+                    Salvar loja
+
+                </button>
+
             </div>
+
+        </form>
+
+
+        <div class="seller-divider"></div>
+
+
+        <!-- PRODUTO -->
+
+        <div class="seller-title product-title">
+
+            <h2>
+                Adicionar produto
+            </h2>
+
         </div>
-    </div>
+
+
+        <form id="productForm">
+
+            <div class="seller-grid">
+
+
+                <div class="field">
+
+                    <label>
+                        Nome do produto
+                    </label>
+
+                    <input
+                        id="productName"
+                        type="text"
+                        placeholder="Ex: Kimono Judô"
+                        required>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Categoria
+                    </label>
+
+                    <select id="productCategory">
+
+                        <option>
+                            Kimonos
+                        </option>
+
+                        <option>
+                            Faixas
+                        </option>
+
+                        <option>
+                            Equipamentos
+                        </option>
+
+                        <option>
+                            Acessórios
+                        </option>
+
+                        <option>
+                            Roupas
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Preço
+                    </label>
+
+                    <input
+                        id="productPrice"
+                        type="number"
+                        step="0.01"
+                        min="0"
+                        placeholder="199.90"
+                        required>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Ícone
+                    </label>
+
+                    <input
+                        id="productIcon"
+                        type="text"
+                        value="🥋"
+                        placeholder="🥋">
+
+                </div>
+
+
+                <div class="field full">
+
+                    <label>
+                        Descrição
+                    </label>
+
+                    <input
+                        id="productDescription"
+                        type="text"
+                        placeholder="Descrição do produto">
+
+                </div>
+
+
+                <button
+                    class="red-button"
+                    type="submit">
+
+                    + Adicionar produto
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+
+    <!-- =================================================
+         INFORMAÇÕES DA LOJA
+    ================================================== -->
+
+    <section class="store-info">
+
+        <div class="store-logo">
+            🥋
+        </div>
+
+
+        <div>
+
+            <h2 id="displayStoreName">
+                Judô World Store
+            </h2>
+
+            <p id="displayStoreDescription">
+                Produtos para praticantes de judô.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PESQUISA E FILTRO
+    ================================================== -->
+
+    <section class="shop-tools">
+
+        <div class="search-box">
+
+            <span>
+                🔍
+            </span>
+
+            <input
+                id="searchInput"
+                type="search"
+                placeholder="Pesquisar produto...">
+
+        </div>
+
+
+        <select id="categoryFilter">
+
+            <option value="todos">
+                Todas as categorias
+            </option>
+
+            <option value="Kimonos">
+                Kimonos
+            </option>
+
+            <option value="Faixas">
+                Faixas
+            </option>
+
+            <option value="Equipamentos">
+                Equipamentos
+            </option>
+
+            <option value="Acessórios">
+                Acessórios
+            </option>
+
+            <option value="Roupas">
+                Roupas
+            </option>
+
+        </select>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PRODUTOS
+    ================================================== -->
+
+    <section
+        id="products"
+        class="products">
+
+    </section>
+
+
+    <!-- =================================================
+         NENHUM PRODUTO
+    ================================================== -->
+
+    <section
+        id="empty"
+        class="empty">
+
+        <div>
+            🔎
+        </div>
+
+        <h2>
+            Nenhum produto encontrado
+        </h2>
+
+        <p>
+            Tente mudar sua pesquisa ou filtro.
+        </p>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="js/loja.js"></script>
+
 </body>
+
 </html>

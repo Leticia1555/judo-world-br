@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <link
+        rel="icon"
+        href="judo.png">
+
+    <link
+        rel="stylesheet"
+        href="css/conta.css">
+
+    <title>Meu Perfil - Judô World</title>
+
+</head>
+
+<body>
+
+<!-- =====================================================
+     CABEÇALHO
+===================================================== -->
+
+<header>
+
+    <a
+        href="index.html"
+        class="logo">
+
+        JUDÔ <span>WORLD</span>
+
+    </a>
+
+
+    <div class="header-actions">
+
+        <a
+            href="carrinho.html"
+            class="header-button">
+
+            🛒 Carrinho
+
+        </a>
+
+
+        <button
+            id="themeButton"
+            class="theme-button"
+            type="button">
+
+            🌙
+
+        </button>
+
+
+        <a
+            href="index.html"
+            class="back-button">
+
+            ← Voltar
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     CONTEÚDO
+===================================================== -->
+
+<main>
+
+    <section class="profile-title">
+
+        <small>
+            JUDÔ WORLD BR
+        </small>
+
+        <h1>
+            Meu Perfil
+        </h1>
+
+        <p>
+            Gerencie sua conta e seus dados.
+        </p>
+
+    </section>
+
+
+    <!-- =================================================
+         PERFIL
+    ================================================== -->
+
+    <section class="profile-card">
+
+
+        <div class="profile-top">
+
+            <div
+                id="avatar"
+                class="avatar">
+
+                👤
+
+            </div>
+
+
+            <div>
+
+                <h2 id="profileName">
+                    Usuário
+                </h2>
+
+                <span
+                    id="profileType"
+                    class="account-type">
+
+                    ALUNO
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             DADOS
+        ================================================== -->
+
+        <div class="profile-data">
+
+            <div class="data">
+
+                <span>
+                    Nome
+                </span>
+
+                <strong id="nameData">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="data">
+
+                <span>
+                    E-mail
+                </span>
+
+                <strong id="emailData">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="data">
+
+                <span>
+                    Tipo de conta
+                </span>
+
+                <strong id="typeData">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             BOTÕES
+        ================================================== -->
+
+        <div class="profile-buttons">
+
+            <button
+                id="editButton"
+                class="primary-button">
+
+                ✏️ Editar perfil
+
+            </button>
+
+
+            <a
+                href="loja.html"
+                id="storeButton"
+                class="secondary-button"
+                style="display:none;">
+
+                🏪 Minha Loja
+
+            </a>
+
+
+            <button
+                id="logoutButton"
+                class="logout-button">
+
+                🚪 Sair da conta
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         EDIÇÃO
+    ================================================== -->
+
+    <section
+        id="editPanel"
+        class="edit-panel">
+
+        <h2>
+            Editar perfil
+        </h2>
+
+
+        <form id="profileForm">
+
+            <div class="field">
+
+                <label>
+                    Nome
+                </label>
+
+                <input
+                    id="editName"
+                    type="text"
+                    required>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    E-mail
+                </label>
+
+                <input
+                    id="editEmail"
+                    type="email"
+                    required>
+
+            </div>
+
+
+            <div class="edit-actions">
+
+                <button
+                    type="button"
+                    id="cancelEdit"
+                    class="cancel-button">
+
+                    Cancelar
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="primary-button">
+
+                    Salvar alterações
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+</main>
+
+
+<script src="js/perfil.js"></script>
+
+</body>
+
+</html>

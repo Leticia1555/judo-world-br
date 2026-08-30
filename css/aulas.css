@@ -1,0 +1,810 @@
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
+
+body {
+    font-family: Arial, sans-serif;
+
+    background: #f5f5f5;
+
+    color: #111;
+
+    min-height: 100vh;
+
+    transition:
+        background .25s,
+        color .25s;
+}
+
+
+/* =====================================================
+   CABEÇALHO
+===================================================== */
+
+header {
+    height: 68px;
+
+    background: #fff;
+
+    border-bottom: 1px solid #e5e5e5;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+    color: #111;
+
+    text-decoration: none;
+
+    font-size: 20px;
+
+    font-weight: 900;
+}
+
+.logo span {
+    color: #d71920;
+}
+
+
+/* =====================================================
+   AÇÕES
+===================================================== */
+
+.header-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+
+/* =====================================================
+   BOTÕES
+===================================================== */
+
+.search-button,
+.theme-button,
+.back-button {
+    height: 42px;
+
+    border: 1px solid #ddd;
+
+    background: #fff;
+
+    color: #111;
+
+    border-radius: 9px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    transition: .2s;
+}
+
+.search-button,
+.theme-button {
+    width: 42px;
+}
+
+.search-button:hover,
+.theme-button:hover,
+.back-button:hover {
+    border-color: #d71920;
+}
+
+.theme-button:hover {
+    transform: rotate(15deg);
+}
+
+.back-button {
+    padding: 0 15px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+main {
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 45px 20px 70px;
+}
+
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+.page-title {
+    text-align: center;
+
+    margin-bottom: 35px;
+}
+
+.page-title small {
+    color: #d71920;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.page-title h1 {
+    margin-top: 8px;
+
+    font-size: 38px;
+
+    font-weight: 900;
+}
+
+.page-title p {
+    color: #777;
+
+    font-size: 14px;
+
+    margin-top: 10px;
+}
+
+
+/* =====================================================
+   AULA EM DESTAQUE
+===================================================== */
+
+.featured {
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    background: #fff;
+
+    border: 1px solid #e5e5e5;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    margin-bottom: 28px;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.05);
+}
+
+
+/* =====================================================
+   ÍCONE DESTAQUE
+===================================================== */
+
+.featured-icon {
+    width: 190px;
+
+    height: 190px;
+
+    flex-shrink: 0;
+
+    border-radius: 15px;
+
+    background: #fff0f0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 85px;
+}
+
+
+/* =====================================================
+   CONTEÚDO DESTAQUE
+===================================================== */
+
+.featured-content {
+    flex: 1;
+}
+
+.featured-content > span {
+    color: #d71920;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+.featured-content h2 {
+    font-size: 27px;
+
+    margin-top: 7px;
+}
+
+.featured-content p {
+    color: #777;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    margin-top: 10px;
+
+    max-width: 600px;
+}
+
+
+/* =====================================================
+   INFORMAÇÕES
+===================================================== */
+
+.featured-info {
+    display: flex;
+
+    gap: 18px;
+
+    margin: 15px 0;
+}
+
+.featured-info span {
+    color: #555;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   BOTÃO ASSISTIR
+===================================================== */
+
+.watch-button {
+    height: 43px;
+
+    padding: 0 18px;
+
+    border: 0;
+
+    border-radius: 8px;
+
+    background: #d71920;
+
+    color: #fff;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.watch-button:hover {
+    background: #b9141a;
+}
+
+
+/* =====================================================
+   PESQUISA
+===================================================== */
+
+.lesson-tools {
+    display: grid;
+
+    grid-template-columns: 1fr 210px;
+
+    gap: 10px;
+
+    margin-bottom: 22px;
+}
+
+.search-box {
+    height: 48px;
+
+    background: #fff;
+
+    border: 1px solid #ddd;
+
+    border-radius: 9px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 0 14px;
+}
+
+.search-box input {
+    width: 100%;
+
+    height: 100%;
+
+    border: 0;
+
+    outline: 0;
+
+    background: transparent;
+
+    color: #111;
+
+    font-size: 14px;
+}
+
+.search-box:focus-within {
+    border-color: #d71920;
+}
+
+
+/* =====================================================
+   FILTRO
+===================================================== */
+
+#levelFilter {
+    height: 48px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 9px;
+
+    background: #fff;
+
+    color: #111;
+
+    padding: 0 12px;
+
+    outline: none;
+}
+
+
+/* =====================================================
+   GRID DE AULAS
+===================================================== */
+
+.lessons {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+
+/* =====================================================
+   CARD DA AULA
+===================================================== */
+
+.lesson-card {
+    background: #fff;
+
+    border: 1px solid #e5e5e5;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    transition: .2s;
+}
+
+.lesson-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.08);
+}
+
+
+/* =====================================================
+   CAPA
+===================================================== */
+
+.lesson-cover {
+    height: 170px;
+
+    background: #f7f7f7;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 70px;
+}
+
+
+/* =====================================================
+   INFORMAÇÕES
+===================================================== */
+
+.lesson-info {
+    padding: 17px;
+}
+
+.lesson-level {
+    color: #d71920;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+.lesson-name {
+    font-size: 17px;
+
+    font-weight: 900;
+
+    margin-top: 7px;
+}
+
+.lesson-description {
+    color: #777;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    margin-top: 7px;
+
+    min-height: 34px;
+}
+
+
+/* =====================================================
+   PROFESSOR E DURAÇÃO
+===================================================== */
+
+.lesson-meta {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 14px;
+
+    color: #777;
+
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   BOTÃO
+===================================================== */
+
+.lesson-button {
+    width: 100%;
+
+    height: 40px;
+
+    border: 0;
+
+    border-radius: 8px;
+
+    background: #d71920;
+
+    color: #fff;
+
+    margin-top: 14px;
+
+    cursor: pointer;
+
+    font-size: 11px;
+
+    font-weight: 800;
+}
+
+.lesson-button:hover {
+    background: #b9141a;
+}
+
+
+/* =====================================================
+   VAZIO
+===================================================== */
+
+.empty {
+    display: none;
+
+    text-align: center;
+
+    padding: 60px 20px;
+}
+
+.empty div {
+    font-size: 45px;
+
+    margin-bottom: 10px;
+}
+
+.empty h2 {
+    font-size: 20px;
+}
+
+.empty p {
+    color: #777;
+
+    font-size: 13px;
+
+    margin-top: 7px;
+}
+
+
+/* =====================================================
+   MODO ESCURO
+===================================================== */
+
+body.dark {
+    background: #101010;
+
+    color: #fff;
+}
+
+body.dark header {
+    background: #151515;
+
+    border-color: #292929;
+}
+
+body.dark .logo {
+    color: #fff;
+}
+
+body.dark .search-button,
+body.dark .theme-button,
+body.dark .back-button {
+    background: #202020;
+
+    color: #fff;
+
+    border-color: #383838;
+}
+
+body.dark .page-title p {
+    color: #aaa;
+}
+
+body.dark .featured {
+    background: #181818;
+
+    border-color: #292929;
+}
+
+body.dark .featured-icon {
+    background: #2a1515;
+}
+
+body.dark .featured-content p {
+    color: #aaa;
+}
+
+body.dark .featured-info span {
+    color: #bbb;
+}
+
+body.dark .search-box {
+    background: #181818;
+
+    border-color: #3a3a3a;
+}
+
+body.dark .search-box input {
+    color: #fff;
+}
+
+body.dark #levelFilter {
+    background: #181818;
+
+    color: #fff;
+
+    border-color: #3a3a3a;
+}
+
+body.dark .lesson-card {
+    background: #181818;
+
+    border-color: #292929;
+}
+
+body.dark .lesson-cover {
+    background: #222;
+}
+
+body.dark .lesson-description {
+    color: #aaa;
+}
+
+body.dark .lesson-meta {
+    color: #aaa;
+}
+
+body.dark .empty p {
+    color: #aaa;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .lessons {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 650px) {
+
+    header {
+        height: 62px;
+
+        padding: 0 14px;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .header-actions {
+        gap: 6px;
+    }
+
+    .back-button {
+        display: flex;
+        width: auto;
+        padding: 0 12px;
+        height: 39px;
+        font-size: 13px;
+        border-radius: 9px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .search-button,
+    .theme-button {
+        width: 39px;
+
+        height: 39px;
+    }
+
+    main {
+        padding:
+            30px 14px 50px;
+    }
+
+    .page-title h1 {
+        font-size: 29px;
+    }
+
+    .featured {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        padding: 18px;
+    }
+
+    .featured-icon {
+        width: 100%;
+
+        height: 150px;
+
+        font-size: 70px;
+    }
+
+    .featured-content h2 {
+        font-size: 22px;
+    }
+
+    .lesson-tools {
+        grid-template-columns: 1fr;
+    }
+
+    .lessons {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 10px;
+    }
+
+    .lesson-cover {
+        height: 140px;
+
+        font-size: 55px;
+    }
+
+    .lesson-info {
+        padding: 13px;
+    }
+
+    .lesson-name {
+        font-size: 14px;
+    }
+
+    .lesson-description {
+        font-size: 10px;
+    }
+    .back-button {
+        display: flex;
+        width: auto;
+        padding: 0 10px;
+        height: 38px;
+        font-size: 12px;
+        border-radius: 9px;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+
+/* =====================================================
+   CELULAR PEQUENO
+===================================================== */
+
+@media (max-width: 390px) {
+
+    .lessons {
+        grid-template-columns: 1fr;
+    }
+
+    .lesson-cover {
+        height: 180px;
+
+        font-size: 70px;
+    }
+.back-button {
+    display: none;
+}
+}

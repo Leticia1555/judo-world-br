@@ -1,85 +1,416 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="icon" href="judo.png">
-    <link rel="stylesheet" href="estilo.css">
-    <link rel="stylesheet" href="css.css">
-    <link rel="stylesheet" href="conta.css">
-    <title>Conta/Perfil</title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="theme-color"
+        content="#121212">
+
+    <link
+        rel="icon"
+        href="judo.png">
+
+    <link
+        rel="stylesheet"
+        href="css/conta.css">
+    
+
+    <title>Conta | Judô World</title>
 </head>
-<body id="body">
-     <div class="mobile-topbar">
-        <a class="brand-mobile" href="index.html">
-            <img src="judo.png" alt="Ícone do Judô">
-            <span>Judô World BR</span>
+
+<body>
+
+<header>
+
+    <a href="index.html" class="logo">
+
+        <div class="logo-mark">
+            柔
+        </div>
+
+        <div class="logo-text">
+            <strong>JUDÔ WORLD</strong>
+            <span>BRASIL</span>
+        </div>
+
+    </a>
+
+    <div class="header-actions">
+
+        <button
+            id="themeButton"
+            class="theme-button"
+            type="button"
+            aria-label="Alternar modo">
+
+            🌙
+
+        </button>
+
+        <a
+            href="index.html"
+            class="back-button">
+
+            ← Voltar
+
         </a>
 
-        <div class="mobile-search">
-            <span aria-hidden="true">🔍</span>
-            <input type="text" placeholder="Pesquisar">
-        </div>
+    </div>
 
-        <div class="mobile-actions">
-            <a class="mobile-icon" href="conta.html" aria-label="Conta">👤</a>
-            <div class="menu-mobile" onclick="abrirMenu()" role="button" tabindex="0" aria-label="Abrir menu" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); abrirMenu();}">
-                ☰
+</header>
+
+
+<main>
+
+    <div class="title">
+
+        <small>JUDÔ WORLD BR</small>
+
+        <h1>Minha Conta</h1>
+
+        <p id="accountSubtitle">
+            Entre na sua conta para continuar.
+        </p>
+
+    </div>
+
+
+    <!-- LOGIN -->
+
+    <div
+        class="account-card"
+        id="loginCard">
+
+        <h2>Entrar</h2>
+
+        <form id="loginForm">
+
+            <div class="field">
+
+                <label for="email">
+                    E-mail
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="seu@email.com"
+                    autocomplete="email"
+                    required>
+
             </div>
-        </div>
-    </div>
-
-    <div class="links-nav" id="linksNav">
-        <nav>
-            <a href="index.html"><img class="judo" src="judo.png" alt=""></a>
-           <a href="index.html"><img src="imagens/botao-de-inicio.png" alt="" width="13%"> Home</a>
-           <a href="loja.html"><img  src="imagens/loja.png" alt="" width="12%"> Loja</a>
-           <a href="aulas.html"><img  src="imagens/computador-desktop.png" alt="" width="12%"> Aulas</a>
-           <img src="imagens/lupa.png" alt="" width="6%"><input class="barra" type="text" placeholder="Search.." >
-           <a href="conta.html"><img  src="imagens/do-utilizador.png" alt="" width="12%"> Contas</a>
-           <img src="imagens/energia-solar.png" id="light" width="7%">
-           <img src="imagens/lua-crescente.png" id="dark" width="7%">
-        </nav>
-
-    </div>
 
 
-    <div class="pagina-conta">
-       <br><br>
-        <h1>Conta / Perfil</h1>
-        <div class="formularios-container">
-            <div id="login-form" class="cadastro">
-                <h1>login</h1>
-                <div class="input-box">
-                    <label>Email</label>
-                    <input type="email" name="Email" id="loginemail" placeholder="email"><br>
-                </div>
-                <div class="input-box">
-                    <label>Senha</label>
-                    <div class="password-field-with-icon">
-                        <input type="password" name="Senha" id="loginSenha" placeholder="senha">
-                        <img src="imagens/olho.png" class="password-toggle-icon" onclick="togglePasswordVisibility('loginSenha', this)" alt="Mostrar senha" title="Mostrar senha">
-                    </div><br>
+            <div class="field">
+
+                <div class="password-line">
+
+                    <label for="password">
+                        Senha
+                    </label>
+
+                    <a
+                        href="#"
+                        class="forgot"
+                        id="forgotPassword">
+
+                        Esqueci minha senha
+
+                    </a>
+
                 </div>
 
-                <button onclick="login()">logar</button>
-                <a href="logar.html">Voltar para a página de conta</a>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Digite sua senha"
+                    autocomplete="current-password"
+                    required>
+
             </div>
-        </div>
-        <p id="mensagem"></p>
 
-        <div id="perfil" style="display:none">
-            <h2>Perfil</h2>
-            <p><strong>Nome:</strong> <span id="perfil-nome"></span></p>
-            <p><strong>Email:</strong> <span id="perfil-email"></span></p>
-            <p><strong>Faixa:</strong> <span id="perfil-faixa"></span></p>
-            <p><strong>Tipo:</strong> <span id="perfil-role"></span></p>
-            <button onclick="logout()">Sair</button>
+
+            <button
+                type="submit"
+                class="login-button"
+                id="loginButton">
+
+                Entrar
+
+            </button>
+
+        </form>
+
+
+        <div class="divider">
+            OU
         </div>
+
+
+        <button
+            class="google-button"
+            type="button"
+            id="googleButton">
+
+            🌐 Continuar com Google
+
+        </button>
+
+
+        <div class="register">
+
+            Ainda não tem uma conta?
+
+            <a href="cadastro.html">
+                Criar conta
+            </a>
+
+        </div>
+
     </div>
-    <script src="js.js"></script>
+
+
+    <!-- PERFIL -->
+
+    <div
+        class="account-card profile-card"
+        id="profileCard"
+        style="display: none;">
+
+        <div class="profile-icon">
+            🥋
+        </div>
+
+        <h2 id="profileName">
+            Usuário
+        </h2>
+
+        <div class="profile-info">
+
+            <div class="profile-item">
+
+                <span>Nome</span>
+
+                <strong id="profileNameInfo">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="profile-item">
+
+                <span>E-mail</span>
+
+                <strong id="profileEmail">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="profile-item">
+
+                <span>Telefone</span>
+
+                <strong id="profileTelefone">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="profile-item">
+
+                <span>Tipo de conta</span>
+
+                <strong id="profileTipo">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div
+                class="profile-item"
+                id="profileFaixaBox">
+
+                <span>Faixa</span>
+
+                <strong id="profileFaixa">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div
+                class="profile-item"
+                id="profileLojaBox"
+                style="display: none;">
+
+                <span>Loja</span>
+
+                <strong id="profileLoja">
+                    -
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <button
+            id="logoutButton"
+            class="login-button">
+
+            Sair da conta
+
+        </button>
+
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div class="footer-brand">
+
+                <div class="logo footer-logo">
+
+                    <div class="logo-mark">
+                        柔
+                    </div>
+
+                    <div class="logo-text">
+
+                        <strong>
+                            JUDÔ WORLD
+                        </strong>
+
+                        <span>
+                            BRASIL
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <p>
+                    O seu portal para viver,
+                    acompanhar e evoluir
+                    no mundo do judô.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Explorar
+                </h4>
+
+                <a href="index.html">
+                    Início
+                </a>
+
+                <a href="#">
+                    Campeonatos
+                </a>
+
+                <a href="#">
+                    Notícias
+                </a>
+
+                <a href="#">
+                    Aulas
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Judô World
+                </h4>
+
+                <a href="#">
+                    Sobre nós
+                </a>
+
+                <a href="#">
+                    Contato
+                </a>
+
+                <a href="#">
+                    Termos
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Siga-nos
+                </h4>
+
+                <a href="#">
+                    Instagram
+                </a>
+
+                <a href="#">
+                    YouTube
+                </a>
+
+                <a href="#">
+                    Facebook
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 Judô World BR
+            </span>
+
+            <span>
+                Feito para quem vive o judô 🥋
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/supabase.js"></script>
+
+<script src="js/conta.js"></script>
+
 </body>
 </html>

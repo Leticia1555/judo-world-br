@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="theme-color"
+        content="#ffffff">
+
+    <link
+        rel="icon"
+        href="judo.png">
+
+    <link
+        rel="stylesheet"
+        href="css/produto.css">
+
+    <title>Produto - Judô World</title>
+
+</head>
+
+
+<body>
+
+<!-- =====================================================
+     CABEÇALHO
+===================================================== -->
+
+<header>
+
+        <a href="index.html" class="logo">
+                <div class="logo-mark">柔</div>
+
+                <div class="logo-text">
+                    <strong>JUDÔ WORLD</strong>
+                    <span>BRASIL</span>
+                </div>
+            </a>
+
+
+
+    <div class="header-actions">
+
+        <!-- CARRINHO -->
+
+        <a
+            href="carrinho.html"
+            class="cart-button">
+
+            🛒
+
+            <span
+                id="cartCount"
+                class="cart-count">
+
+                0
+
+            </span>
+
+        </a>
+
+
+        <!-- MODO CLARO / ESCURO -->
+
+        <button
+            id="themeButton"
+            class="theme-button"
+            type="button"
+            aria-label="Alternar tema">
+
+            🌙
+
+        </button>
+
+
+        <!-- VOLTAR -->
+
+        <a
+            href="loja.html"
+            class="back-button">
+
+            ← Voltar
+
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     CONTEÚDO
+===================================================== -->
+
+<main>
+
+    <!-- BOTÃO VOLTAR NO CELULAR -->
+
+    <a
+        href="loja.html"
+        class="mobile-back">
+
+        ← Voltar para a loja
+
+    </a>
+
+
+    <!-- =================================================
+         PRODUTO
+    ================================================== -->
+
+    <section class="product-page">
+
+
+        <!-- IMAGEM / ÍCONE -->
+
+        <div class="product-visual">
+
+            <div
+                id="productImage"
+                class="product-image">
+
+                🥋
+
+            </div>
+
+        </div>
+
+
+
+        <!-- INFORMAÇÕES -->
+
+        <div class="product-details">
+
+            <!-- CATEGORIA -->
+
+            <div
+                id="productCategory"
+                class="product-category">
+
+                Kimonos
+
+            </div>
+
+
+            <!-- NOME -->
+
+            <h1 id="productName">
+
+                Produto
+
+            </h1>
+
+
+            <!-- DESCRIÇÃO -->
+
+            <p
+                id="productDescription"
+                class="product-description">
+
+                Descrição do produto.
+
+            </p>
+
+
+            <!-- PREÇO -->
+
+            <div
+                id="productPrice"
+                class="product-price">
+
+                R$ 0,00
+
+            </div>
+
+
+            <!-- DIVISOR -->
+
+            <div class="divider"></div>
+
+
+            <!-- QUANTIDADE -->
+
+            <div class="quantity-area">
+
+                <label>
+
+                    Quantidade
+
+                </label>
+
+
+                <div class="quantity-control">
+
+                    <button
+                        id="decreaseQuantity"
+                        type="button">
+
+                        −
+
+                    </button>
+
+
+                    <input
+                        id="quantity"
+                        type="number"
+                        value="1"
+                        min="1"
+                        max="99">
+
+
+                    <button
+                        id="increaseQuantity"
+                        type="button">
+
+                        +
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOTÕES -->
+
+            <div class="product-buttons">
+
+                <button
+                    id="addCartButton"
+                    class="add-cart-button"
+                    type="button">
+
+                    🛒 Adicionar ao carrinho
+
+                </button>
+
+
+                <button
+                    id="buyButton"
+                    class="buy-button"
+                    type="button">
+
+                    Comprar agora
+
+                </button>
+
+            </div>
+
+
+            <!-- INFORMAÇÕES -->
+
+            <div class="product-info-box">
+
+                <div>
+
+                    <span>🚚</span>
+
+                    <p>
+
+                        Envio para todo o Brasil
+
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <span>🔒</span>
+
+                    <p>
+
+                        Compra segura
+
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <span>🥋</span>
+
+                    <p>
+
+                        Produtos para judocas
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="js/produto.js"></script>
+
+</body>
+
+</html>

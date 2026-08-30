@@ -3,368 +3,941 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#121212">
     <link rel="icon" href="judo.png">
-    <link rel="stylesheet" href="estilo.css">
-    <link rel="stylesheet" href="css.css">
-    <link rel="stylesheet" href="conta.css">
+    <link rel="stylesheet" href="css/estilo.css">
     <title>Judô world br</title>
 </head>
 <body id="body">
-    <div class="mobile-topbar">
-        <a class="brand-mobile" href="index.html">
-            <img src="judo.png" alt="Ícone do Judô">
-            <span>Judô World BR</span>
-        </a>
+ 
 
-        <div class="mobile-search">
-            <span aria-hidden="true">🔍</span>
-            <input type="text" placeholder="Pesquisar">
-        </div>
+    <!-- ================= HEADER ================= -->
 
-        <div class="mobile-actions">
-            <a class="mobile-icon" href="conta.html" aria-label="Conta">👤</a>
-            <div class="menu-mobile" onclick="abrirMenu()" role="button" tabindex="0" aria-label="Abrir menu" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); abrirMenu();}">
-                ☰
-            </div>
-        </div>
-    </div>
+    <header class="header">
 
-    <div class="links-nav" id="linksNav">
-        <nav>
-            <a href="index.html"><img class="judo" src="judo.png" alt=""></a>
-           <a href="index.html"><img src="imagens/botao-de-inicio.png" alt="" width="13%"> Home</a>
-           <a href="loja.html"><img  src="imagens/loja.png" alt="" width="12%"> Loja</a>
-           <a href="aulas.html"><img  src="imagens/computador-desktop.png" alt="" width="12%"> Aulas</a>
-           <img src="imagens/lupa.png" alt="" width="6%"><input class="barra" type="text" placeholder="Search.." >
-           <a href="conta.html"><img  src="imagens/do-utilizador.png" alt="" width="12%"> Contas</a>
-           <img src="imagens/energia-solar.png" id="light" width="7%">
-           <img src="imagens/lua-crescente.png" id="dark" width="7%">
-        </nav>
+        <div class="container nav">
 
-    </div>
-    
-    <br>
-    <br>
-    <br><h1>Judô world br</h1>
- <div class="carousel-keyframes manual" id="main-carousel">
-        <button class="carousel-prev" aria-label="Anterior">‹</button>
-        <div class="carousel-animated">
-            <img src="imagens/jud1.jpg" alt="">
-            <img src="imagens/jud2.jpg" alt="">
-            <img src="imagens/jud3.jpg" alt="">
-        </div>
-        <button class="carousel-next" aria-label="Próximo">›</button>
-    </div>
-    <div class="campo">
-      <section id="Campeonato">
-    <div class="header">
-        <h2>CAMPEONATOS</h2>
-        <a href="#">+ Veja mais</a>
-    </div>
+            <a href="#" class="logo">
+                <div class="logo-mark">柔</div>
 
-    <div class="cards">
-    <!--1-->
-         <a class="card" href="https://faju.com.br">
-         <div class="card">
-             <img src="https://cbj.com.br/pt/img/federacao/logo/1/principal/image.jpg">
-             <div class="conteudo">
-                 <span>29/04/2026</span>
-                 <h3>FAJU - Federação Alagoana de Judô</h3>
-             </div>
-         </div>
-      </a>
-    <!-- 2 -->
-      <a class="card" href="">
-         <div class="card">
-             <img src="https://cbj.com.br/pt/img/federacao/logo/2/principal/image.jpg">
-             <div class="conteudo">
-                 <span>29/04/2026</span>
-                 <h3>FAJ - Federação Amapaense de Judô</h3>
-             </div>
-         </div>
-      </a>
+                <div class="logo-text">
+                    <strong>JUDÔ WORLD</strong>
+                    <span>BRASIL</span>
+                </div>
+            </a>
 
-<!-- 3 -->
-     <a class="card" href="http://www.judosc.org.br">
-          <div class="card">
-              <img src="https://cbj.com.br/pt/img/federacao/logo/4/principal/image.jpg">
-              <div class="conteudo">
-                  <span>27/04/2026</span>
-                  <h3>FCJ - Federação Catarinense de Judô</h3>
-              </div>
-         </div>
-     </a>
-        <!-- 4 -->
-         <a class="card" href="http://www.febaju.com.br">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/3/principal/image.jpg">
-            <div class="conteudo">
-                <span>30/04/2026</span>
-                <h3>FEBAJU - Federação Baiana de Judô</h3>
-            </div>
-        </div>
-        </a>
-<!-- 5 -->
-        <a class="card" href="http://www.fecju.com.br">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/5/principal/image.jpg">
-            <div class="conteudo">
-                <span>29/04/2026</span>
-                <h3>FECJU - Federação Cearense de Judô</h3>
-            </div>
-        </div>
-        </a>
-<!-- 6 -->
-        <a class="card" href="https://judogoias.com.br/web/">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/15/principal/image.jpg">
-            <div class="conteudo">
-                <span>27/04/2026</span>
-                <h3>FEGOJU - Federação Goiana de Judô</h3>
-            </div>
-        </div>
-        </a>
-<!-- 7 -->
-        <a class="card" href="https://www.fejoficial.com.br/">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/13/principal/image.jpg">
-            <div class="conteudo">
-                <span>30/04/2026</span>
-                <h3>FEJ - Federação Espiritossantense de Judô</h3>
-            </div>
-        </div>
-        </a>
-<!-- 8 -->
-        <a class="card" href="http://www.fejama.com.br/">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/7/principal/image.jpg">
-            <div class="conteudo">
-                <span>29/04/2026</span>
-                <h3>FEJAMA - Federação de Judô do Amazonas</h3>
-            </div>
-        </div>
-        </a>
-<!-- 9 -->
-        <a class="card" href="https://fejet.com.br/">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/10/principal/image.jpg">
-            <div class="conteudo">
-                <span>27/04/2026</span>
-                <h3>FEJET - Federação de Judô do Estado de Tocantins</h3>
-            </div>
-        </div>
-        </a>
- <!-- 10 -->
-        <a class="card" href="www.fejur.com.br">
-          <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/27/principal/image.jpg">
-            <div class="conteudo">
-                <span>29/04/2026</span>
-                <h3>FEJUR - Federação de Judô de Rondônia</h3>
-            </div>
-        </div>
-        </a>
-<!-- 11 -->
-  <a href="" class="card">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/9/principal/image.jpg">
-            <div class="conteudo">
-                <span>27/04/2026</span>
-                <h3>FEJURR - Federação de Judô do Estado de Roraima</h3>
-            </div>
-        </div>
-        </a>
-        <!-- 12 -->
-        <a href="http://www.judobrasilia.com.br" class="card">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/18/principal/image.jpg">
-            <div class="conteudo">
-                <span>30/04/2026</span>
-                <h3>FEMEJU - Federação Metropolitana de Judô</h3>
-            </div>
-        </div>
-        </a>
-<!-- 13 -->
- <a href="" class="card">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/22/principal/image.jpg">
-            <div class="conteudo">
-                <span>29/04/2026</span>
-                <h3>FEPAJU - Federação Paraibana de Judô</h3>
-            </div>
-        </div>
-        </a>
-<!-- 14 -->
-        <a class="card" href="http://www.judors.com.br">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/14/principal/image.jpg">
-            <div class="conteudo">
-                <span>27/04/2026</span>
-                <h3>FGJ - Federação Gaúcha de Judô</h3>
-            </div>
-        </div>
-        </a>
-        <!-- 15 -->
-         <a href="" class="card">
-<div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/28/principal/image.jpg">
-            <div class="conteudo">
-                <span>30/04/2026</span>
-                <h3> FJEAC - Federação de Judô do Estado do Acre</h3>
-            </div>
-        </div>
-        </a>
-<!-- 16 -->
-        <a class="card" href="https://judorio.org/">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/11/principal/image.jpg">
-            <div class="conteudo">
-                <span>29/04/2026</span>
-                <h3>FJERJ - Federação de Judô do Estado do Rio de Janeiro</h3>
-            </div>
-        </div>
-        </a>
-<!-- 17 -->
-        <a class="card" href="">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/12/principal/image.jpg">
-            <div class="conteudo">
-                <span>27/04/2026</span>
-                <h3>FJERN - Federação de Judô do Estado do Rio Grande do Norte</h3>
-            </div>
-        </div>
-        </a>
-        <!-- 18 -->
-        <a class="card" href="http://www.fjms.com.br">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/8/principal/image.jpg">
-            <div class="conteudo">
-                <span>29/04/2026</span>
-                <h3>FJMS - Federação de Judô de Mato Grosso do Sul</h3>
-            </div>
-        </div>
-        </a>
-<!-- 19 -->
-        <a class="card" href="">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/16/principal/image.jpg">
-            <div class="conteudo">
-                <span>27/04/2026</span>
-                <h3>FMJ - Federação Maranhense de Judô</h3>
-            </div>
-        </div>
-        </a>
-        <!-- 20 -->
-        <a class="card" href="https://www.federacaomineiradejudo.com.br/">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/19/principal/image.jpg">
-            <div class="conteudo">
-                <span>29/04/2026</span>
-                <h3>FMJ - Federação Mineira de Judô</h3>
-            </div>
-        </div>
-        </a>
-<!-- 21 -->
-          <a href="http://www.fmtj.org.br/" class="card">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/17/principal/image.jpg">
-            <div class="conteudo">
-                <span>27/04/2026</span>
-                <h3>FMTJ - Federação Matogrossense de Judô</h3>
-            </div>
-        </div>
-        </a>
-<!-- 22 -->
-        <a href="http://www.fpaju.com.br" class="card">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/20/principal/image.jpg">
-            <div class="conteudo">
-                <span>29/04/2026</span>
-                <h3>FPAJU - Federação Paraense de Judô</h3>
-            </div>
-        </div>
-        </a>
-<!-- 23 -->
-        <a href="" class="card">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/25/principal/image.jpg">
-            <div class="conteudo">
-                <span>27/04/2026</span>
-                <h3>FPIJ - Federação Piauiense de Judô</h3>
-            </div>
-        </div>
-        </a>
-        <!-- 24 -->
-         <a href="https://fpj.com.br/" class="card">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/23/principal/image.jpg">
-            <div class="conteudo">
-                <span>29/04/2026</span>
-                <h3>FPJ - Federação Paulista de Judô</h3>
-            </div>
-        </div>
-        </a>
-<!-- 25 -->
-        <a href="https://www.fpejudo.com/" class="card">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/24/principal/image.jpg">
-            <div class="conteudo">
-                <span>27/04/2026</span>
-                <h3>FPJU - Federação Pernambucana de Judô</h3>
-            </div>
-        </div>
-        </a>
-        <!-- 26 -->
-         <a href="https://www.fprjudo.com.br/" class="card">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/21/principal/image.jpg">
-            <div class="conteudo">
-                <span>29/04/2026</span>
-                <h3>FPRJ - Federação Paranaense de Judô</h3>
-            </div>
-        </div>
-        </a>
-<!-- 27 -->
-        <a href="http://www.judosergipe.com.br/" class="card">
-        <div class="card">
-            <img src="https://cbj.com.br/pt/img/federacao/logo/26/principal/image.jpg">
-            <div class="conteudo">
-                <span>27/04/2026</span>
-                <h3>FSJ - Federação Sergipana de Judô</h3>
-            </div>
-        </div>
-        </a>
 
-    </div>
-    <br>
-</section>
+            <nav class="desktop-nav">
+                <a class="active" href="#inicio">Início</a>
+                <a href="#campeonatos">Campeonatos</a>
+                <a href="#noticias">Notícias</a>
+                <a href="aulas.html">Aulas</a>
+                <a href="loja.html">Loja</a>
+            </nav>
 
-    </div>
 
-    <br>
-    <br>
-    <div class="campo">
-      <section id="AoVivo">
-    <div class="header">
-        <h2>AO VIVO</h2>
-        <a href="#">+ Veja mais</a>
-         </div>
-        <div class="cards">
-          <div>
-            <a href="https://www.youtube.com/@BRASILJUDO/streams" class="card">
-            <div class="card">
-            <img src="https://yt3.googleusercontent.com/leh5PmEPGDqs3GhaUygA4GP6NHDK6hKs0w8siZF33qadPG3d7tNQ8BgYZOLG-A5mYDhY3V2tFw=s900-c-k-c0x00ffffff-no-rj">
-            <div class="conteudo">
-                <h2>CBJ TV </h2>
+            <div class="nav-actions">
+
+                <button
+                    class="search-button"
+                    onclick="abrirPesquisa()"
+                    aria-label="Pesquisar">
+                    <span>⌕</span>
+                </button>
+
+                <a href="conta.html" class="account">
+                    Minha conta
+                </a>
+            
+
             </div>
-          </div>
-          </a>
-        </div>  
+
+            <button id="themeButton" class="theme-button" type="button" aria-label="Alternar tema">
+    🌙
+</button>
+<div class="mobile-actions">
+
+    <button
+        class="search-button"
+        onclick="abrirPesquisa()"
+        aria-label="Pesquisar">
+        🔍
+    </button>
+
    
-    </div>
-    </section>
 
-    <script src="js.js"></script>
-    <script src="js.js"></script>
+<button id="menuButton" class="menu-button" type="button">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+</div>
+
+
+<div id="mobileMenu" class="mobile-menu">
+    <a href="#inicio">Início</a>
+    <a href="#campeonatos">Campeonatos</a>
+    <a href="#noticias">Notícias</a>
+    <a href="aulas.html">Aulas</a>
+    <a href="loja.html">Loja</a>
+    <a href="conta.html" >Minha conta</a>
+</div>
+
+
+
+
+
+        <!-- MENU MOBILE -->
+
+      
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <main>
+
+        <section id="inicio" class="hero">
+
+            <div class="container hero-grid">
+
+
+                <div class="hero-content">
+
+                    <div class="eyebrow">
+                        <span></span>
+                        O MUNDO DO JUDÔ
+                    </div>
+
+
+                    <h1>
+                        A força que
+                        <em>transforma.</em>
+                    </h1>
+
+
+                    <p>
+                        Notícias, campeonatos, técnicas,
+                        atletas e tudo sobre o mundo do
+                        judô brasileiro.
+                    </p>
+
+
+                    <div class="hero-buttons">
+
+                        <a href="#aulas" class="button button-red">
+                            Começar a treinar
+                            <span>→</span>
+                        </a>
+
+                        <a href="#campeonatos" class="button button-light">
+                            Ver campeonatos
+                        </a>
+
+                    </div>
+
+
+                    <div class="hero-stats">
+
+                        <div>
+                            <strong>100+</strong>
+                            <span>Conteúdos</span>
+                        </div>
+
+                        <div>
+                            <strong>50+</strong>
+                            <span>Competições</span>
+                        </div>
+
+                        <div>
+                            <strong>24h</strong>
+                            <span>Judô</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FOTO PRINCIPAL -->
+
+                <div class="hero-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&w=1200&q=90"
+                        alt="Atleta praticando artes marciais"
+                    >
+
+                    <div class="hero-image-overlay"></div>
+
+
+                    <div class="hero-badge">
+
+                        <div class="badge-icon">
+                            🥋
+                        </div>
+
+                        <div>
+                            <small>DESTAQUE</small>
+                            <strong>Judô brasileiro</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= EXPLORAR ================= -->
+
+        <section class="section" id="explore">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span>EXPLORE</span>
+
+                        <h2>
+                            O mundo do judô
+                        </h2>
+                    </div>
+
+                    <a href="#">
+                        Ver tudo →
+                    </a>
+
+                </div>
+
+
+                <div class="category-grid">
+
+
+                    <a href="#aulas" class="category-card">
+
+                        <div class="category-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?auto=format&fit=crop&w=600&q=85"
+                                alt="Treinamento de judô">
+                        </div>
+
+                        <div class="category-content">
+
+                            <span class="number">01</span>
+
+                            <h3>
+                                Aulas
+                            </h3>
+
+                            <p>
+                                Técnicas e treinamentos
+                                para evoluir no tatame.
+                            </p>
+
+                            <strong>
+                                Explorar →
+                            </strong>
+
+                        </div>
+
+                    </a>
+
+
+                    <a href="#campeonatos" class="category-card">
+
+                        <div class="category-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=600&q=85"
+                                alt="Competição esportiva">
+                        </div>
+
+                        <div class="category-content">
+
+                            <span class="number">02</span>
+
+                            <h3>
+                                Campeonatos
+                            </h3>
+
+                            <p>
+                                Acompanhe as principais
+                                competições.
+                            </p>
+
+                            <strong>
+                                Ver calendário →
+                            </strong>
+
+                        </div>
+
+                    </a>
+
+
+                    <a href="#loja" class="category-card">
+
+                        <div class="category-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=600&q=85"
+                                alt="Equipamentos esportivos">
+                        </div>
+
+                        <div class="category-content">
+
+                            <span class="number">03</span>
+
+                            <h3>
+                                Loja
+                            </h3>
+
+                            <p>
+                                Equipamentos e produtos
+                                para judocas.
+                            </p>
+
+                            <strong>
+                                Conhecer loja →
+                            </strong>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= AO VIVO ================= -->
+
+        <section class="live-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span>TRANSMISSÃO</span>
+
+                        <h2>
+                            Ao vivo
+                        </h2>
+                    </div>
+
+                    <a href="#">
+                        Ver todas →
+                    </a>
+
+                </div>
+
+
+                <div class="live-card">
+
+                    <div class="live-photo">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1555597408-26bc8e548a46?auto=format&fit=crop&w=1400&q=90"
+                            alt="Competição de judô">
+
+                        <div class="live-dark"></div>
+
+                        <div class="live-tag">
+                            <i></i>
+                            AO VIVO
+                        </div>
+
+                        <button
+                            class="play"
+                            onclick="assistir()">
+                            ▶
+                        </button>
+
+                    </div>
+
+
+                    <div class="live-info">
+
+                        <span class="red-label">
+                            TRANSMISSÃO AO VIVO
+                        </span>
+
+                        <h3>
+                            Acompanhe cada
+                            momento do tatame.
+                        </h3>
+
+                        <p>
+                            Assista às principais
+                            competições e acompanhe
+                            os grandes nomes do judô.
+                        </p>
+
+
+                        <div class="live-details">
+
+                            <div>
+                                <span>EVENTO</span>
+                                <strong>Campeonato Nacional</strong>
+                            </div>
+
+                            <div>
+                                <span>STATUS</span>
+                                <strong class="online">
+                                    ● Transmitindo
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <a href="#" class="button button-red">
+                            Assistir agora →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CAMPEONATOS ================= -->
+
+        <section id="campeonatos" class="section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span>AGENDA</span>
+
+                        <h2>
+                            Próximos campeonatos
+                        </h2>
+                    </div>
+
+                    <a href="#">
+                        Ver calendário →
+                    </a>
+
+                </div>
+
+
+                <div class="events">
+
+
+                    <article class="event">
+
+                        <div class="event-date">
+                            <strong>15</strong>
+                            <span>SET</span>
+                        </div>
+
+                        <div class="event-info">
+
+                            <span>
+                                CAMPEONATO BRASILEIRO
+                            </span>
+
+                            <h3>
+                                Campeonato Brasileiro
+                                de Judô
+                            </h3>
+
+                            <p>
+                                📍 São Paulo — SP
+                            </p>
+
+                        </div>
+
+                        <div class="event-status">
+                            Em breve
+                        </div>
+
+                        <button class="event-arrow">
+                            →
+                        </button>
+
+                    </article>
+
+
+                    <article class="event">
+
+                        <div class="event-date">
+                            <strong>22</strong>
+                            <span>SET</span>
+                        </div>
+
+                        <div class="event-info">
+
+                            <span>
+                                CIRCUITO NACIONAL
+                            </span>
+
+                            <h3>
+                                Circuito Nacional de Judô
+                            </h3>
+
+                            <p>
+                                📍 Rio de Janeiro — RJ
+                            </p>
+
+                        </div>
+
+                        <div class="event-status">
+                            Inscrições
+                        </div>
+
+                        <button class="event-arrow">
+                            →
+                        </button>
+
+                    </article>
+
+
+                    <article class="event">
+
+                        <div class="event-date">
+                            <strong>05</strong>
+                            <span>OUT</span>
+                        </div>
+
+                        <div class="event-info">
+
+                            <span>
+                                TORNEIO
+                            </span>
+
+                            <h3>
+                                Open Nacional de Judô
+                            </h3>
+
+                            <p>
+                                📍 Belo Horizonte — MG
+                            </p>
+
+                        </div>
+
+                        <div class="event-status">
+                            Em breve
+                        </div>
+
+                        <button class="event-arrow">
+                            →
+                        </button>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= NOTÍCIAS ================= -->
+
+        <section id="noticias" class="section news-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span>NOTÍCIAS</span>
+
+                        <h2>
+                            Fique por dentro
+                        </h2>
+                    </div>
+
+                    <a href="#">
+                        Todas as notícias →
+                    </a>
+
+                </div>
+
+
+                <div class="news-grid">
+
+
+                    <article class="news-card">
+
+                        <div class="news-photo">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1600679472829-3044539ce8ed?auto=format&fit=crop&w=900&q=85"
+                                alt="Atleta treinando">
+
+                        </div>
+
+                        <div class="news-content">
+
+                            <span>
+                                JUDÔ
+                            </span>
+
+                            <h3>
+                                A preparação que faz
+                                a diferença no tatame
+                            </h3>
+
+                            <p>
+                                Confira dicas para melhorar
+                                seu treinamento.
+                            </p>
+
+                            <a href="#">
+                                Ler matéria →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="news-card">
+
+                        <div class="news-photo">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1546483875-ad9014c88eba?auto=format&fit=crop&w=900&q=85"
+                                alt="Atleta esportivo">
+
+                        </div>
+
+                        <div class="news-content">
+
+                            <span>
+                                COMPETIÇÕES
+                            </span>
+
+                            <h3>
+                                Tudo pronto para a
+                                próxima grande disputa
+                            </h3>
+
+                            <p>
+                                Veja as novidades do
+                                calendário nacional.
+                            </p>
+
+                            <a href="#">
+                                Ler matéria →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="news-card">
+
+                        <div class="news-photo">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=900&q=85"
+                                alt="Atleta durante competição">
+
+                        </div>
+
+                        <div class="news-content">
+
+                            <span>
+                                ATLETAS
+                            </span>
+
+                            <h3>
+                                Conheça os talentos
+                                que estão se destacando
+                            </h3>
+
+                            <p>
+                                Os novos nomes do judô
+                                brasileiro.
+                            </p>
+
+                            <a href="#">
+                                Ler matéria →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= AULAS ================= -->
+
+        <section id="aulas" class="section">
+
+            <div class="container">
+
+                <div class="training">
+
+                    <div class="training-content">
+
+                        <span>
+                            TREINE COM PROPÓSITO
+                        </span>
+
+                        <h2>
+                            Evolua a cada
+                            treino.
+                        </h2>
+
+                        <p>
+                            Aprenda fundamentos, golpes,
+                            quedas e estratégias para
+                            melhorar sua performance.
+                        </p>
+
+                        <a
+                            href="#"
+                            class="button button-red">
+                            Ver aulas →
+                        </a>
+
+                    </div>
+
+
+                    <div class="training-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=1200&q=90"
+                            alt="Treinamento esportivo">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= LOJA ================= -->
+
+        <section id="loja" class="shop-section">
+
+            <div class="container">
+
+                <div class="shop-box">
+
+                    <div>
+
+                        <span>
+                            JUDÔ WORLD SHOP
+                        </span>
+
+                        <h2>
+                            Tudo para
+                            o seu tatame.
+                        </h2>
+
+                        <p>
+                            Kimonos, faixas, acessórios
+                            e produtos para acompanhar
+                            sua jornada.
+                        </p>
+
+                        <a href="#" class="button button-white">
+                            Visitar loja →
+                        </a>
+
+                    </div>
+
+
+                    <div class="shop-items">
+
+                        <div>🥋</div>
+                        <div>🏆</div>
+                        <div>🎽</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+
+                <div class="footer-brand">
+
+                    <div class="logo footer-logo">
+
+                        <div class="logo-mark">
+                            柔
+                        </div>
+
+                        <div class="logo-text">
+                            <strong>JUDÔ WORLD</strong>
+                            <span>BRASIL</span>
+                        </div>
+
+                    </div>
+
+                    <p>
+                        O seu portal para viver,
+                        acompanhar e evoluir
+                        no mundo do judô.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Explorar
+                    </h4>
+
+                    <a href="#campeonatos">
+                        Campeonatos
+                    </a>
+
+                    <a href="#noticias">
+                        Notícias
+                    </a>
+
+                    <a href="#aulas">
+                        Aulas
+                    </a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Judô World
+                    </h4>
+
+                    <a href="#">
+                        Sobre nós
+                    </a>
+
+                    <a href="#">
+                        Contato
+                    </a>
+
+                    <a href="#">
+                        Termos
+                    </a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Siga-nos
+                    </h4>
+
+                    <a href="#">
+                        Instagram
+                    </a>
+
+                    <a href="#">
+                        YouTube
+                    </a>
+
+                    <a href="#">
+                        Facebook
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 Judô World BR
+                </span>
+
+                <span>
+                    Feito para quem vive o judô 🥋
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- PESQUISA -->
+
+    <div id="searchModal" class="search-modal">
+
+        <div class="search-box">
+
+            <button
+                onclick="fecharPesquisa()"
+                class="close-search">
+                ×
+            </button>
+
+            <span>
+                PESQUISAR
+            </span>
+
+            <h2>
+                O que você procura?
+            </h2>
+
+            <div class="search-input">
+
+                <input
+                    id="searchInput"
+                    type="text"
+                    placeholder="Digite sua busca..."
+                    onkeydown="pesquisarEnter(event)"
+                >
+
+                <button onclick="fazerPesquisa()">
+                    Buscar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/js.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,952 @@
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    background: #f5f5f5;
+
+    color: #111;
+
+    min-height: 100vh;
+
+    transition:
+        background .25s,
+        color .25s;
+
+}
+
+
+/* =====================================================
+   CABEÇALHO
+===================================================== */
+
+header {
+
+    height: 68px;
+
+    background: #fff;
+
+    border-bottom: 1px solid #e5e5e5;
+
+    display: flex;
+
+    position: relative;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+
+    color: #111;
+
+    text-decoration: none;
+
+    font-size: 20px;
+
+    font-weight: 900;
+
+}
+
+.logo span {
+
+    color: #d71920;
+
+}
+
+
+/* =====================================================
+   AÇÕES DO CABEÇALHO
+===================================================== */
+
+.header-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+/* =====================================================
+   BOTÃO TEMA
+===================================================== */
+
+.theme-button {
+
+    width: 42px;
+
+    height: 42px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    color: #111;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition: .25s;
+
+}
+
+.theme-button:hover {
+
+    border-color: #d71920;
+
+    transform: rotate(15deg);
+
+}
+
+
+/* =====================================================
+   BOTÃO VOLTAR
+===================================================== */
+
+.back-button {
+
+    height: 42px;
+
+    padding: 0 16px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 9px;
+
+    background: #fff;
+
+    color: #111;
+
+    text-decoration: none;
+
+    display: flex;
+
+    align-items: center;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+/* =====================================================
+   CARRINHO
+===================================================== */
+
+.cart-button {
+
+    position: relative;
+
+    width: 42px;
+
+    height: 42px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    color: #111;
+
+    text-decoration: none;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 18px;
+
+}
+
+
+/* =====================================================
+   CONTADOR DO CARRINHO
+===================================================== */
+
+.cart-count {
+
+    position: absolute;
+
+    top: -5px;
+
+    right: -5px;
+
+    min-width: 19px;
+
+    height: 19px;
+
+    padding: 0 5px;
+
+    border-radius: 20px;
+
+    background: #d71920;
+
+    color: #fff;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+/* =====================================================
+   CONTEÚDO
+===================================================== */
+
+main {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 45px 20px;
+
+}
+
+
+/* =====================================================
+   VOLTAR NO CELULAR
+===================================================== */
+
+.mobile-back {
+
+    display: none;
+
+}
+
+
+/* =====================================================
+   ÁREA DO PRODUTO
+===================================================== */
+
+.product-page {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 55px;
+
+    align-items: center;
+
+}
+
+
+/* =====================================================
+   VISUAL DO PRODUTO
+===================================================== */
+
+.product-visual {
+
+    min-height: 500px;
+
+    background: #fff;
+
+    border: 1px solid #e5e5e5;
+
+    border-radius: 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.06);
+
+}
+
+
+/* =====================================================
+   IMAGEM / ÍCONE
+===================================================== */
+
+.product-image {
+
+    width: 320px;
+
+    height: 320px;
+
+    border-radius: 20px;
+
+    background: #f7f7f7;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 150px;
+
+}
+
+
+/* =====================================================
+   CATEGORIA
+===================================================== */
+
+.product-category {
+
+    color: #d71920;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 10px;
+
+}
+
+
+/* =====================================================
+   NOME
+===================================================== */
+
+.product-details h1 {
+
+    font-size: 38px;
+
+    line-height: 1.1;
+
+    margin-bottom: 16px;
+
+}
+
+
+/* =====================================================
+   DESCRIÇÃO
+===================================================== */
+
+.product-description {
+
+    color: #777;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    margin-bottom: 22px;
+
+}
+
+
+/* =====================================================
+   PREÇO
+===================================================== */
+
+.product-price {
+
+    color: #d71920;
+
+    font-size: 30px;
+
+    font-weight: 900;
+
+}
+
+
+/* =====================================================
+   DIVISOR
+===================================================== */
+
+.divider {
+
+    height: 1px;
+
+    background: #e5e5e5;
+
+    margin: 25px 0;
+
+}
+
+
+/* =====================================================
+   QUANTIDADE
+===================================================== */
+
+.quantity-area label {
+
+    display: block;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    margin-bottom: 9px;
+
+}
+
+
+/* =====================================================
+   CONTROLE DE QUANTIDADE
+===================================================== */
+
+.quantity-control {
+
+    width: 135px;
+
+    height: 45px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 9px;
+
+    display: flex;
+
+    overflow: hidden;
+
+}
+
+
+/* =====================================================
+   BOTÕES + E -
+===================================================== */
+
+.quantity-control button {
+
+    width: 42px;
+
+    border: 0;
+
+    background: #f5f5f5;
+
+    color: #111;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+}
+
+
+/* =====================================================
+   INPUT QUANTIDADE
+===================================================== */
+
+.quantity-control input {
+
+    width: 50px;
+
+    border: 0;
+
+    text-align: center;
+
+    background: #fff;
+
+    color: #111;
+
+    font-size: 15px;
+
+    outline: none;
+
+}
+
+
+/* Remove setas do input */
+
+.quantity-control input::-webkit-inner-spin-button,
+.quantity-control input::-webkit-outer-spin-button {
+
+    -webkit-appearance: none;
+
+    margin: 0;
+
+}
+
+
+/* =====================================================
+   BOTÕES DO PRODUTO
+===================================================== */
+
+.product-buttons {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+}
+
+
+/* =====================================================
+   ADICIONAR AO CARRINHO
+===================================================== */
+
+.add-cart-button {
+
+    width: 100%;
+
+    min-height: 52px;
+
+    border: 1px solid #d71920;
+
+    border-radius: 9px;
+
+    background: #fff;
+
+    color: #d71920;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+
+.add-cart-button:hover {
+
+    background: #fff5f5;
+
+}
+
+
+/* =====================================================
+   COMPRAR
+===================================================== */
+
+.buy-button {
+
+    width: 100%;
+
+    min-height: 52px;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    background: #d71920;
+
+    color: #fff;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+
+.buy-button:hover {
+
+    background: #b9141a;
+
+}
+
+
+/* =====================================================
+   INFORMAÇÕES
+===================================================== */
+
+.product-info-box {
+
+    margin-top: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+}
+
+
+.product-info-box div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.product-info-box span {
+
+    width: 35px;
+
+    height: 35px;
+
+    border-radius: 50%;
+
+    background: #f2f2f2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.product-info-box p {
+
+    color: #666;
+
+    font-size: 12px;
+
+}
+
+
+/* =====================================================
+   MODO ESCURO
+===================================================== */
+
+body.dark {
+
+    background: #101010;
+
+    color: #fff;
+
+}
+
+
+body.dark header {
+
+    background: #151515;
+
+    border-color: #292929;
+
+}
+
+
+body.dark .logo {
+
+    color: #fff;
+
+}
+
+
+body.dark .theme-button,
+body.dark .cart-button,
+body.dark .back-button {
+
+    background: #202020;
+
+    color: #fff;
+
+    border-color: #383838;
+
+}
+
+
+body.dark .product-visual {
+
+    background: #181818;
+
+    border-color: #292929;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.3);
+
+}
+
+
+body.dark .product-image {
+
+    background: #222;
+
+}
+
+
+body.dark .product-description {
+
+    color: #aaa;
+
+}
+
+
+body.dark .divider {
+
+    background: #333;
+
+}
+
+
+body.dark .quantity-control {
+
+    border-color: #3a3a3a;
+
+}
+
+
+body.dark .quantity-control button {
+
+    background: #222;
+
+    color: #fff;
+
+}
+
+
+body.dark .quantity-control input {
+
+    background: #222;
+
+    color: #fff;
+
+}
+
+
+body.dark .add-cart-button {
+
+    background: #181818;
+
+    color: #fff;
+
+    border-color: #d71920;
+
+}
+
+
+body.dark .add-cart-button:hover {
+
+    background: #2a1515;
+
+}
+
+
+body.dark .product-info-box span {
+
+    background: #252525;
+
+}
+
+
+body.dark .product-info-box p {
+
+    color: #aaa;
+
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 700px) {
+
+    header {
+
+        height: 62px;
+
+        padding: 0 15px;
+
+    }
+
+
+    .logo {
+
+        font-size: 17px;
+
+    }
+
+
+    .header-actions {
+
+        gap: 6px;
+
+    }
+
+
+    .back-button {
+        display: flex;
+        width: auto;
+        padding: 0 12px;
+        height: 38px;
+        font-size: 13px;
+        border-radius: 9px;
+        align-items: center;
+        justify-content: center;
+        margin-left: 0;
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+
+    main {
+
+        padding: 20px 14px 35px;
+
+    }
+
+
+    .mobile-back {
+
+        display: block;
+
+        color: #d71920;
+
+        text-decoration: none;
+
+        font-size: 13px;
+
+        font-weight: 800;
+
+        margin-bottom: 18px;
+
+    }
+
+
+    .product-page {
+
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+
+    }
+
+
+    .product-visual {
+
+        min-height: 300px;
+
+        border-radius: 16px;
+
+    }
+
+
+    .product-image {
+
+        width: 220px;
+
+        height: 220px;
+
+        font-size: 100px;
+
+    }
+
+
+    .product-details h1 {
+
+        font-size: 29px;
+
+    }
+
+
+    .product-description {
+
+        font-size: 14px;
+
+    }
+
+
+    .product-price {
+
+        font-size: 26px;
+
+    }
+
+
+    .product-buttons {
+
+        margin-top: 20px;
+
+    }
+
+}
+
+
+/* =====================================================
+   CELULARES PEQUENOS
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .theme-button,
+    .cart-button {
+
+        width: 38px;
+
+        height: 38px;
+
+    }
+
+
+    .product-visual {
+
+        min-height: 260px;
+
+    }
+
+
+    .product-image {
+
+        width: 190px;
+
+        height: 190px;
+
+        font-size: 85px;
+
+    }
+
+}

@@ -1,10 +1,12 @@
 {
-  "name": "judo-server",
+  "name": "judo-world-loja",
   "version": "1.0.0",
-  "description": "Servidor simples para cadastro de contas (SQLite)",
+  "private": true,
+  "description": "Backend da loja do Judo World com SQLite",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed": "node seed.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
