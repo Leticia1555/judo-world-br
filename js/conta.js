@@ -1,286 +1,44 @@
 /* =====================================================
-   SUPABASE
-===================================================== */
-
-if (!window.supabase || !window.supabaseClient) {
-
-    console.error(
-        "Supabase não foi configurado corretamente."
-    );
-
-}
-
-
-/* =====================================================
    ELEMENTOS
 ===================================================== */
 
-const loginCard =
-    document.getElementById("loginCard");
-
-const profileCard =
-    document.getElementById("profileCard");
-
-const loginForm =
-    document.getElementById("loginForm");
-
-const logoutButton =
-    document.getElementById("logoutButton");
-
-const googleButton =
-    document.getElementById("googleButton");
-
-const themeButton =
-    document.getElementById("themeButton");
+const loginCard = document.getElementById("loginCard");
+const profileCard = document.getElementById("profileCard");
+const loginForm = document.getElementById("loginForm");
+const logoutButton = document.getElementById("logoutButton");
+const themeButton = document.getElementById("themeButton");
 
 
 /* =====================================================
    TEMA
 ===================================================== */
 
-const temaSalvo =
-    localStorage.getItem("tema");
+const temaSalvo = localStorage.getItem("tema");
 
 if (temaSalvo === "escuro") {
-
     document.body.classList.add("dark");
-
     if (themeButton) {
         themeButton.textContent = "☀️";
     }
-
 } else {
-
     if (themeButton) {
         themeButton.textContent = "🌙";
     }
-
 }
-
 
 if (themeButton) {
-
-    themeButton.addEventListener(
-        "click",
-        function () {
-
-            document.body.classList.toggle("dark");
-
-            const escuro =
-                document.body.classList.contains("dark");
-
-            if (escuro) {
-
-                themeButton.textContent = "☀️";
-
-                localStorage.setItem(
-                    "tema",
-                    "escuro"
-                );
-
-            } else {
-
-                themeButton.textContent = "🌙";
-
-                localStorage.setItem(
-                    "tema",
-                    "claro"
-                );
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   MOSTRAR PERFIL
-===================================================== */
-
-async function mostrarPerfil(user) {
-
-    if (!user) return;
-
-
-    /* -------------------------------------------------
-       Buscar dados do usuário
-    ------------------------------------------------- */
-
-    const { data: usuario, error } =
-        await supabaseClient
-            .from("usuarios")
-            .select("*")
-            .eq("id", user.id)
-            .single();
-
-
-    if (error) {
-
-        console.error(
-            "Erro ao buscar usuário:",
-            error
-        );
-
-        return;
-    }
-
-
-    /* -------------------------------------------------
-       Esconde login
-    ------------------------------------------------- */
-
-    if (loginCard) {
-        loginCard.style.display = "none";
-    }
-
-
-    /* -------------------------------------------------
-       Mostra perfil
-    ------------------------------------------------- */
-
-    if (profileCard) {
-        profileCard.style.display = "block";
-    }
-
-
-    /* -------------------------------------------------
-       Nome
-    ------------------------------------------------- */
-
-    const nome =
-        usuario.nome || "Usuário";
-
-    document.getElementById(
-        "profileName"
-    ).textContent = nome;
-
-    document.getElementById(
-        "profileNameInfo"
-    ).textContent = nome;
-
-
-    /* -------------------------------------------------
-       E-mail
-    ------------------------------------------------- */
-
-    document.getElementById(
-        "profileEmail"
-    ).textContent =
-        usuario.email || user.email || "-";
-
-
-    /* -------------------------------------------------
-       Telefone
-    ------------------------------------------------- */
-
-    const telefone =
-        usuario.telefone || "-";
-
-    document.getElementById(
-        "profileTelefone"
-    ).textContent = telefone;
-
-
-    /* -------------------------------------------------
-       Tipo
-    ------------------------------------------------- */
-
-    const tipo =
-        usuario.tipo || "aluno";
-
-    document.getElementById(
-        "profileTipo"
-    ).textContent =
-        tipo === "vendedor"
-            ? "Vendedor"
-            : "Aluno";
-
-
-    /* -------------------------------------------------
-       FAIXA
-    ------------------------------------------------- */
-
-    const faixaBox =
-        document.getElementById(
-            "profileFaixaBox"
-        );
-
-    if (tipo === "aluno") {
-
-        faixaBox.style.display = "flex";
-
-        document.getElementById(
-            "profileFaixa"
-        ).textContent =
-            usuario.faixa || "Não informado";
-
-    } else {
-
-        faixaBox.style.display = "none";
-
-    }
-
-
-    /* -------------------------------------------------
-       LOJA
-    ------------------------------------------------- */
-
-    const lojaBox =
-        document.getElementById(
-            "profileLojaBox"
-        );
-
-
-    if (tipo === "vendedor") {
-
-        const { data: loja } =
-            await supabaseClient
-                .from("lojas")
-                .select("*")
-                .eq("vendedor_id", user.id)
-                .maybeSingle();
-
-
-        if (loja) {
-
-            lojaBox.style.display = "flex";
-
-            document.getElementById(
-                "profileLoja"
-            ).textContent =
-                loja.nome;
-
+    themeButton.addEventListener("click", function () {
+        document.body.classList.toggle("dark");
+        const escuro = document.body.classList.contains("dark");
+        
+        if (escuro) {
+            themeButton.textContent = "☀️";
+            localStorage.setItem("tema", "escuro");
         } else {
-
-            lojaBox.style.display = "none";
-
+            themeButton.textContent = "🌙";
+            localStorage.setItem("tema", "claro");
         }
-
-    } else {
-
-        lojaBox.style.display = "none";
-
-    }
-
-
-    /* -------------------------------------------------
-       Texto principal
-    ------------------------------------------------- */
-
-    const subtitle =
-        document.getElementById(
-            "accountSubtitle"
-        );
-
-    if (subtitle) {
-
-        subtitle.textContent =
-            "Bem-vindo à sua conta.";
-
-    }
-
+    });
 }
 
 
@@ -289,158 +47,143 @@ async function mostrarPerfil(user) {
 ===================================================== */
 
 if (loginForm) {
+    loginForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+        console.log("✓ Formulário de login enviado");
 
-    loginForm.addEventListener(
-        "submit",
-        async function (event) {
+        const email = document.getElementById("email").value.trim();
+        const senha = document.getElementById("password").value;
 
-            event.preventDefault();
+        console.log("Email:", email);
+        console.log("Senha:", senha ? "****" : "(vazio)");
 
+        if (!email || !senha) {
+            alert("Digite seu e-mail e sua senha.");
+            return;
+        }
 
-            const email =
-                document
-                    .getElementById("email")
-                    .value
-                    .trim();
+        const button = document.getElementById("loginButton");
+        if (!button) {
+            console.error("❌ Botão de login não encontrado!");
+            alert("Erro: Botão de login não encontrado");
+            return;
+        }
 
-            const senha =
-                document
-                    .getElementById("password")
-                    .value;
+        button.disabled = true;
+        button.textContent = "Entrando...";
 
+        try {
+            console.log("→ Enviando requisição para " + API_BASE_URL + "/api/login...");
+            
+            const res = await fetch(API_BASE_URL + "/api/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: email,
+                    senha: senha
+                })
+            });
 
-            if (!email || !senha) {
+            console.log("← Resposta recebida:", res.status, res.statusText);
+            const data = await res.json();
+            console.log("Dados da resposta:", data);
 
-                alert(
-                    "Digite seu e-mail e sua senha."
-                );
-
+            if (!res.ok) {
+                const erro = data.erro || "E-mail ou senha incorretos.";
+                console.error("❌ Erro na resposta:", erro);
+                alert(erro);
+                button.disabled = false;
+                button.textContent = "Entrar";
                 return;
             }
 
+            console.log("✓ Login bem-sucedido!");
+            console.log("Token:", data.token.substring(0, 20) + "...");
 
-            const button =
-                document.getElementById(
-                    "loginButton"
-                );
+            // Salvar token e dados
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("usuario", JSON.stringify(data.usuario));
 
+            console.log("✓ Dados salvos no localStorage");
 
-            button.disabled = true;
-
-            button.textContent =
-                "Entrando...";
-
-
-            try {
-
-                const { data, error } =
-                    await supabaseClient.auth.signInWithPassword({
-
-                        email: email,
-
-                        password: senha
-
-                    });
-
-
-                if (error) {
-
-                    console.error(error);
-
-                    alert(
-                        "E-mail ou senha incorretos."
-                    );
-
-                    return;
-                }
-
-
-                if (!data.user) {
-
-                    alert(
-                        "Não foi possível entrar."
-                    );
-
-                    return;
-                }
-
-
-                await mostrarPerfil(
-                    data.user
-                );
-
-
-            } catch (error) {
-
-                console.error(error);
-
-                alert(
-                    "Erro ao tentar entrar."
-                );
-
-            } finally {
-
-                button.disabled = false;
-
-                button.textContent =
-                    "Entrar";
-
+            // Redirecionar para a página correta
+            if (data.usuario.tipo === "vendedor") {
+                console.log("Redirecionando para loja.html (vendedor)...");
+                window.location.href = "loja.html";
+            } else {
+                console.log("Redirecionando para perfil.html (aluno)...");
+                window.location.href = "perfil.html";
             }
 
+        } catch (error) {
+            console.error("❌ Erro ao fazer login:", error);
+            console.error("Detalhes:", error.message);
+            console.error("Stack:", error.stack);
+            alert("Erro ao tentar entrar: " + error.message);
+            button.disabled = false;
+            button.textContent = "Entrar";
         }
-    );
-
+    });
+} else {
+    console.error("❌ loginForm não encontrado na página!");
 }
 
 
 /* =====================================================
-   GOOGLE
+   MOSTRAR PERFIL
 ===================================================== */
 
-if (googleButton) {
+function mostrarPerfil(usuario) {
+    if (!usuario) return;
 
-    googleButton.addEventListener(
-        "click",
-        async function () {
+    // Esconde login
+    if (loginCard) {
+        loginCard.style.display = "none";
+    }
 
-            try {
+    // Mostra perfil
+    if (profileCard) {
+        profileCard.style.display = "block";
+    }
 
-                const { error } =
-                    await supabaseClient.auth.signInWithOAuth({
+    // Nome
+    const nome = usuario.nome || "Usuário";
+    const profileName = document.getElementById("profileName");
+    const profileNameInfo = document.getElementById("profileNameInfo");
+    
+    if (profileName) profileName.textContent = nome;
+    if (profileNameInfo) profileNameInfo.textContent = nome;
 
-                        provider: "google",
+    // E-mail
+    const profileEmail = document.getElementById("profileEmail");
+    if (profileEmail) profileEmail.textContent = usuario.email || "-";
 
-                        options: {
-                            redirectTo:
-                                window.location.href
-                        }
+    // Telefone
+    const profileTelefone = document.getElementById("profileTelefone");
+    if (profileTelefone) profileTelefone.textContent = usuario.telefone || "-";
 
-                    });
+    // Tipo
+    const tipo = usuario.tipo || "aluno";
+    const profileTipo = document.getElementById("profileTipo");
+    if (profileTipo) {
+        profileTipo.textContent = tipo === "vendedor" ? "Vendedor" : "Aluno";
+    }
 
-
-                if (error) {
-
-                    console.error(error);
-
-                    alert(
-                        "Não foi possível entrar com Google."
-                    );
-
-                }
-
-            } catch (error) {
-
-                console.error(error);
-
-                alert(
-                    "Erro ao conectar com Google."
-                );
-
+    // Faixa (apenas para aluno)
+    const faixaBox = document.getElementById("profileFaixaBox");
+    if (faixaBox) {
+        if (tipo === "aluno") {
+            faixaBox.style.display = "flex";
+            const profileFaixa = document.getElementById("profileFaixa");
+            if (profileFaixa) {
+                profileFaixa.textContent = usuario.faixa || "Não informado";
             }
-
+        } else {
+            faixaBox.style.display = "none";
         }
-    );
-
+    }
 }
 
 
@@ -449,121 +192,11 @@ if (googleButton) {
 ===================================================== */
 
 if (logoutButton) {
-
-    logoutButton.addEventListener(
-        "click",
-        async function () {
-
-            try {
-
-                const { error } =
-                    await supabaseClient.auth.signOut();
-
-
-                if (error) {
-
-                    console.error(error);
-
-                }
-
-
-                window.location.reload();
-
-
-            } catch (error) {
-
-                console.error(error);
-
-                window.location.reload();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   ESQUECI A SENHA
-===================================================== */
-
-const forgotPassword =
-    document.getElementById(
-        "forgotPassword"
-    );
-
-
-if (forgotPassword) {
-
-    forgotPassword.addEventListener(
-        "click",
-        async function (event) {
-
-            event.preventDefault();
-
-
-            const email =
-                document
-                    .getElementById("email")
-                    .value
-                    .trim();
-
-
-            if (!email) {
-
-                alert(
-                    "Digite seu e-mail primeiro."
-                );
-
-                return;
-            }
-
-
-            try {
-
-                const { error } =
-                    await supabaseClient.auth
-                        .resetPasswordForEmail(
-                            email,
-                            {
-                                redirectTo:
-                                    window.location.origin +
-                                    "/conta.html"
-                            }
-                        );
-
-
-                if (error) {
-
-                    console.error(error);
-
-                    alert(
-                        "Não foi possível enviar o e-mail."
-                    );
-
-                    return;
-                }
-
-
-                alert(
-                    "Enviamos um link para redefinir sua senha."
-                );
-
-
-            } catch (error) {
-
-                console.error(error);
-
-                alert(
-                    "Erro ao solicitar redefinição."
-                );
-
-            }
-
-        }
-    );
-
+    logoutButton.addEventListener("click", function () {
+        localStorage.removeItem("token");
+        localStorage.removeItem("usuario");
+        window.location.href = "conta.html";
+    });
 }
 
 
@@ -571,46 +204,18 @@ if (forgotPassword) {
    VERIFICAR USUÁRIO LOGADO
 ===================================================== */
 
-async function verificarUsuario() {
-
-    try {
-
-        const { data, error } =
-            await supabaseClient.auth.getUser();
-
-
-        if (error) {
-
-            console.log(
-                "Nenhum usuário logado."
-            );
-
-            return;
+function verificarUsuario() {
+    const usuarioJson = localStorage.getItem("usuario");
+    
+    if (usuarioJson) {
+        try {
+            const usuario = JSON.parse(usuarioJson);
+            mostrarPerfil(usuario);
+        } catch (error) {
+            console.error("Erro ao parsear usuário:", error);
         }
-
-
-        if (data && data.user) {
-
-            await mostrarPerfil(
-                data.user
-            );
-
-        }
-
-    } catch (error) {
-
-        console.error(
-            "Erro ao verificar sessão:",
-            error
-        );
-
     }
-
 }
 
-
-/* =====================================================
-   INICIAR
-===================================================== */
-
+// Verificar ao carregar a página
 verificarUsuario();

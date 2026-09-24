@@ -2,14 +2,18 @@
    VERIFICAR LOGIN
 ===================================================== */
 
-const usuarioLogado =
-    localStorage.getItem("usuarioLogado");
+const usuarioJson = localStorage.getItem("usuario");
 
+if (!usuarioJson) {
+    window.location.href = "conta.html";
+}
 
-if (usuarioLogado !== "true") {
-
-    window.location.href = "login.html";
-
+let usuarioLogado = null;
+try {
+    usuarioLogado = JSON.parse(usuarioJson);
+} catch (error) {
+    console.error("Erro ao parsear usuário:", error);
+    window.location.href = "conta.html";
 }
 
 
@@ -53,64 +57,27 @@ const themeButton =
 ===================================================== */
 
 function carregarPerfil() {
-
-    const nome =
-        localStorage.getItem(
-            "nomeUsuario"
-        ) || "Usuário";
-
-    const email =
-        localStorage.getItem(
-            "emailUsuario"
-        ) || "Não informado";
-
-    const tipo =
-        localStorage.getItem(
-            "tipoUsuario"
-        ) || "aluno";
-
+    const nome = usuarioLogado.nome || "Usuário";
+    const email = usuarioLogado.email || "Não informado";
+    const tipo = usuarioLogado.tipo || "aluno";
 
     /* NOME */
-
-    profileName.textContent =
-        nome;
-
-    nameData.textContent =
-        nome;
-
+    profileName.textContent = nome;
+    nameData.textContent = nome;
 
     /* E-MAIL */
-
-    emailData.textContent =
-        email;
-
+    emailData.textContent = email;
 
     /* TIPO */
-
     if (tipo === "vendedor") {
-
-        profileType.textContent =
-            "VENDEDOR";
-
-        typeData.textContent =
-            "Vendedor";
-
-        storeButton.style.display =
-            "flex";
-
+        profileType.textContent = "VENDEDOR";
+        typeData.textContent = "Vendedor";
+        storeButton.style.display = "flex";
     } else {
-
-        profileType.textContent =
-            "ALUNO";
-
-        typeData.textContent =
-            "Aluno";
-
-        storeButton.style.display =
-            "none";
-
+        profileType.textContent = "ALUNO";
+        typeData.textContent = "Aluno";
+        storeButton.style.display = "none";
     }
-
 }
 
 
@@ -124,15 +91,8 @@ document
         "click",
         function() {
 
-            editName.value =
-                localStorage.getItem(
-                    "nomeUsuario"
-                ) || "";
-
-            editEmail.value =
-                localStorage.getItem(
-                    "emailUsuario"
-                ) || "";
+            editName.value = usuarioLogado.nome || "";
+            editEmail.value = usuarioLogado.email || "";
 
 
             editPanel.classList.add(
@@ -197,16 +157,10 @@ document
             }
 
 
-            localStorage.setItem(
-                "nomeUsuario",
-                nome
-            );
-
-
-            localStorage.setItem(
-                "emailUsuario",
-                email
-            );
+            // Atualizar dados do usuário
+            usuarioLogado.nome = nome;
+            usuarioLogado.email = email;
+            localStorage.setItem("usuario", JSON.stringify(usuarioLogado));
 
 
             carregarPerfil();
@@ -243,26 +197,10 @@ document
 
             if (!confirmar) return;
 
+            localStorage.removeItem("token");
+            localStorage.removeItem("usuario");
 
-            localStorage.removeItem(
-                "usuarioLogado"
-            );
-
-            localStorage.removeItem(
-                "nomeUsuario"
-            );
-
-            localStorage.removeItem(
-                "emailUsuario"
-            );
-
-            localStorage.removeItem(
-                "tipoUsuario"
-            );
-
-
-            window.location.href =
-                "login.html";
+            window.location.href = "conta.html";
 
         }
     );

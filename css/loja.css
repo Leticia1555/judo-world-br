@@ -8,43 +8,83 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Montserrat", Arial, sans-serif;
+    background: #101010;
+    color: #ffffff;
+    min-height: 100vh;
+    transition:
+        background .25s ease,
+        color .25s ease;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+
+/* =====================================================
+   VARIÁVEIS
+===================================================== */
+
+:root {
+    --red: #ed1c24;
+    --red-dark: #c9141b;
+
+    --bg: #101010;
+    --card: #181818;
+
+    --input: #222222;
+    --input-border: #3a3a3a;
+
+    --text: #ffffff;
+    --muted: #999999;
+
+    --border: #2d2d2d;
+}
+
 
 /* =====================================================
    BODY
 ===================================================== */
 
 body {
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
-    color: #111;
-    min-height: 100vh;
-
-    transition:
-        background 0.25s ease,
-        color 0.25s ease;
+    background: var(--bg);
+    color: var(--text);
 }
 
 
 /* =====================================================
-   CABEÇALHO
+   HEADER
 ===================================================== */
 
 header {
-    height: 68px;
+    width: 100%;
+    min-height: 62px;
 
-    background: #fff;
+    background: #151515;
 
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #292929;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 6%;
+    padding: 10px 14px;
 
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    transition:
+        background .25s ease,
+        border-color .25s ease;
 }
 
 
@@ -53,17 +93,129 @@ header {
 ===================================================== */
 
 .logo {
-    color: #111;
-    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 9px;
 
-    font-size: 20px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.logo-mark {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 10px;
+
+    background: var(--red);
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 21px;
     font-weight: 900;
 }
 
-.logo span {
-    color: #d71920;
+.logo-text {
+    display: flex;
+    flex-direction: column;
+
+    line-height: 1;
 }
 
+.logo-text strong {
+    font-size: 15px;
+    font-weight: 900;
+
+    letter-spacing: -.3px;
+}
+
+.logo-text span {
+    color: var(--red);
+
+    font-size: 8px;
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    margin-top: 4px;
+}
+
+
+/* =====================================================
+   HEADER ACTIONS
+===================================================== */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+
+/* =====================================================
+   BOTÃO TEMA
+===================================================== */
+
+.theme-button {
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid #383838;
+    border-radius: 50%;
+
+    background: #202020;
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: .25s;
+}
+
+.theme-button:hover {
+    border-color: var(--red);
+    transform: rotate(15deg);
+}
+
+
+/* =====================================================
+   BOTÃO VOLTAR
+===================================================== */
+
+.back-button {
+    min-height: 40px;
+
+    padding: 0 13px;
+
+    border: 1px solid #383838;
+    border-radius: 9px;
+
+    background: #202020;
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: .2s;
+}
+
+.back-button:hover {
+    border-color: var(--red);
+    color: #ffffff;
+    background: #292929;
+}
 
 /* =====================================================
    AÇÕES DO CABEÇALHO
@@ -1271,4 +1423,73 @@ body.dark .empty p {
         width: auto;
     }
 
+}
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding: 60px 0 25px;
+
+    background: #111;
+
+    color: white;
+}
+
+.footer-grid {
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+
+    gap: 50px;
+}
+
+.footer-logo .logo-mark {
+    background: var(--red);
+}
+
+.footer-brand > p {
+    max-width: 340px;
+
+    margin-top: 15px;
+
+    color: #888;
+
+    font-size: 12px;
+}
+
+.footer-column h4 {
+    margin-bottom: 17px;
+
+    font-size: 12px;
+}
+
+.footer-column a {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #888;
+
+    font-size: 11px;
+
+    transition: .2s;
+}
+
+.footer-column a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 45px;
+    padding-top: 20px;
+
+    border-top: 1px solid #292929;
+
+    color: #666;
+
+    font-size: 10px;
 }

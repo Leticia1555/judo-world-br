@@ -5,53 +5,214 @@
 
 
 /* =====================================================
+   VERIFICAR AUTENTICAÇÃO
+===================================================== */
+
+let usuarioLogado = null;
+
+const usuarioJson =
+    localStorage.getItem("usuario");
+
+if (usuarioJson) {
+
+    try {
+
+        usuarioLogado =
+            JSON.parse(usuarioJson);
+
+        console.log(
+            "✓ Usuário logado:",
+            usuarioLogado.nome
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Erro ao parsear usuário:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =====================================================
    ELEMENTOS DA PÁGINA
 ===================================================== */
 
-const productImage = document.getElementById("productImage");
-const productCategory = document.getElementById("productCategory");
-const productName = document.getElementById("productName");
-const productDescription = document.getElementById("productDescription");
-const productPrice = document.getElementById("productPrice");
+const productImage =
+    document.getElementById("productImage");
 
-const quantityInput = document.getElementById("quantity");
+const productCategory =
+    document.getElementById("productCategory");
 
-const decreaseButton = document.getElementById("decreaseQuantity");
-const increaseButton = document.getElementById("increaseQuantity");
+const productName =
+    document.getElementById("productName");
 
-const addCartButton = document.getElementById("addCartButton");
-const buyButton = document.getElementById("buyButton");
+const productDescription =
+    document.getElementById("productDescription");
 
-const themeButton = document.getElementById("themeButton");
+const productPrice =
+    document.getElementById("productPrice");
+
+const quantityInput =
+    document.getElementById("quantity");
+
+const decreaseButton =
+    document.getElementById("decreaseQuantity");
+
+const increaseButton =
+    document.getElementById("increaseQuantity");
+
+const addCartButton =
+    document.getElementById("addCartButton");
+
+const buyButton =
+    document.getElementById("buyButton");
+
+const themeButton =
+    document.getElementById("themeButton");
+
+
+/* =====================================================
+   API
+===================================================== */
+
+const API_BASE =
+    typeof API_BASE_URL !== "undefined"
+        ? API_BASE_URL
+        : "/api";
 
 
 /* =====================================================
    PEGAR ID DO PRODUTO NA URL
 ===================================================== */
 
-const parametros = new URLSearchParams(window.location.search);
+const parametros =
+    new URLSearchParams(
+        window.location.search
+    );
 
-const produtoId = Number(parametros.get("id"));
+const produtoId =
+    Number(
+        parametros.get("id")
+    );
+
+console.log(
+    "Produto ID:",
+    produtoId
+);
 
 
 /* =====================================================
    CARREGAR PRODUTOS DO LOCALSTORAGE
 ===================================================== */
 
-let produtos = JSON.parse(
-    localStorage.getItem("produtosJudo")
-) || [];
+let produtos = [];
+
+try {
+
+    produtos =
+        JSON.parse(
+            localStorage.getItem(
+                "produtosJudo"
+            )
+        ) || [];
+
+} catch (error) {
+
+    console.error(
+        "Erro ao carregar produtos:",
+        error
+    );
+
+    produtos = [];
+
+}
+
+
+/* =====================================================
+   PRODUTOS PADRÃO
+===================================================== */
+
+if (!produtos.length) {
+
+    produtos = [
+
+        {
+            id: 1,
+            nome: "Kimono Judo",
+            categoria: "Kimonos",
+            preco: 199.90,
+            icone: "🥋",
+            descricao:
+                "Kimono resistente para treino."
+        },
+
+        {
+            id: 2,
+            nome: "Faixa Preta",
+            categoria: "Faixas",
+            preco: 49.90,
+            icone: "🥋",
+            descricao:
+                "Faixa para graduação."
+        },
+
+        {
+            id: 3,
+            nome: "Saco de Treino",
+            categoria: "Equipamentos",
+            preco: 129.90,
+            icone: "🥊",
+            descricao:
+                "Equipamento para treinamento."
+        },
+
+        {
+            id: 4,
+            nome: "Camiseta Judô",
+            categoria: "Roupas",
+            preco: 69.90,
+            icone: "👕",
+            descricao:
+                "Camiseta oficial Judô World."
+        }
+
+    ];
+
+}
+
+console.log(
+    "Produtos carregados:",
+    produtos.length
+);
 
 
 /* =====================================================
    ENCONTRAR PRODUTO
 ===================================================== */
 
-const produto = produtos.find(function(item) {
-    const localId = Number(item.id);
-    const backendId = item.backendId ? Number(item.backendId) : null;
-    return localId === produtoId || backendId === produtoId;
-});
+const produto =
+    produtos.find(
+        function(item) {
+
+            const localId =
+                Number(item.id);
+
+            const backendId =
+                item.backendId
+                    ? Number(item.backendId)
+                    : null;
+
+            return (
+                localId === produtoId ||
+                backendId === produtoId
+            );
+
+        }
+    );
 
 
 /* =====================================================
@@ -60,13 +221,15 @@ const produto = produtos.find(function(item) {
 
 function formatarPreco(valor) {
 
-    return Number(valor).toLocaleString("pt-BR", {
-
-        style: "currency",
-
-        currency: "BRL"
-
-    });
+    return Number(
+        valor || 0
+    ).toLocaleString(
+        "pt-BR",
+        {
+            style: "currency",
+            currency: "BRL"
+        }
+    );
 
 }
 
@@ -92,13 +255,16 @@ if (!produto) {
                 </h1>
 
                 <p>
-                    Este produto não existe ou foi removido.
+                    Este produto não existe
+                    ou foi removido.
                 </p>
 
                 <a
                     href="loja.html"
                     class="back-button">
+
                     ← Voltar para a loja
+
                 </a>
 
             </div>
@@ -116,19 +282,62 @@ if (!produto) {
 
 if (produto) {
 
-    productImage.textContent = produto.icone || "🥋";
+    console.log(
+        "✓ Produto encontrado:",
+        produto.nome
+    );
 
-    productCategory.textContent =
-        produto.categoria || "Produto";
 
-    productName.textContent =
-        produto.nome || "Produto";
+    if (productImage) {
 
-    productDescription.textContent =
-        produto.descricao || "Sem descrição.";
+        productImage.textContent =
+            produto.icone || "🥋";
 
-    productPrice.textContent =
-        formatarPreco(produto.preco);
+    }
+
+
+    if (productCategory) {
+
+        productCategory.textContent =
+            produto.categoria ||
+            "Produto";
+
+    }
+
+
+    if (productName) {
+
+        productName.textContent =
+            produto.nome ||
+            "Produto";
+
+    }
+
+
+    if (productDescription) {
+
+        productDescription.textContent =
+            produto.descricao ||
+            "Sem descrição.";
+
+    }
+
+
+    if (productPrice) {
+
+        productPrice.textContent =
+            formatarPreco(
+                produto.preco
+            );
+
+    }
+
+} else {
+
+    console.error(
+        "❌ Produto não encontrado! ID:",
+        produtoId
+    );
 
 }
 
@@ -139,13 +348,19 @@ if (produto) {
 
 function atualizarQuantidade(valor) {
 
-    valor = Number(valor);
+    valor =
+        Number(valor);
 
-    if (isNaN(valor) || valor < 1) {
+
+    if (
+        isNaN(valor) ||
+        valor < 1
+    ) {
 
         valor = 1;
 
     }
+
 
     if (valor > 99) {
 
@@ -153,7 +368,13 @@ function atualizarQuantidade(valor) {
 
     }
 
-    quantityInput.value = valor;
+
+    if (quantityInput) {
+
+        quantityInput.value =
+            valor;
+
+    }
 
 }
 
@@ -169,7 +390,9 @@ if (decreaseButton) {
         function() {
 
             const quantidade =
-                Number(quantityInput.value);
+                Number(
+                    quantityInput.value
+                );
 
             atualizarQuantidade(
                 quantidade - 1
@@ -192,7 +415,9 @@ if (increaseButton) {
         function() {
 
             const quantidade =
-                Number(quantityInput.value);
+                Number(
+                    quantityInput.value
+                );
 
             atualizarQuantidade(
                 quantidade + 1
@@ -230,9 +455,32 @@ if (quantityInput) {
 
 function pegarCarrinho() {
 
-    return JSON.parse(
-        localStorage.getItem("carrinhoJudo")
-    ) || [];
+    try {
+
+        const dados =
+            localStorage.getItem(
+                "carrinhoJudo"
+            );
+
+        const carrinho =
+            JSON.parse(
+                dados || "[]"
+            );
+
+        return Array.isArray(carrinho)
+            ? carrinho
+            : [];
+
+    } catch (error) {
+
+        console.error(
+            "Erro ao carregar carrinho:",
+            error
+        );
+
+        return [];
+
+    }
 
 }
 
@@ -257,11 +505,29 @@ function salvarCarrinho(carrinho) {
 
 function adicionarCarrinho() {
 
-    if (!produto) return;
+    if (!produto) {
+
+        alert(
+            "Produto não encontrado!"
+        );
+
+        return;
+
+    }
 
 
     const quantidade =
-        Number(quantityInput.value) || 1;
+        Number(
+            quantityInput?.value
+        ) || 1;
+
+
+    console.log(
+        "Adicionando ao carrinho:",
+        produto.nome,
+        "x",
+        quantidade
+    );
 
 
     let carrinho =
@@ -269,41 +535,72 @@ function adicionarCarrinho() {
 
 
     const produtoExistente =
-        carrinho.find(function(item) {
+        carrinho.find(
+            function(item) {
 
-            return Number(item.id) === Number(produto.id);
+                return (
+                    Number(item.id) ===
+                    Number(produto.id)
+                );
 
-        });
+            }
+        );
 
 
     if (produtoExistente) {
 
-        produtoExistente.quantidade += quantidade;
+        produtoExistente.quantidade =
+            Number(
+                produtoExistente.quantidade || 1
+            ) + quantidade;
+
+
+        console.log(
+            "✓ Quantidade atualizada"
+        );
 
     } else {
 
         carrinho.push({
 
-            id: produto.id,
+            id:
+                produto.id,
 
-            nome: produto.nome,
+            nome:
+                produto.nome,
 
-            categoria: produto.categoria,
+            categoria:
+                produto.categoria,
 
-            preco: Number(produto.preco),
+            preco:
+                Number(
+                    produto.preco
+                ),
 
-            icone: produto.icone || "🥋",
+            icone:
+                produto.icone ||
+                "🥋",
 
-            descricao: produto.descricao || "",
+            descricao:
+                produto.descricao ||
+                "",
 
-            quantidade: quantidade
+            quantidade:
+                quantidade
 
         });
+
+
+        console.log(
+            "✓ Produto adicionado ao carrinho"
+        );
 
     }
 
 
-    salvarCarrinho(carrinho);
+    salvarCarrinho(
+        carrinho
+    );
 
 
     alert(
@@ -359,9 +656,16 @@ if (buyButton) {
 function atualizarContadorCarrinho() {
 
     const contador =
-        document.getElementById("cartCount");
+        document.getElementById(
+            "cartCount"
+        );
 
-    if (!contador) return;
+
+    if (!contador) {
+
+        return;
+
+    }
 
 
     const carrinho =
@@ -370,10 +674,17 @@ function atualizarContadorCarrinho() {
 
     const quantidadeTotal =
         carrinho.reduce(
-            function(total, item) {
+            function(
+                total,
+                item
+            ) {
 
-                return total +
-                    Number(item.quantidade || 1);
+                return (
+                    total +
+                    Number(
+                        item.quantidade || 1
+                    )
+                );
 
             },
             0
@@ -384,7 +695,9 @@ function atualizarContadorCarrinho() {
         quantidadeTotal;
 
 
-    if (quantidadeTotal > 0) {
+    if (
+        quantidadeTotal > 0
+    ) {
 
         contador.style.display =
             "flex";
@@ -406,12 +719,18 @@ function atualizarContadorCarrinho() {
 function carregarTema() {
 
     const tema =
-        localStorage.getItem("tema");
+        localStorage.getItem(
+            "tema"
+        );
 
 
-    if (tema === "escuro") {
+    if (
+        tema === "escuro"
+    ) {
 
-        document.body.classList.add("dark");
+        document.body.classList.add(
+            "dark"
+        );
 
 
         if (themeButton) {
@@ -423,7 +742,9 @@ function carregarTema() {
 
     } else {
 
-        document.body.classList.remove("dark");
+        document.body.classList.remove(
+            "dark"
+        );
 
 
         if (themeButton) {
@@ -466,6 +787,7 @@ if (themeButton) {
                     "escuro"
                 );
 
+
                 themeButton.textContent =
                     "☀️";
 
@@ -475,6 +797,7 @@ if (themeButton) {
                     "tema",
                     "claro"
                 );
+
 
                 themeButton.textContent =
                     "🌙";

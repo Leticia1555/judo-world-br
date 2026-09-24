@@ -33,14 +33,27 @@
 
 <header>
 
-        <a href="index.html" class="logo">
-                <div class="logo-mark">柔</div>
+       <a
+            href="index.html"
+            class="logo">
 
-                <div class="logo-text">
-                    <strong>JUDÔ WORLD</strong>
-                    <span>BRASIL</span>
-                </div>
-            </a>
+            <div class="logo-mark">
+                柔
+            </div>
+
+            <div class="logo-text">
+
+                <strong>
+                    JUDÔ WORLD
+                </strong>
+
+                <span>
+                    BRASIL
+                </span>
+
+            </div>
+
+        </a>
 
 
 
@@ -490,8 +503,165 @@
 
 
 <!-- =====================================================
+     MODAL DE EDIÇÃO
+===================================================== -->
+
+<div id="editModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Editar Produto</h2>
+            <button class="modal-close" onclick="fecharModalEdicao()">✕</button>
+        </div>
+        
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="editProdutoNome">Nome:</label>
+                <input type="text" id="editProdutoNome" placeholder="Nome do produto">
+            </div>
+            
+            <div class="form-group">
+                <label for="editProdutoPreco">Preço:</label>
+                <input type="number" id="editProdutoPreco" placeholder="0.00" step="0.01">
+            </div>
+            
+            <div class="form-group">
+                <label for="editProdutoDescricao">Descrição:</label>
+                <textarea id="editProdutoDescricao" placeholder="Descrição do produto" rows="3"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="editProdutoIcone">Ícone/Emoji:</label>
+                <input type="text" id="editProdutoIcone" placeholder="🥋" maxlength="2">
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            <button class="btn-cancel" onclick="fecharModalEdicao()">Cancelar</button>
+            <button class="btn-save" onclick="salvarEdicaoProduto()">Salvar</button>
+        </div>
+    </div>
+</div>
+
+ <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+
+                <div class="footer-brand">
+
+                    <div class="logo footer-logo">
+
+                        <div class="logo-mark">
+                            柔
+                        </div>
+
+                        <div class="logo-text">
+                            <strong>JUDÔ WORLD</strong>
+                            <span>BRASIL</span>
+                        </div>
+
+                    </div>
+
+                    <p>
+                        O seu portal para viver,
+                        acompanhar e evoluir
+                        no mundo do judô.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Explorar
+                    </h4>
+
+                    <a href="#campeonatos">
+                        Campeonatos
+                    </a>
+
+                    <a href="#noticias">
+                        Notícias
+                    </a>
+
+                    <a href="#aulas">
+                        Aulas
+                    </a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Judô World
+                    </h4>
+
+                    <a href="#">
+                        Sobre nós
+                    </a>
+
+                    <a href="#">
+                        Contato
+                    </a>
+
+                    <a href="#">
+                        Termos
+                    </a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Siga-nos
+                    </h4>
+
+                    <a href="#">
+                        Instagram
+                    </a>
+
+                    <a href="#">
+                        YouTube
+                    </a>
+
+                    <a href="#">
+                        Facebook
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 Judô World BR
+                </span>
+
+                <span>
+                    Feito para quem vive o judô 🥋
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+<!-- =====================================================
      JAVASCRIPT
 ===================================================== -->
+
+<script src="js/config.js"></script>
 
 <script src="js/loja.js"></script>
 
