@@ -909,9 +909,9 @@ main {
 
 .product-bottom {
     display: flex;
+    flex-wrap: wrap;          /* preço em cima, botões embaixo */
 
     align-items: center;
-    justify-content: space-between;
 
     gap: 10px;
 }
@@ -922,6 +922,8 @@ main {
 ===================================================== */
 
 .product-price {
+    flex: 1 0 100%;           /* preço sozinho na primeira linha */
+
     font-size: 17px;
 
     font-weight: 900;
@@ -958,6 +960,25 @@ main {
 
 .buy-button:hover {
     background: #b9141a;
+}
+
+
+/* =====================================================
+   BOTÕES DO CARD (Ver produto / Adicionar)
+   Um embaixo do outro, com a largura toda do card
+===================================================== */
+
+.product-bottom > button,
+.product-bottom > a {
+    flex: 1 1 100%;
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    white-space: normal;      /* texto longo quebra linha em vez de vazar */
 }
 
 
@@ -1373,21 +1394,24 @@ body.dark .empty p {
 
 
     .product-bottom {
-        align-items: flex-end;
-
         flex-direction: column;
+        flex-wrap: nowrap;
+
+        align-items: stretch;
         gap: 8px;
     }
 
 
     .product-price {
-        align-self: flex-start;
+        flex: none;
 
         font-size: 15px;
     }
 
 
-    .buy-button {
+    .product-bottom > button,
+    .product-bottom > a {
+        flex: none;
         width: 100%;
     }
 
@@ -1412,16 +1436,6 @@ body.dark .empty p {
     }
 
 
-    .product-bottom {
-        flex-direction: row;
-
-        align-items: center;
-    }
-
-
-    .buy-button {
-        width: auto;
-    }
 
 }
 /* =========================================================
@@ -1492,4 +1506,997 @@ footer {
     color: #666;
 
     font-size: 10px;
+}
+
+/* =========================================================
+   FOTOS DOS PRODUTOS
+========================================================= */
+
+/* Foto no card (no lugar do emoji) */
+
+.product-image {
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* Campo de envio de fotos */
+
+.field input[type="file"],
+.form-group input[type="file"] {
+    height: auto;
+
+    padding: 10px 13px;
+
+    cursor: pointer;
+}
+
+.photo-hint {
+    color: #777;
+
+    font-size: 11px;
+}
+
+.photo-preview {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 10px;
+}
+
+.photo-preview:empty {
+    display: none;
+}
+
+.photo-item {
+    position: relative;
+
+    width: 84px;
+    height: 84px;
+
+    border: 2px solid #ddd;
+    border-radius: 10px;
+
+    background: #f7f7f7;
+
+    overflow: hidden;
+}
+
+.photo-item.principal {
+    border-color: #d71920;
+}
+
+.photo-item img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    cursor: pointer;
+}
+
+.photo-remove {
+    position: absolute;
+
+    top: 4px;
+    right: 4px;
+
+    width: 22px;
+    height: 22px;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+
+    font-size: 15px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-badge {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 2px 0;
+
+    background: #d71920;
+    color: #fff;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   JANELA DE EDIÇÃO DO PRODUTO
+========================================================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+
+    z-index: 1000;
+
+    padding: 16px;
+
+    background: rgba(0, 0, 0, 0.6);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 22px;
+
+    border-radius: 16px;
+
+    background: #fff;
+    color: #111;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 16px;
+}
+
+.modal-header h2 {
+    font-size: 19px;
+}
+
+.modal-close {
+    width: 34px;
+    height: 34px;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: #eee;
+    color: #111;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.form-group label {
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    padding: 11px 13px;
+
+    border: 1px solid #ddd;
+    border-radius: 9px;
+
+    background: #fff;
+    color: #111;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #d71920;
+}
+
+.modal-footer {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.btn-cancel,
+.btn-save {
+    flex: 1;
+
+    height: 44px;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.btn-cancel {
+    border: 1px solid #ddd;
+
+    background: #fff;
+    color: #111;
+}
+
+.btn-save {
+    border: 0;
+
+    background: #d71920;
+    color: #fff;
+}
+
+.btn-save:hover {
+    background: #b9141a;
+}
+
+
+/* Modo escuro */
+
+body.dark .modal-content {
+    background: #181818;
+    color: #fff;
+}
+
+body.dark .modal-close {
+    background: #2a2a2a;
+    color: #fff;
+}
+
+body.dark .form-group input,
+body.dark .form-group textarea {
+    background: #222;
+    color: #fff;
+
+    border-color: #3a3a3a;
+}
+
+body.dark .btn-cancel {
+    background: #222;
+    color: #fff;
+
+    border-color: #3a3a3a;
+}
+
+body.dark .photo-item {
+    background: #222;
+
+    border-color: #3a3a3a;
+}
+
+body.dark .photo-item.principal {
+    border-color: #d71920;
+}
+
+body.dark .photo-hint {
+    color: #aaa;
+}
+
+
+/* =========================================================
+   LISTA DE LOJAS DOS VENDEDORES
+========================================================= */
+
+.stores-heading {
+    font-size: 22px;
+
+    margin-bottom: 6px;
+}
+
+.stores-subtitle {
+    color: #777;
+
+    font-size: 13px;
+
+    margin-bottom: 20px;
+}
+
+.stores-grid {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+
+    gap: 16px;
+}
+
+.store-card {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 18px;
+
+    background: #fff;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+
+    transition:
+        transform 0.2s,
+        border-color 0.2s;
+}
+
+.store-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #d71920;
+}
+
+.store-card-logo {
+    width: 52px;
+    height: 52px;
+
+    flex-shrink: 0;
+
+    border-radius: 14px;
+
+    background: #fff0f0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 26px;
+}
+
+.store-card-text {
+    min-width: 0;
+}
+
+.store-card h3 {
+    font-size: 16px;
+}
+
+.store-card p {
+    margin-top: 4px;
+
+    color: #777;
+
+    font-size: 12px;
+    line-height: 1.4;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.store-card-cta {
+    display: inline-block;
+
+    margin-top: 8px;
+
+    color: #d71920;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.store-card-mine {
+    display: inline-block;
+
+    margin-bottom: 6px;
+    padding: 3px 8px;
+
+    border-radius: 20px;
+
+    background: #fff0f0;
+    color: #d71920;
+
+    font-size: 9px;
+    font-weight: 900;
+}
+
+.all-stores-link {
+    display: inline-block;
+
+    margin-top: 8px;
+
+    color: #d71920;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+body.dark .store-card {
+    background: #181818;
+
+    border-color: #292929;
+}
+
+body.dark .store-card:hover {
+    border-color: #d71920;
+}
+
+body.dark .store-card-logo,
+body.dark .store-card-mine {
+    background: #2a1515;
+}
+
+body.dark .store-card p,
+body.dark .stores-subtitle {
+    color: #aaa;
+}
+
+
+/* =========================================================
+   CONTAINER DO RODAPÉ
+   (centraliza o conteúdo e dá margem nas laterais)
+========================================================= */
+
+.container {
+    width: 100%;
+    max-width: 1150px;
+
+    margin: 0 auto;
+
+    padding: 0 20px;
+}
+
+
+@media (max-width: 700px) {
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 28px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+
+        gap: 6px;
+    }
+
+}
+
+/* ===== LOJA ESTILO MARKETPLACE ===== */
+
+.store-meta,
+.store-card-meta {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #e11d2e;
+}
+
+.store-card-meta {
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   TEMA ESCURO — PADRÃO JUDÔ WORLD
+   Aplicado de forma consistente em todas as páginas.
+   Suporta body.dark e body.dark-mode.
+   ========================================================= */
+
+body.dark,
+body.dark-mode {
+    --red: #e21a22;
+    --red-dark: #b9141a;
+    --bg: #090a0b;
+    --card: #111213;
+    --input: #1d1f20;
+    --input-border: #414445;
+    --text: #e2dfdb;
+    --muted: #999999;
+    --border: #7c7365;
+
+    background: #090a0b !important;
+    color: #e2dfdb !important;
+}
+
+/* Fundo e áreas principais */
+body.dark main,
+body.dark-mode main,
+body.dark .container,
+body.dark-mode .container,
+body.dark .section,
+body.dark-mode .section,
+body.dark .shop-section,
+body.dark-mode .shop-section,
+body.dark .live-section,
+body.dark-mode .live-section,
+body.dark .news-section,
+body.dark-mode .news-section {
+    background: #090a0b;
+    color: #e2dfdb;
+}
+
+/* Cabeçalhos */
+body.dark header,
+body.dark-mode header,
+body.dark .header,
+body.dark-mode .header,
+body.dark .topo,
+body.dark-mode .topo {
+    background: #090a0b !important;
+    color: #f5f5f5;
+    border-color: #292b2c !important;
+}
+
+/* Logos e navegação */
+body.dark .logo,
+body.dark-mode .logo,
+body.dark .logo-text strong,
+body.dark-mode .logo-text strong,
+body.dark .marca,
+body.dark-mode .marca,
+body.dark .marca-texto strong,
+body.dark-mode .marca-texto strong {
+    color: #f5f5f5;
+}
+
+body.dark .desktop-nav a,
+body.dark-mode .desktop-nav a {
+    color: #999999;
+}
+
+body.dark .desktop-nav a:hover,
+body.dark-mode .desktop-nav a:hover,
+body.dark .desktop-nav a.active,
+body.dark-mode .desktop-nav a.active {
+    color: #ffffff;
+}
+
+/* Botões de cabeçalho */
+body.dark .theme-button,
+body.dark-mode .theme-button,
+body.dark .header-button,
+body.dark-mode .header-button,
+body.dark .header-search,
+body.dark-mode .header-search,
+body.dark .cart-button,
+body.dark-mode .cart-button,
+body.dark .back-button,
+body.dark-mode .back-button,
+body.dark .tema,
+body.dark-mode .tema,
+body.dark .voltar,
+body.dark-mode .voltar {
+    background: #181a1b !important;
+    color: #e2dfdb !important;
+    border-color: #3b3d3e !important;
+}
+
+body.dark .theme-button:hover,
+body.dark-mode .theme-button:hover,
+body.dark .header-button:hover,
+body.dark-mode .header-button:hover,
+body.dark .back-button:hover,
+body.dark-mode .back-button:hover {
+    border-color: #e21a22 !important;
+}
+
+/* Títulos */
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4 {
+    color: #e2dfdb;
+}
+
+body.dark p,
+body.dark-mode p,
+body.dark .muted,
+body.dark-mode .muted,
+body.dark .subtitle,
+body.dark-mode .subtitle {
+    color: #999999;
+}
+
+/* Cards gerais */
+body.dark .card,
+body.dark-mode .card,
+body.dark .account-card,
+body.dark-mode .account-card,
+body.dark .profile-card,
+body.dark-mode .profile-card,
+body.dark .category-card,
+body.dark-mode .category-card,
+body.dark .live-card,
+body.dark-mode .live-card,
+body.dark .news-card,
+body.dark-mode .news-card,
+body.dark .training,
+body.dark-mode .training,
+body.dark .product-card,
+body.dark-mode .product-card,
+body.dark .store-card,
+body.dark-mode .store-card,
+body.dark .lista-produtos,
+body.dark-mode .lista-produtos,
+body.dark .resumo,
+body.dark-mode .resumo,
+body.dark .checkout,
+body.dark-mode .checkout {
+    background: #111213 !important;
+    color: #e2dfdb;
+    border-color: #303334 !important;
+    box-shadow: 0 15px 40px rgba(0,0,0,.22);
+}
+
+/* Cards de campeonatos — referência enviada */
+body.dark .event,
+body.dark-mode .event {
+    background: #111213 !important;
+    color: #e2dfdb;
+    border: 1px solid #7c7365 !important;
+}
+
+body.dark .event-date,
+body.dark-mode .event-date {
+    background: #3b0000 !important;
+    color: #e2dfdb !important;
+}
+
+body.dark .event-date strong,
+body.dark-mode .event-date strong,
+body.dark .event-info h3,
+body.dark-mode .event-info h3 {
+    color: #e2dfdb !important;
+}
+
+body.dark .event-date span,
+body.dark-mode .event-date span,
+body.dark .event-info > span,
+body.dark-mode .event-info > span,
+body.dark .red-label,
+body.dark-mode .red-label {
+    color: #e21a22 !important;
+}
+
+body.dark .event-status,
+body.dark-mode .event-status {
+    background: #1d1f20 !important;
+    color: #999999 !important;
+}
+
+body.dark .event-arrow,
+body.dark-mode .event-arrow {
+    background: #111213 !important;
+    border-color: #7c7365 !important;
+    color: #e2dfdb !important;
+}
+
+/* Homepage / aulas / ao vivo */
+body.dark .live-section,
+body.dark-mode .live-section,
+body.dark .news-section,
+body.dark-mode .news-section {
+    background: #111213 !important;
+}
+
+body.dark .hero,
+body.dark-mode .hero {
+    background:
+        radial-gradient(circle at 90% 10%, rgba(130,18,24,.24), transparent 34%),
+        #090a0b !important;
+}
+
+body.dark .button-light,
+body.dark-mode .button-light,
+body.dark .shop-box,
+body.dark-mode .shop-box {
+    background: #111213 !important;
+    color: #e2dfdb !important;
+    border-color: #36393a !important;
+}
+
+body.dark .live-details div,
+body.dark-mode .live-details div,
+body.dark .category-image,
+body.dark-mode .category-image {
+    background: #1d1f20 !important;
+}
+
+body.dark .training,
+body.dark-mode .training {
+    background: #111213 !important;
+}
+
+/* Formulários */
+body.dark input,
+body.dark select,
+body.dark textarea,
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    background: #1d1f20 !important;
+    color: #e2dfdb !important;
+    border-color: #414445 !important;
+}
+
+body.dark input::placeholder,
+body.dark textarea::placeholder,
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #777777 !important;
+}
+
+body.dark label,
+body.dark-mode label {
+    color: #d7d4d0;
+}
+
+/* Opções, contas e seleção */
+body.dark .type,
+body.dark-mode .type,
+body.dark .opcao,
+body.dark-mode .opcao,
+body.dark .choice,
+body.dark-mode .choice {
+    background: #151718 !important;
+    color: #e2dfdb !important;
+    border-color: #303334 !important;
+}
+
+body.dark .type:has(input:checked),
+body.dark-mode .type:has(input:checked),
+body.dark .opcao.ativa,
+body.dark-mode .opcao.ativa {
+    background: #241315 !important;
+    border-color: #e21a22 !important;
+}
+
+/* Perfil / conta */
+body.dark .profile-top,
+body.dark-mode .profile-top,
+body.dark .data,
+body.dark-mode .data,
+body.dark .divider,
+body.dark-mode .divider {
+    border-color: #303334 !important;
+}
+
+body.dark .avatar,
+body.dark-mode .avatar,
+body.dark .account-type,
+body.dark-mode .account-type {
+    background: #241315 !important;
+    color: #e21a22 !important;
+}
+
+/* Loja / produto */
+body.dark .product-info,
+body.dark-mode .product-info,
+body.dark .product-info-box,
+body.dark-mode .product-info-box,
+body.dark .product-details,
+body.dark-mode .product-details,
+body.dark .seller-panel,
+body.dark-mode .seller-panel,
+body.dark .seller-grid,
+body.dark-mode .seller-grid {
+    color: #e2dfdb;
+}
+
+body.dark .product-category,
+body.dark-mode .product-category,
+body.dark .product-description,
+body.dark-mode .product-description,
+body.dark .store-meta,
+body.dark-mode .store-meta,
+body.dark .seller-label,
+body.dark-mode .seller-label {
+    color: #999999;
+}
+
+body.dark .product-image,
+body.dark-mode .product-image,
+body.dark .photo-preview,
+body.dark-mode .photo-preview {
+    background: #1d1f20;
+    border-color: #303334;
+}
+
+/* Carrinho */
+body.dark .produto,
+body.dark-mode .produto,
+body.dark .linha,
+body.dark-mode .linha {
+    border-color: #303334 !important;
+}
+
+body.dark .produto-imagem,
+body.dark-mode .produto-imagem {
+    background: #1d1f20 !important;
+}
+
+body.dark .quantidade button,
+body.dark-mode .quantidade button,
+body.dark .opcao-preco,
+body.dark-mode .opcao-preco,
+body.dark .pagamento-opcoes,
+body.dark-mode .pagamento-opcoes {
+    background: #181a1b !important;
+    color: #e2dfdb !important;
+    border-color: #414445 !important;
+}
+
+body.dark .categoria,
+body.dark-mode .categoria,
+body.dark .campo-aviso,
+body.dark-mode .campo-aviso,
+body.dark .aviso,
+body.dark-mode .aviso {
+    color: #999999;
+}
+
+/* Botões principais */
+body.dark .primary-button,
+body.dark-mode .primary-button,
+body.dark .login-button,
+body.dark-mode .login-button,
+body.dark .register-button,
+body.dark-mode .register-button,
+body.dark .register-button,
+body.dark-mode .register-button,
+body.dark .buy-button,
+body.dark-mode .buy-button,
+body.dark .add-cart-button,
+body.dark-mode .add-cart-button,
+body.dark .red-button,
+body.dark-mode .red-button,
+body.dark .pagar,
+body.dark-mode .pagar {
+    background: #d71920 !important;
+    color: #ffffff !important;
+    border-color: #d71920 !important;
+}
+
+/* Botões secundários */
+body.dark .secondary-button,
+body.dark-mode .secondary-button,
+body.dark .cancel-button,
+body.dark-mode .cancel-button,
+body.dark .btn-cancel,
+body.dark-mode .btn-cancel,
+body.dark .continuar,
+body.dark-mode .continuar {
+    background: #181a1b !important;
+    color: #e2dfdb !important;
+    border-color: #414445 !important;
+}
+
+/* Menu e pesquisa */
+body.dark .mobile-menu,
+body.dark-mode .mobile-menu,
+body.dark .search-box,
+body.dark-mode .search-box,
+body.dark .modal-content,
+body.dark-mode .modal-content {
+    background: #111213 !important;
+    color: #e2dfdb !important;
+    border-color: #303334 !important;
+}
+
+body.dark .mobile-menu a,
+body.dark-mode .mobile-menu a {
+    color: #e2dfdb !important;
+    border-color: #292c2d !important;
+}
+
+body.dark .search-modal,
+body.dark-mode .search-modal {
+    background: rgba(0,0,0,.78) !important;
+}
+
+body.dark .close-search,
+body.dark-mode .close-search,
+body.dark .modal-close,
+body.dark-mode .modal-close {
+    background: #1d1f20 !important;
+    color: #ffffff !important;
+}
+
+/* Rodapé */
+body.dark footer,
+body.dark-mode footer,
+body.dark .rodape,
+body.dark-mode .rodape {
+    background: #090a0b !important;
+    color: #999999;
+    border-color: #292b2c !important;
+}
+
+body.dark .footer-brand,
+body.dark-mode .footer-brand,
+body.dark .footer-column h3,
+body.dark-mode .footer-column h3,
+body.dark .footer-logo,
+body.dark-mode .footer-logo {
+    color: #e2dfdb;
+}
+
+body.dark .footer-bottom,
+body.dark-mode .footer-bottom,
+body.dark .rodape-final,
+body.dark-mode .rodape-final {
+    border-color: #292b2c !important;
+}
+
+/* Links */
+body.dark a:hover,
+body.dark-mode a:hover {
+    color: #e21a22;
+}
+
+/* Evita fundos brancos remanescentes em elementos comuns */
+body.dark .empty,
+body.dark-mode .empty,
+body.dark .vazio,
+body.dark-mode .vazio,
+body.dark .mensagem,
+body.dark-mode .mensagem {
+    background: #111213 !important;
+    color: #999999 !important;
+    border-color: #303334 !important;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    body.dark .mobile-actions .search-button,
+    body.dark-mode .mobile-actions .search-button {
+        background: #181a1b !important;
+        color: #ffffff !important;
+        border-color: #343738 !important;
+    }
 }

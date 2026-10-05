@@ -243,6 +243,26 @@
                 </div>
 
 
+                <div class="field full">
+
+                    <label>
+                        Chave Pix para receber os pagamentos
+                    </label>
+
+                    <input
+                        id="storePixKey"
+                        type="text"
+                        placeholder="Chave aleatória, e-mail ou telefone"
+                        autocomplete="off">
+
+                    <small class="photo-hint">
+                        Os clientes veem esta chave ao pagar.
+                        Prefira uma chave aleatória (evite CPF).
+                    </small>
+
+                </div>
+
+
                 <button
                     class="red-button"
                     type="submit">
@@ -369,6 +389,26 @@
                 </div>
 
 
+                <div class="field full">
+
+                    <label>
+                        Fotos do produto (até 5)
+                    </label>
+
+                    <input
+                        id="productPhotos"
+                        type="file"
+                        accept="image/*"
+                        multiple>
+
+                    <div
+                        id="productPhotosPreview"
+                        class="photo-preview">
+                    </div>
+
+                </div>
+
+
                 <button
                     class="red-button"
                     type="submit">
@@ -386,10 +426,36 @@
 
 
     <!-- =================================================
+         LOJAS DOS VENDEDORES
+    ================================================== -->
+
+    <section
+        id="storesSection"
+        class="stores-section"
+        style="display:none;">
+
+        <h2 class="stores-heading">
+            Escolha uma loja
+        </h2>
+
+        <p class="stores-subtitle">
+            Cada vendedor tem a sua própria loja.
+        </p>
+
+        <div
+            id="storesGrid"
+            class="stores-grid">
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
          INFORMAÇÕES DA LOJA
     ================================================== -->
 
-    <section class="store-info">
+    <section id="storeInfo" class="store-info" style="display:none;">
 
         <div class="store-logo">
             🥋
@@ -406,6 +472,16 @@
                 Produtos para praticantes de judô.
             </p>
 
+            <a
+                id="allStoresLink"
+                class="all-stores-link"
+                href="loja.html"
+                style="display:none;">
+
+                ← Todas as lojas
+
+            </a>
+
         </div>
 
     </section>
@@ -416,7 +492,7 @@
          PESQUISA E FILTRO
     ================================================== -->
 
-    <section class="shop-tools">
+    <section id="shopTools" class="shop-tools" style="display:none;">
 
         <div class="search-box">
 
@@ -470,7 +546,8 @@
 
     <section
         id="products"
-        class="products">
+        class="products"
+        style="display:none;">
 
     </section>
 
@@ -531,7 +608,14 @@
             
             <div class="form-group">
                 <label for="editProdutoIcone">Ícone/Emoji:</label>
-                <input type="text" id="editProdutoIcone" placeholder="🥋" maxlength="2">
+                <input type="text" id="editProdutoIcone" placeholder="🥋" maxlength="8">
+            </div>
+
+            <div class="form-group">
+                <label for="editProdutoFotos">Fotos (até 5):</label>
+                <input type="file" id="editProdutoFotos" accept="image/*" multiple>
+                <div id="editProdutoFotosPreview" class="photo-preview"></div>
+                <small class="photo-hint">A primeira foto é a principal. Clique em outra foto para torná-la principal.</small>
             </div>
         </div>
         
@@ -662,6 +746,8 @@
 ===================================================== -->
 
 <script src="js/config.js"></script>
+
+<script src="js/imagens.js"></script>
 
 <script src="js/loja.js"></script>
 

@@ -74,6 +74,9 @@ const buyButton =
 const themeButton =
     document.getElementById("themeButton");
 
+const productThumbs =
+    document.getElementById("productThumbs");
+
 
 /* =====================================================
    API
@@ -277,6 +280,159 @@ if (!produto) {
 
 
 /* =====================================================
+   IMAGENS DO PRODUTO
+   Aceita produto.imagens (lista) e/ou produto.imagem
+   (foto enviada pelo vendedor). Sem foto, usa o emoji.
+===================================================== */
+
+function listaImagens(item) {
+
+    const lista = [];
+
+    if (item && Array.isArray(item.imagens)) {
+
+        lista.push(...item.imagens);
+
+    }
+
+    if (item && item.imagem) {
+
+        lista.unshift(item.imagem);
+
+    }
+
+    return Array.from(
+        new Set(
+            lista.filter(
+                function(src) {
+
+                    return (
+                        typeof src === "string" &&
+                        src.trim() !== ""
+                    );
+
+                }
+            )
+        )
+    );
+
+}
+
+
+function mostrarImagemPrincipal(src, iconeFallback) {
+
+    if (!productImage) {
+
+        return;
+
+    }
+
+    productImage.textContent = "";
+
+    const img =
+        document.createElement("img");
+
+    img.src = src;
+
+    img.alt =
+        (produto && produto.nome) || "Produto";
+
+    /* se a foto não carregar, volta para o emoji */
+
+    img.addEventListener(
+        "error",
+        function() {
+
+            productImage.textContent =
+                iconeFallback;
+
+        }
+    );
+
+    productImage.appendChild(img);
+
+}
+
+
+function mostrarGaleria(imagens, iconeFallback) {
+
+    mostrarImagemPrincipal(
+        imagens[0],
+        iconeFallback
+    );
+
+    if (
+        !productThumbs ||
+        imagens.length < 2
+    ) {
+
+        return;
+
+    }
+
+    productThumbs.innerHTML = "";
+
+    imagens.forEach(
+        function(src, indice) {
+
+            const botao =
+                document.createElement("button");
+
+            botao.type = "button";
+
+            botao.setAttribute(
+                "aria-label",
+                "Ver foto " + (indice + 1)
+            );
+
+            if (indice === 0) {
+
+                botao.classList.add("ativa");
+
+            }
+
+            const mini =
+                document.createElement("img");
+
+            mini.src = src;
+
+            mini.alt = "";
+
+            botao.appendChild(mini);
+
+            botao.addEventListener(
+                "click",
+                function() {
+
+                    mostrarImagemPrincipal(
+                        src,
+                        iconeFallback
+                    );
+
+                    productThumbs
+                        .querySelectorAll("button")
+                        .forEach(
+                            function(b) {
+
+                                b.classList.remove("ativa");
+
+                            }
+                        );
+
+                    botao.classList.add("ativa");
+
+                }
+            );
+
+            productThumbs.appendChild(botao);
+
+        }
+    );
+
+}
+
+
+/* =====================================================
    MOSTRAR PRODUTO
 ===================================================== */
 
@@ -290,8 +446,25 @@ if (produto) {
 
     if (productImage) {
 
-        productImage.textContent =
+        const iconeProduto =
             produto.icone || "🥋";
+
+        const imagens =
+            listaImagens(produto);
+
+        if (imagens.length) {
+
+            mostrarGaleria(
+                imagens,
+                iconeProduto
+            );
+
+        } else {
+
+            productImage.textContent =
+                iconeProduto;
+
+        }
 
     }
 
@@ -338,6 +511,75 @@ if (produto) {
         "❌ Produto não encontrado! ID:",
         produtoId
     );
+
+}
+
+
+/* =====================================================
+   LINK PARA A LOJA DO VENDEDOR
+===================================================== */
+
+if (
+    produto &&
+    produto.lojaId &&
+    String(produto.lojaId) !== "local"
+) {
+
+    const linkLoja =
+        "loja.html?loja=" +
+        encodeURIComponent(produto.lojaId);
+
+    let nomeDaLoja = "";
+
+    try {
+
+        const lojasSalvas =
+            JSON.parse(
+                localStorage.getItem("lojasJudo") || "[]"
+            );
+
+        const achada =
+            lojasSalvas.find(
+                function (l) {
+
+                    return String(l.id) === String(produto.lojaId);
+
+                }
+            );
+
+        if (achada) {
+
+            nomeDaLoja = achada.nome;
+
+        }
+
+    } catch (error) {}
+
+    const productStoreLink =
+        document.getElementById("productStoreLink");
+
+    if (productStoreLink) {
+
+        productStoreLink.href = linkLoja;
+
+        productStoreLink.textContent =
+            "🏪 " + (nomeDaLoja || "Ver loja do vendedor");
+
+        productStoreLink.style.display = "inline-block";
+
+    }
+
+    /* "Voltar" leva para a loja de onde o produto veio */
+
+    document
+        .querySelectorAll(".back-button, .mobile-back")
+        .forEach(
+            function (a) {
+
+                a.href = linkLoja;
+
+            }
+        );
 
 }
 
@@ -554,6 +796,13 @@ function adicionarCarrinho() {
                 produtoExistente.quantidade || 1
             ) + quantidade;
 
+        if (!produtoExistente.imagem) {
+
+            produtoExistente.imagem =
+                listaImagens(produto)[0] || "";
+
+        }
+
 
         console.log(
             "✓ Quantidade atualizada"
@@ -580,6 +829,13 @@ function adicionarCarrinho() {
             icone:
                 produto.icone ||
                 "🥋",
+
+            imagem:
+                listaImagens(produto)[0] ||
+                "",
+
+            lojaId:
+                produto.lojaId || null,
 
             descricao:
                 produto.descricao ||

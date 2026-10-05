@@ -1,4 +1,10 @@
 /* =====================================================
+   JUDO WORLD BR — AO VIVO
+   CSS reformulado
+   Mantém as classes do aovivo.css original
+===================================================== */
+
+/* =====================================================
    RESET
 ===================================================== */
 
@@ -282,671 +288,1039 @@ header {
 ===================================================== */
 
 main {
-    max-width: 1100px;
-
-    margin: auto;
-
-    padding: 45px 20px 70px;
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 38px 14px 50px;
 }
 
-
-/* =====================================================
-   TÍTULO
-===================================================== */
-
-.page-title {
-    text-align: center;
-
-    margin-bottom: 35px;
-}
-
-.page-title small {
-    color: #d71920;
-
-    font-size: 10px;
-
-    font-weight: 900;
-
-    letter-spacing: 2px;
-}
-
-.page-title h1 {
-    margin-top: 8px;
-
-    font-size: 38px;
-
-    font-weight: 900;
-}
-
-.page-title p {
-    color: #777;
-
-    font-size: 14px;
-
-    margin-top: 10px;
-}
-
-
-/* =====================================================
-   AULA EM DESTAQUE
-===================================================== */
-
-.featured {
+.live {
     display: flex;
-
     align-items: center;
+    gap: 8px;
 
-    gap: 25px;
-
-    background: #fff;
-
-    border: 1px solid #e5e5e5;
-
-    border-radius: 18px;
-
-    padding: 25px;
-
-    margin-bottom: 28px;
-
-    box-shadow:
-        0 12px 35px rgba(0,0,0,.05);
-}
-
-
-/* =====================================================
-   ÍCONE DESTAQUE
-===================================================== */
-
-.featured-icon {
-    width: 190px;
-
-    height: 190px;
-
-    flex-shrink: 0;
-
-    border-radius: 15px;
-
-    background: #fff0f0;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    font-size: 85px;
-}
-
-
-/* =====================================================
-   CONTEÚDO DESTAQUE
-===================================================== */
-
-.featured-content {
-    flex: 1;
-}
-
-.featured-content > span {
-    color: #d71920;
-
-    font-size: 9px;
-
-    font-weight: 900;
-
-    letter-spacing: 1.5px;
-}
-
-.featured-content h2 {
-    font-size: 27px;
-
-    margin-top: 7px;
-}
-
-.featured-content p {
-    color: #777;
-
-    font-size: 13px;
-
-    line-height: 1.5;
-
-    margin-top: 10px;
-
-    max-width: 600px;
-}
-
-
-/* =====================================================
-   INFORMAÇÕES
-===================================================== */
-
-.featured-info {
-    display: flex;
-
-    gap: 18px;
-
-    margin: 15px 0;
-}
-
-.featured-info span {
-    color: #555;
-
-    font-size: 11px;
-
-    font-weight: 700;
-}
-
-
-/* =====================================================
-   BOTÃO ASSISTIR
-===================================================== */
-
-.watch-button {
-    height: 43px;
-
-    padding: 0 18px;
-
-    border: 0;
-
-    border-radius: 8px;
-
-    background: #d71920;
-
-    color: #fff;
+    color: #ff626a;
 
     font-size: 12px;
-
     font-weight: 800;
-
-    cursor: pointer;
 }
 
-.watch-button:hover {
-    background: #b9141a;
+.live-dot {
+    width: 8px;
+    height: 8px;
+
+    background: var(--red);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 4px rgba(237, 28, 36, .10),
+        0 0 15px rgba(237, 28, 36, .75);
+
+    animation: livePulse 1.8s ease-in-out infinite;
 }
 
+@keyframes livePulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: .65;
+        transform: scale(.82);
+    }
+}
 
 /* =====================================================
-   PESQUISA
+   CONTAINER
 ===================================================== */
 
-.lesson-tools {
+.container {
+    width: min(1500px, 96vw);
+    margin: 28px auto 44px;
+}
+
+/* =====================================================
+   TV LAYOUT
+===================================================== */
+
+.tv-layout {
     display: grid;
 
-    grid-template-columns: 1fr 210px;
+    grid-template-columns:
+        minmax(0, 1fr)
+        330px;
 
-    gap: 10px;
+    gap: 20px;
 
-    margin-bottom: 22px;
+    align-items: start;
 }
 
-.search-box {
-    height: 48px;
+/* =====================================================
+   PLAYER / TV
+===================================================== */
 
-    background: #fff;
+.tv {
+    position: relative;
 
-    border: 1px solid #ddd;
+    background:
+        linear-gradient(145deg, #171b21 0%, #0d1015 100%);
 
-    border-radius: 9px;
+    padding: 12px;
 
-    display: flex;
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: var(--radius-lg);
 
-    align-items: center;
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, .3),
+        var(--shadow-lg);
 
-    gap: 10px;
-
-    padding: 0 14px;
+    overflow: hidden;
 }
 
-.search-box input {
+.tv::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255, 255, 255, .055),
+            transparent 22%,
+            transparent 76%,
+            rgba(237, 28, 36, .035)
+        );
+}
+
+.screen {
+    position: relative;
+
     width: 100%;
+    aspect-ratio: 16 / 9;
 
+    background: #000;
+
+    border-radius: 13px;
+    overflow: hidden;
+
+    isolation: isolate;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, .055),
+        0 16px 35px rgba(0, 0, 0, .38);
+}
+
+.screen::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    border: 1px solid rgba(255, 255, 255, .06);
+    border-radius: inherit;
+
+    z-index: 4;
+}
+
+.screen iframe {
+    display: block;
+
+    width: 100%;
     height: 100%;
 
     border: 0;
 
-    outline: 0;
-
-    background: transparent;
-
-    color: #111;
-
-    font-size: 14px;
+    background: #000;
 }
-
-.search-box:focus-within {
-    border-color: #d71920;
-}
-
 
 /* =====================================================
-   FILTRO
+   OVERLAY AO VIVO
 ===================================================== */
 
-#levelFilter {
-    height: 48px;
+.live-label {
+    position: absolute;
 
-    border: 1px solid #ddd;
+    top: 16px;
+    left: 16px;
 
-    border-radius: 9px;
+    z-index: 10;
 
-    background: #fff;
-
-    color: #111;
-
-    padding: 0 12px;
-
-    outline: none;
-}
-
-
-/* =====================================================
-   GRID DE AULAS
-===================================================== */
-
-.lessons {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 18px;
-}
-
-
-/* =====================================================
-   CARD DA AULA
-===================================================== */
-
-.lesson-card {
-    background: #fff;
-
-    border: 1px solid #e5e5e5;
-
-    border-radius: 15px;
-
-    overflow: hidden;
-
-    transition: .2s;
-}
-
-.lesson-card:hover {
-    transform: translateY(-4px);
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.08);
-}
-
-
-/* =====================================================
-   CAPA
-===================================================== */
-
-.lesson-cover {
-    height: 170px;
-
-    background: #f7f7f7;
-
-    display: flex;
-
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
 
-    font-size: 70px;
-}
+    padding: 7px 10px;
 
+    border: 1px solid rgba(255, 255, 255, .13);
+    border-radius: 6px;
 
-/* =====================================================
-   INFORMAÇÕES
-===================================================== */
-
-.lesson-info {
-    padding: 17px;
-}
-
-.lesson-level {
-    color: #d71920;
-
-    font-size: 9px;
-
-    font-weight: 900;
-
-    letter-spacing: 1px;
-
-    text-transform: uppercase;
-}
-
-.lesson-name {
-    font-size: 17px;
-
-    font-weight: 900;
-
-    margin-top: 7px;
-}
-
-.lesson-description {
-    color: #777;
-
-    font-size: 11px;
-
-    line-height: 1.5;
-
-    margin-top: 7px;
-
-    min-height: 34px;
-}
-
-
-/* =====================================================
-   PROFESSOR E DURAÇÃO
-===================================================== */
-
-.lesson-meta {
-    display: flex;
-
-    justify-content: space-between;
-
-    margin-top: 14px;
-
-    color: #777;
-
-    font-size: 10px;
-}
-
-
-/* =====================================================
-   BOTÃO
-===================================================== */
-
-.lesson-button {
-    width: 100%;
-
-    height: 40px;
-
-    border: 0;
-
-    border-radius: 8px;
-
-    background: #d71920;
+    background:
+        linear-gradient(135deg, var(--red-light), var(--red-dark));
 
     color: #fff;
 
-    margin-top: 14px;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .7px;
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, .35),
+        0 0 22px rgba(237, 28, 36, .18);
+
+    text-transform: uppercase;
+
+    pointer-events: none;
+}
+
+.live-label::before {
+    content: "";
+
+    display: inline-block;
+
+    width: 6px;
+    height: 6px;
+
+    margin-right: 6px;
+
+    background: #fff;
+    border-radius: 50%;
+
+    box-shadow: 0 0 7px rgba(255, 255, 255, .8);
+
+    animation: liveLabelPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes liveLabelPulse {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .45;
+    }
+}
+
+/* =====================================================
+   LOGO DO CANAL
+===================================================== */
+
+.channel-logo {
+    position: absolute;
+
+    top: 16px;
+    right: 16px;
+
+    z-index: 10;
+
+    max-width: 45%;
+
+    padding: 8px 12px;
+
+    border: 1px solid rgba(255, 255, 255, .10);
+    border-radius: 7px;
+
+    background: rgba(7, 9, 12, .72);
+    color: #fff;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow: 0 8px 22px rgba(0, 0, 0, .28);
+
+    pointer-events: none;
+}
+
+/* =====================================================
+   INFO DO CANAL
+===================================================== */
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    padding: 17px 8px 10px;
+}
+
+.title {
+    color: var(--text);
+
+    font-size: clamp(18px, 2vw, 22px);
+    font-weight: 850;
+    line-height: 1.15;
+    letter-spacing: -.3px;
+}
+
+.subtitle {
+    margin-top: 6px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+/* =====================================================
+   CONTROLES
+===================================================== */
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 4px 8px 8px;
+}
+
+.control {
+    min-height: 38px;
+
+    border: 1px solid rgba(255, 255, 255, .07);
+    border-radius: 9px;
+
+    padding: 0 13px;
+
+    background: #171c23;
+    color: #fff;
 
     cursor: pointer;
 
-    font-size: 11px;
-
+    font-size: 12px;
     font-weight: 800;
+
+    transition:
+        background var(--transition),
+        border-color var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition);
 }
 
-.lesson-button:hover {
-    background: #b9141a;
+.control:hover {
+    background: #222a34;
+    border-color: rgba(255, 255, 255, .14);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, .18);
 }
 
+.control:active {
+    transform: translateY(0) scale(.97);
+}
+
+.fullscreen {
+    margin-left: auto;
+
+    background:
+        linear-gradient(135deg, var(--red), var(--red-dark));
+
+    border-color: rgba(255, 255, 255, .08);
+}
+
+.fullscreen:hover {
+    background:
+        linear-gradient(135deg, var(--red-light), var(--red));
+
+    border-color: rgba(255, 255, 255, .16);
+
+    box-shadow:
+        0 8px 22px rgba(237, 28, 36, .20);
+}
 
 /* =====================================================
-   VAZIO
+   CANAIS
 ===================================================== */
 
-.empty {
-    display: none;
+.channels {
+    background:
+        linear-gradient(180deg, rgba(20, 24, 30, .98), rgba(14, 17, 22, .98));
 
-    text-align: center;
+    border: 1px solid rgba(255, 255, 255, .075);
+    border-radius: var(--radius-lg);
 
-    padding: 60px 20px;
+    overflow: hidden;
+
+    box-shadow: var(--shadow-md);
+
+    position: sticky;
+    top: 84px;
 }
 
-.empty div {
-    font-size: 45px;
+.channels-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    margin-bottom: 10px;
+    min-height: 58px;
+
+    padding: 0 18px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, .07);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, .025),
+            transparent
+        );
+
+    font-size: 15px;
+    font-weight: 850;
 }
 
-.empty h2 {
-    font-size: 20px;
+.channels-header::after {
+    content: "TV";
+
+    display: grid;
+    place-items: center;
+
+    min-width: 28px;
+    height: 24px;
+
+    border: 1px solid rgba(237, 28, 36, .28);
+    border-radius: 6px;
+
+    background: rgba(237, 28, 36, .08);
+    color: var(--red-light);
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: .5px;
 }
 
-.empty p {
-    color: #777;
+.channel-list {
+    padding: 10px;
+    max-height: 570px;
+    overflow-y: auto;
+
+    scrollbar-width: thin;
+    scrollbar-color: #3a414b transparent;
+}
+
+.channel-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.channel-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.channel-list::-webkit-scrollbar-thumb {
+    background: #353c46;
+    border-radius: 99px;
+}
+
+.channel {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    min-height: 62px;
+
+    padding: 9px 10px;
+
+    margin-bottom: 6px;
+
+    border: 1px solid transparent;
+    border-radius: 11px;
+
+    cursor: pointer;
+
+    transition:
+        background var(--transition),
+        border-color var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.channel:last-child {
+    margin-bottom: 0;
+}
+
+.channel:hover {
+    background: var(--panel-hover);
+    border-color: rgba(255, 255, 255, .055);
+    transform: translateX(2px);
+}
+
+.channel.active {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(237, 28, 36, .15),
+            rgba(237, 28, 36, .035)
+        );
+
+    border-color: rgba(237, 28, 36, .28);
+
+    box-shadow:
+        inset 3px 0 0 var(--red),
+        0 8px 22px rgba(0, 0, 0, .16);
+}
+
+.number {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+
+    display: grid;
+    place-items: center;
+
+    background:
+        linear-gradient(145deg, #252b33, #1c2128);
+
+    border: 1px solid rgba(255, 255, 255, .06);
+    border-radius: 8px;
+
+    color: #dfe3e8;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    transition:
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition);
+}
+
+.channel:hover .number {
+    border-color: rgba(255, 255, 255, .10);
+}
+
+.channel.active .number {
+    background:
+        linear-gradient(145deg, var(--red-light), var(--red-dark));
+
+    border-color: rgba(255, 255, 255, .10);
+
+    color: #fff;
+
+    box-shadow:
+        0 6px 16px rgba(237, 28, 36, .20);
+}
+
+.channel-text {
+    min-width: 0;
+    flex: 1;
+}
+
+.channel-name {
+    overflow: hidden;
+
+    color: #f4f4f4;
+
+    font-size: 12px;
+    font-weight: 850;
+    line-height: 1.25;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.channel-platform {
+    margin-top: 4px;
+
+    color: var(--muted-2);
+
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1.2;
+
+    text-transform: uppercase;
+    letter-spacing: .4px;
+}
+
+.channel.active .channel-platform {
+    color: #b9bec5;
+}
+
+/* =====================================================
+   PROGRAMAÇÃO / EPG
+===================================================== */
+
+.epg {
+    margin-top: 20px;
+
+    padding: 20px;
+
+    background:
+        linear-gradient(180deg, rgba(20, 24, 30, .98), rgba(14, 17, 22, .98));
+
+    border: 1px solid rgba(255, 255, 255, .075);
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-md);
+}
+
+.epg-title {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-bottom: 15px;
+
+    color: #fff;
+
+    font-size: 17px;
+    font-weight: 850;
+}
+
+.epg-title::before {
+    content: "";
+
+    width: 4px;
+    height: 18px;
+
+    border-radius: 99px;
+
+    background: var(--red);
+
+    box-shadow: 0 0 12px rgba(237, 28, 36, .35);
+}
+
+.schedule {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(210px, 1fr)
+        );
+
+    gap: 10px;
+}
+
+.program {
+    min-height: 100px;
+
+    padding: 14px;
+
+    background:
+        linear-gradient(145deg, #171c23, #12161c);
+
+    border: 1px solid rgba(255, 255, 255, .055);
+    border-radius: 11px;
+
+    transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition);
+}
+
+.program:hover {
+    transform: translateY(-2px);
+
+    border-color: rgba(237, 28, 36, .22);
+
+    background:
+        linear-gradient(145deg, #1a2028, #14191f);
+}
+
+.time {
+    color: var(--red-light);
+
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .2px;
+}
+
+.program-name {
+    margin-top: 7px;
+
+    color: #f3f3f3;
 
     font-size: 13px;
-
-    margin-top: 7px;
+    font-weight: 850;
+    line-height: 1.3;
 }
 
+.program-description {
+    margin-top: 6px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+    line-height: 1.45;
+}
 
 /* =====================================================
-   MODO ESCURO
+   ESTADOS DE FOCO / ACESSIBILIDADE
 ===================================================== */
 
-body.dark {
-    background: #101010;
-
-    color: #fff;
+button:focus-visible,
+a:focus-visible,
+.channel:focus-visible {
+    outline: 2px solid var(--red-light);
+    outline-offset: 3px;
 }
 
-body.dark header {
-    background: #151515;
-
-    border-color: #292929;
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
 }
-
-body.dark .logo {
-    color: #fff;
-}
-
-body.dark .search-button,
-body.dark .theme-button,
-body.dark .back-button {
-    background: #202020;
-
-    color: #fff;
-
-    border-color: #383838;
-}
-
-body.dark .page-title p {
-    color: #aaa;
-}
-
-body.dark .featured {
-    background: #181818;
-
-    border-color: #292929;
-}
-
-body.dark .featured-icon {
-    background: #2a1515;
-}
-
-body.dark .featured-content p {
-    color: #aaa;
-}
-
-body.dark .featured-info span {
-    color: #bbb;
-}
-
-body.dark .search-box {
-    background: #181818;
-
-    border-color: #3a3a3a;
-}
-
-body.dark .search-box input {
-    color: #fff;
-}
-
-body.dark #levelFilter {
-    background: #181818;
-
-    color: #fff;
-
-    border-color: #3a3a3a;
-}
-
-body.dark .lesson-card {
-    background: #181818;
-
-    border-color: #292929;
-}
-
-body.dark .lesson-cover {
-    background: #222;
-}
-
-body.dark .lesson-description {
-    color: #aaa;
-}
-
-body.dark .lesson-meta {
-    color: #aaa;
-}
-
-body.dark .empty p {
-    color: #aaa;
-}
-
 
 /* =====================================================
-   TABLET
+   RESPONSIVO — TABLET
 ===================================================== */
 
-@media (max-width: 900px) {
-
-    .lessons {
+@media (max-width: 1100px) {
+    .tv-layout {
         grid-template-columns:
-            repeat(2, 1fr);
+            minmax(0, 1fr)
+            290px;
+
+        gap: 15px;
     }
 
+    .channels {
+        top: 78px;
+    }
+
+    .channel {
+        min-height: 58px;
+        gap: 9px;
+        padding: 8px;
+    }
+
+    .number {
+        width: 33px;
+        height: 33px;
+        flex-basis: 33px;
+    }
+
+    .channel-name {
+        font-size: 11px;
+    }
 }
 
-
 /* =====================================================
-   CELULAR
+   RESPONSIVO — MOBILE GRANDE
 ===================================================== */
 
-@media (max-width: 650px) {
-
+@media (max-width: 950px) {
     header {
-        height: 62px;
+        position: relative;
+    }
 
-        padding: 0 14px;
+    .container {
+        width: min(94vw, 820px);
+        margin-top: 20px;
+    }
+
+    .tv-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .channels {
+        position: static;
+        order: 2;
+    }
+
+    .channel-list {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 7px;
+
+        max-height: none;
+    }
+
+    .channel {
+        margin: 0;
+    }
+
+    .epg {
+        margin-top: 15px;
+    }
+}
+
+/* =====================================================
+   RESPONSIVO — MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+    header {
+        min-height: 58px;
+        padding: 9px 12px;
     }
 
     .logo {
-        font-size: 17px;
+        gap: 8px;
+    }
+
+    .logo-mark {
+        width: 35px;
+        height: 35px;
+        flex-basis: 35px;
+
+        border-radius: 9px;
+        font-size: 18px;
+    }
+
+    .logo-text strong {
+        font-size: 13px;
+    }
+
+    .logo-text span {
+        font-size: 7px;
+        letter-spacing: 2.5px;
     }
 
     .header-actions {
         gap: 6px;
     }
 
-    .back-button {
-        display: flex;
-        width: auto;
-        padding: 0 12px;
-        height: 39px;
-        font-size: 13px;
-        border-radius: 9px;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .search-button,
     .theme-button {
-        width: 39px;
-
-        height: 39px;
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
     }
 
-    main {
-        padding:
-            30px 14px 50px;
-    }
-
-    .page-title h1 {
-        font-size: 29px;
-    }
-
-    .featured {
-        flex-direction: column;
-
-        align-items: stretch;
-
-        padding: 18px;
-    }
-
-    .featured-icon {
-        width: 100%;
-
-        height: 150px;
-
-        font-size: 70px;
-    }
-
-    .featured-content h2 {
-        font-size: 22px;
-    }
-
-    .lesson-tools {
-        grid-template-columns: 1fr;
-    }
-
-    .lessons {
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        gap: 10px;
-    }
-
-    .lesson-cover {
-        height: 140px;
-
-        font-size: 55px;
-    }
-
-    .lesson-info {
-        padding: 13px;
-    }
-
-    .lesson-name {
-        font-size: 14px;
-    }
-
-    .lesson-description {
+    .back-button {
+        min-height: 36px;
+        padding: 0 10px;
         font-size: 10px;
     }
-    .back-button {
-        display: flex;
-        width: auto;
-        padding: 0 10px;
-        height: 38px;
-        font-size: 12px;
-        border-radius: 9px;
-        align-items: center;
-        justify-content: center;
+
+    .container {
+        width: 100%;
+        margin: 8px 0 25px;
     }
-}
 
+    .tv {
+        padding: 7px;
 
-/* =====================================================
-   CELULAR PEQUENO
-===================================================== */
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
 
-@media (max-width: 390px) {
+        box-shadow: none;
+    }
 
-    .lessons {
+    .screen {
+        border-radius: 9px;
+    }
+
+    .live-label {
+        top: 9px;
+        left: 9px;
+
+        padding: 6px 8px;
+
+        font-size: 9px;
+    }
+
+    .channel-logo {
+        top: 9px;
+        right: 9px;
+
+        padding: 6px 9px;
+
+        font-size: 9px;
+    }
+
+    .info {
+        align-items: flex-start;
+        padding: 13px 4px 8px;
+    }
+
+    .title {
+        font-size: 17px;
+    }
+
+    .subtitle {
+        font-size: 10px;
+    }
+
+    .controls {
+        padding: 3px 4px 5px;
+        gap: 6px;
+    }
+
+    .control {
+        min-height: 35px;
+        padding: 0 10px;
+        font-size: 10px;
+    }
+
+    .channels,
+    .epg {
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
+    }
+
+    .channels {
+        box-shadow: none;
+    }
+
+    .channels-header {
+        min-height: 52px;
+        padding: 0 14px;
+    }
+
+    .channel-list {
+        grid-template-columns: 1fr;
+        padding: 8px;
+    }
+
+    .channel {
+        min-height: 58px;
+        padding: 9px;
+    }
+
+    .epg {
+        padding: 16px 12px;
+        margin-top: 8px;
+        box-shadow: none;
+    }
+
+    .epg-title {
+        font-size: 15px;
+    }
+
+    .schedule {
         grid-template-columns: 1fr;
     }
 
-    .lesson-cover {
-        height: 180px;
-
-        font-size: 70px;
+    .program {
+        min-height: 90px;
     }
-.back-button {
-    display: none;
 }
+
+/* =====================================================
+   RESPONSIVO — MOBILE PEQUENO
+===================================================== */
+
+@media (max-width: 380px) {
+    .logo-text span {
+        display: none;
+    }
+
+    .back-button {
+        padding: 0 8px;
+    }
+
+    .back-button {
+        font-size: 9px;
+    }
+
+    .controls {
+        flex-wrap: wrap;
+    }
+
+    .fullscreen {
+        margin-left: 0;
+    }
+
+    .control {
+        flex: 1;
+    }
+}
+
+/* =====================================================
+   TELAS MUITO ALTAS / LARGAS
+===================================================== */
+
+@media (min-width: 1500px) {
+    .container {
+        width: min(1500px, 94vw);
+    }
+
+    .tv-layout {
+        grid-template-columns:
+            minmax(0, 1fr)
+            350px;
+    }
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding: 60px 0 25px;
+
+    background: #111;
+
+    color: white;
+}
+
+.footer-grid {
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+
+    gap: 50px;
+}
+
+.footer-logo .logo-mark {
+    background: var(--red);
+}
+
+.footer-brand > p {
+    max-width: 340px;
+
+    margin-top: 15px;
+
+    color: #888;
+
+    font-size: 12px;
+}
+
+.footer-column h4 {
+    margin-bottom: 17px;
+
+    font-size: 12px;
+}
+
+.footer-column a {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #888;
+
+    font-size: 11px;
+
+    transition: .2s;
+}
+
+.footer-column a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 45px;
+    padding-top: 20px;
+
+    border-top: 1px solid #292929;
+
+    color: #666;
+
+    font-size: 10px;
 }
 /* =========================================================
    MODO ESCURO — visual inspirado na referência

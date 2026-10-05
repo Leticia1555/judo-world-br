@@ -14,7 +14,7 @@
       <span class="marca-texto"><strong>JUDÔ WORLD</strong><small>BRASIL</small></span>
     </a>
     <div class="acoes-topo">
-      <button class="tema" id="themeToggle" type="button">🌙</button>
+      <button class="tema" id="themeToggle" type="button" aria-label="Alternar tema">🌙</button>
       <a class="voltar" href="loja.html">← Voltar</a>
     </div>
   </header>
@@ -30,8 +30,6 @@
         <div id="cartItems" class="lista-produtos"></div>
         <div id="emptyCart" class="vazio" hidden>Seu carrinho está vazio.</div>
       </section>
-      <div id="emptyCart" class="vazio" hidden>Seu carrinho está vazio.</div>
-
       <aside class="resumo">
         <h2>Resumo</h2>
         <div class="linha"><span>Itens</span><span id="itemCount">0</span></div>
@@ -41,20 +39,83 @@
       </aside>
     </div>
 
+    <section id="pedidoConfirmado" class="confirmado" hidden></section>
+
     <section id="checkout" class="checkout" hidden>
       <div class="checkout-head">
-        <h2>Pagamento</h2>
-        <button id="closeCheckout" class="fechar" type="button">×</button>
+        <h2>Finalizar pedido</h2>
+        <button id="closeCheckout" class="fechar" type="button" aria-label="Fechar">×</button>
       </div>
       <p class="checkout-total">Total do pedido: <strong id="checkoutTotal">R$ 0,00</strong></p>
 
-      <div class="pagamento-opcoes">
-        <label class="opcao"><input type="radio" name="payment" value="pix" checked><span><strong>Pix</strong><small>Pagamento instantâneo</small></span></label>
-        <label class="opcao"><input type="radio" name="payment" value="card"><span><strong>Cartão</strong><small>Pagamento seguro</small></span></label>
-      </div>
+      <form id="checkoutForm">
 
-      <button id="payBtn" class="pagar" type="button">Finalizar pedido</button>
-      <p id="paymentMessage" class="mensagem"></p>
+        <h3 class="etapa">1. Entrega</h3>
+
+        <div class="campos">
+          <label class="campo">
+            <span>Nome de quem recebe</span>
+            <input id="entNome" type="text" autocomplete="name" required>
+          </label>
+
+          <label class="campo">
+            <span>Telefone / WhatsApp</span>
+            <input id="entTelefone" type="tel" inputmode="tel" autocomplete="tel" required>
+          </label>
+
+          <div id="enderecoCampos" class="campos campo-cheio">
+            <label class="campo">
+              <span>CEP</span>
+              <input id="entCep" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="9" placeholder="00000-000" required>
+              <small id="cepStatus" class="campo-aviso"></small>
+            </label>
+
+            <label class="campo">
+              <span>Número</span>
+              <input id="entNumero" type="text" autocomplete="off" required>
+            </label>
+
+            <label class="campo campo-cheio">
+              <span>Rua</span>
+              <input id="entRua" type="text" autocomplete="address-line1" required>
+            </label>
+
+            <label class="campo">
+              <span>Complemento (opcional)</span>
+              <input id="entComplemento" type="text" autocomplete="address-line2">
+            </label>
+
+            <label class="campo">
+              <span>Bairro</span>
+              <input id="entBairro" type="text" required>
+            </label>
+
+            <label class="campo">
+              <span>Cidade</span>
+              <input id="entCidade" type="text" autocomplete="address-level2" required>
+            </label>
+
+            <label class="campo">
+              <span>UF</span>
+              <input id="entUf" type="text" maxlength="2" autocomplete="address-level1" placeholder="SP" required>
+            </label>
+          </div>
+        </div>
+
+        <p id="avisoVendedores" class="campo-aviso"></p>
+
+        <div id="opcoesEntrega" class="pagamento-opcoes"></div>
+
+        <h3 class="etapa">2. Pagamento</h3>
+
+        <div class="pagamento-opcoes">
+          <label class="opcao"><input type="radio" name="payment" value="pix" checked><span><strong>Pix</strong><small>Pagamento instantâneo</small></span></label>
+          <label class="opcao" id="opcaoCartao"><input type="radio" name="payment" value="card" disabled><span><strong>Cartão de crédito ou débito</strong><small id="cartaoInfo">Em breve</small></span></label>
+        </div>
+
+        <button id="payBtn" class="pagar" type="submit">Finalizar pedido</button>
+        <p id="paymentMessage" class="mensagem"></p>
+      </form>
     </section>
   </main>
 
@@ -67,6 +128,7 @@
     </div>
     <div class="rodape-final"><span>© 2026 Judô World BR</span><span>Feito para quem vive o judô 🥋</span></div>
   </footer>
-  <script src="carrinho.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/carrinho.js"></script>
 </body>
 </html>

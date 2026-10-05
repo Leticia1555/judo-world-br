@@ -27,52 +27,63 @@
 
 <body>
 
-<!-- =====================================================
-     CABEÇALHO
-===================================================== -->
+   <!-- =====================================================
+         CABEÇALHO
+    ====================================================== -->
 
-<header>
+    <header>
 
-    <a
-        href="index.html"
-        class="logo">
+        <a
+            href="index.html"
+            class="logo">
 
-        JUDÔ <span>WORLD</span>
+            <div class="logo-mark">
+                柔
+            </div>
 
-    </a>
+            <div class="logo-text">
+
+                <strong>
+                    JUDÔ WORLD
+                </strong>
+
+                <span>
+                    BRASIL
+                </span>
+
+            </div>
+
+        </a>
 
 
-    <div class="header-actions">
+        <div class="header-actions">
 
-        <!-- PESQUISA -->
+            <!-- MODO ESCURO/CLARO -->
 
-        <button
-            class="search-button"
-            onclick="focarPesquisa()"
-            aria-label="Pesquisar">
+            <button
+                id="themeButton"
+                class="theme-button"
+                type="button"
+                aria-label="Alternar tema">
 
-            🔍
+                🌙
 
-        </button>
+            </button>
 
 
-        <!-- TEMA -->
+            <!-- VOLTAR -->
 
-    <button
-        id="themeButton"
-        class="theme-button"
-        type="button"
-        aria-label="Alternar modo">
-        🌙
-    </button>
+            <a
+                href="index.html"
+                class="back-button">
 
-    <a href="index.html" class="back-button">
-        ← Voltar
-    </a>
+                ← Voltar
 
-    </div>
+            </a>
 
-</header>
+        </div>
+
+    </header>
 
 
 <!-- =====================================================

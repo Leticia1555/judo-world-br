@@ -1,4 +1,4 @@
-/* =========================================================
+ /* =========================================================
    RESET
 ========================================================= */
 
@@ -1983,142 +1983,210 @@ footer {
 }
 
 
-/* =========================
-   MODO ESCURO
-========================= */
+
+/* =========================================================
+   MODO ESCURO — visual inspirado na referência
+   ========================================================= */
 
 body.dark-mode {
-    background: #101010;
-    color: #fff;
+    --black: #f5f5f5;
+    --dark: #111314;
+    --gray-900: #eeeeee;
+    --gray-700: #a5a5a5;
+    --gray-500: #777777;
+    --gray-300: #3a3d3e;
+    --gray-200: #292c2d;
+    --gray-100: #151718;
+    --white: #f5f5f5;
+
+    background: #090a0b;
+    color: #e2dfdb;
 }
 
+/* Header */
 body.dark-mode .header {
-    background: rgba(16, 16, 16, .96);
-    border-color: #292929;
+    background: rgba(9, 10, 11, .96);
+    border-color: #252525;
 }
 
 body.dark-mode .desktop-nav a {
-    color: #aaa;
+    color: #9b9b9b;
 }
 
 body.dark-mode .desktop-nav a:hover,
 body.dark-mode .desktop-nav a.active {
-    color: #fff;
+    color: #ffffff;
 }
 
-body.dark-mode .theme-button {
-    background: #202020;
-    border-color: #383838;
-    color: #fff;
-}
-
-body.dark-mode .search-button {
-    background: #202020;
-    border-color: #383838;
-    color: #fff;
+body.dark-mode .search-button,
+body.dark-mode .theme-button,
+body.dark-mode .menu-button {
+    background: #181a1b;
+    border-color: #343738;
+    color: #ffffff;
 }
 
 body.dark-mode .account {
-    background: #fff;
-    color: #111;
+    background: #f5f5f5;
+    color: #101010;
 }
 
+/* Hero */
 body.dark-mode .hero {
     background:
         radial-gradient(
             circle at 90% 10%,
-            #321214,
-            transparent 35%
+            rgba(130, 18, 24, .24),
+            transparent 34%
         ),
-        #101010;
+        #0b0d0e;
 }
 
-body.dark-mode .hero-content > p,
-body.dark-mode .category-content p,
-body.dark-mode .live-info > p,
-body.dark-mode .event-info p,
-body.dark-mode .news-content p,
-body.dark-mode .training-content p {
-    color: #aaa;
+body.dark-mode .hero-content > p {
+    color: #a1a1a1;
 }
 
+body.dark-mode .button-light {
+    background: #111213;
+    border-color: #36393a;
+    color: #eeeeee;
+}
+
+body.dark-mode .button-light:hover {
+    background: #1d1f20;
+    border-color: var(--red);
+    color: #ffffff;
+}
+
+body.dark-mode .hero-badge {
+    background: #111213;
+    color: #ffffff;
+    border: 1px solid #303334;
+}
+
+body.dark-mode .hero-badge small {
+    color: #8e8e8e;
+}
+
+body.dark-mode .badge-icon {
+    background: #2b1719;
+}
+
+/* Seções */
+body.dark-mode .section,
+body.dark-mode .shop-section {
+    background: #0b0d0e;
+}
+
+body.dark-mode .live-section,
+body.dark-mode .news-section {
+    background: #111213;
+}
+
+/* Cards */
 body.dark-mode .category-card,
 body.dark-mode .live-card,
 body.dark-mode .event,
 body.dark-mode .news-card {
-    background: #181818;
-    border-color: #2b2b2b;
+    background: #111213;
+    border-color: #7c7365;
 }
 
 body.dark-mode .category-card:hover,
 body.dark-mode .news-card:hover,
 body.dark-mode .event:hover {
-    box-shadow: 0 20px 50px rgba(0,0,0,.4);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .48);
 }
 
-body.dark-mode .live-section,
-body.dark-mode .news-section {
-    background: #151515;
+body.dark-mode .category-content p,
+body.dark-mode .live-info > p,
+body.dark-mode .event-info p,
+body.dark-mode .news-content p,
+body.dark-mode .training-content p {
+    color: #999999;
 }
 
-body.dark-mode .event-status {
-    background: #252525;
-    color: #aaa;
+body.dark-mode .category-image {
+    background: #1d1f20;
 }
 
-body.dark-mode .event-arrow {
-    background: #202020;
-    border-color: #333;
-    color: #fff;
+/* Ao vivo */
+body.dark-mode .live-card {
+    box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
 }
 
 body.dark-mode .live-details div {
-    background: #222;
+    background: #1d1f20;
 }
 
+body.dark-mode .event-status {
+    background: #1d1f20;
+    color: #999999;
+}
+
+body.dark-mode .event-arrow {
+    background: #111213;
+    border-color: #7c7365;
+    color: #ffffff;
+}
+
+/* Treinamento */
 body.dark-mode .training {
-    background: #1b1b1b;
+    background: #111213;
 }
 
-body.dark-mode .shop-section {
-    background: #101010;
+body.dark-mode .training-content {
+    color: #f5f5f5;
 }
 
+/* Menu mobile */
 body.dark-mode .mobile-menu {
-    background: #151515;
-    border-color: #333;
+    background: #111213;
+    border-color: #7c7365;
+    box-shadow: 0 15px 30px rgba(0,0,0,.35);
 }
 
 body.dark-mode .mobile-menu a {
-    color: #fff;
-    border-color: #292929;
+    color: #f5f5f5;
+    border-color: #292c2d;
 }
 
-body.dark-mode .menu-button {
-    background: #202020;
-    border-color: #383838;
+body.dark-mode .mobile-actions .search-button {
+    background: #181a1b;
+    border-color: #343738;
+    color: #ffffff;
 }
 
-body.dark-mode .menu-button span {
-    background: #fff;
+/* Pesquisa */
+body.dark-mode .search-modal {
+    background: rgba(0, 0, 0, .72);
 }
 
 body.dark-mode .search-box {
-    background: #1b1b1b;
-    color: #fff;
+    background: #111213;
+    color: #ffffff;
+    border: 1px solid #303334;
 }
 
 body.dark-mode .search-input input {
-    background: #252525;
-    color: #fff;
-    border-color: #444;
+    background: #1d1f20;
+    color: #ffffff;
+    border-color: #414445;
+}
+
+body.dark-mode .search-input input::placeholder {
+    color: #777777;
 }
 
 body.dark-mode .close-search {
-    background: #292929;
-    color: #fff;
+    background: #1d1f20;
+    color: #ffffff;
 }
 
+/* Footer */
+body.dark-mode footer {
+    background: #090a0b;
+}
 
 /* celular */
 
@@ -2163,4 +2231,44 @@ body.dark-mode .close-search {
         border-color: #d71920;
     }
 
+}
+
+/* Ajustes finos dos cards de campeonatos — referência */
+body.dark-mode .event {
+    background: #111213;
+    border-color: #7c7365;
+}
+
+body.dark-mode .event-date {
+    background: #3b0000;
+    color: #e2dfdb;
+}
+
+body.dark-mode .event-date strong {
+    color: #e2dfdb;
+}
+
+body.dark-mode .event-date span {
+    color: #ff3038;
+}
+
+body.dark-mode .event-info h3 {
+    color: #e2dfdb;
+}
+
+body.dark-mode .event-info > span,
+body.dark-mode .category-content .number,
+body.dark-mode .red-label {
+    color: #e21a22;
+}
+
+body.dark-mode .event-status {
+    background: #1d1f20;
+    color: #999999;
+}
+
+body.dark-mode .event-arrow {
+    background: #111213;
+    border-color: #7c7365;
+    color: #e2dfdb;
 }

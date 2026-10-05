@@ -1,0 +1,406 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Judo World BR TV</title>
+<link rel="stylesheet" href="css/aovivo.css">
+
+<style>
+
+
+
+</style>
+</head>
+
+
+<body>
+
+   <!-- =====================================================
+         CABEÇALHO
+    ====================================================== -->
+
+    <header>
+
+        <a
+            href="index.html"
+            class="logo">
+
+            <div class="logo-mark">
+                柔
+            </div>
+
+            <div class="logo-text">
+
+                <strong>
+                    JUDÔ WORLD
+                </strong>
+
+                <span>
+                    BRASIL
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <div class="header-actions">
+
+            <!-- MODO ESCURO/CLARO -->
+
+            <button
+                id="themeButton"
+                class="theme-button"
+                type="button"
+                aria-label="Alternar tema">
+
+                🌙
+
+            </button>
+
+
+            <!-- VOLTAR -->
+
+            <a
+                href="index.html"
+                class="back-button">
+
+                ← Voltar
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+<div class="container">
+
+
+    <!-- =========================
+         TV
+    ========================= -->
+
+    <div class="tv-layout">
+
+
+        <section class="tv">
+
+            <div
+                class="screen"
+                id="screen"
+            >
+
+                <div class="live-label">
+                    AO VIVO
+                </div>
+
+
+                <div class="channel-logo">
+                    JUDO WORLD BR
+                </div>
+
+
+                <iframe
+                    id="player"
+
+                    src="https://www.youtube.com/embed/uZ0V4zbQ2W8?autoplay=1&mute=1&rel=0"
+
+                    title="Judo World BR"
+
+                    allow="
+                        autoplay;
+                        encrypted-media;
+                        picture-in-picture
+                    "
+
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+
+
+            <div class="info">
+
+                <div>
+
+                    <div
+                        class="title"
+                        id="channelTitle"
+                    >
+                        Judo World BR
+                    </div>
+
+                    <div
+                        class="subtitle"
+                        id="platform"
+                    >
+                        YouTube • Transmissão ao vivo
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="controls">
+
+                <button
+                    class="control"
+                    onclick="previousChannel()"
+                >
+                    ◀ Canal
+                </button>
+
+
+                <button
+                    class="control"
+                    onclick="nextChannel()"
+                >
+                    Canal ▶
+                </button>
+
+
+                <button
+                    class="control fullscreen"
+                    onclick="fullscreen()"
+                >
+                    ⛶ Tela cheia
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CANAIS
+        ========================= -->
+
+        <aside class="channels">
+
+            <div class="channels-header">
+                📺 Canais ao vivo
+            </div>
+
+            <div
+                class="channel-list"
+                id="channelList"
+            ></div>
+
+        </aside>
+
+    </div>
+
+
+    <!-- =========================
+         PROGRAMAÇÃO
+    ========================= -->
+
+    <section class="epg">
+
+        <div class="epg-title">
+            📅 Programação
+        </div>
+
+
+        <div class="schedule">
+
+
+            <div class="program">
+
+                <div class="time">
+                    18:00
+                </div>
+
+                <div class="program-name">
+                    Judo Live
+                </div>
+
+                <div class="program-description">
+                    Transmissão ao vivo
+                </div>
+
+            </div>
+
+
+            <div class="program">
+
+                <div class="time">
+                    19:30
+                </div>
+
+                <div class="program-name">
+                    Campeonato de Judô
+                </div>
+
+                <div class="program-description">
+                    Cobertura especial
+                </div>
+
+            </div>
+
+
+            <div class="program">
+
+                <div class="time">
+                    21:00
+                </div>
+
+                <div class="program-name">
+                    Judo World News
+                </div>
+
+                <div class="program-description">
+                    Notícias do judô
+                </div>
+
+            </div>
+
+
+            <div class="program">
+
+                <div class="time">
+                    22:30
+                </div>
+
+                <div class="program-name">
+                    Melhores Momentos
+                </div>
+
+                <div class="program-description">
+                    Grandes lutas
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+</div>
+
+ <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+
+                <div class="footer-brand">
+
+                    <div class="logo footer-logo">
+
+                        <div class="logo-mark">
+                            柔
+                        </div>
+
+                        <div class="logo-text">
+                            <strong>JUDÔ WORLD</strong>
+                            <span>BRASIL</span>
+                        </div>
+
+                    </div>
+
+                    <p>
+                        O seu portal para viver,
+                        acompanhar e evoluir
+                        no mundo do judô.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Explorar
+                    </h4>
+
+                    <a href="#campeonatos">
+                        Campeonatos
+                    </a>
+
+                    <a href="#noticias">
+                        Notícias
+                    </a>
+
+                    <a href="#aulas">
+                        Aulas
+                    </a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Judô World
+                    </h4>
+
+                    <a href="#">
+                        Sobre nós
+                    </a>
+
+                    <a href="#">
+                        Contato
+                    </a>
+
+                    <a href="#">
+                        Termos
+                    </a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Siga-nos
+                    </h4>
+
+                    <a href="#">
+                        Instagram
+                    </a>
+
+                    <a href="#">
+                        YouTube
+                    </a>
+
+                    <a href="#">
+                        Facebook
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 Judô World BR
+                </span>
+
+                <span>
+                    Feito para quem vive o judô 🥋
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+<script src="js/aovivo.js"></script>
+
+</body>
+</html>
+
